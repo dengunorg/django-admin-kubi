@@ -15,7 +15,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     license='BSD',
-    long_description=open('README.rst').read(),
+    long_description=open('description.rst').read(),
     classifiers=[
         'Development Status :: v1 Released',
         'Environment :: Web Environment',

@@ -17,6 +17,14 @@ Django admin Kubi applies a face lift for the Django admin interface and mechani
 * Admin LogEntry view
 * django-modeltranslation support
 
+Quick Demo
+==========
+
+.. image:: https://github-production-user-asset-6210df.s3.amazonaws.com/439167/237770437-47534a67-17e9-414f-8805-0364b39b96ac.gif
+    :alt: Demo
+    :align: center
+    :target: https://github-production-user-asset-6210df.s3.amazonaws.com/439167/237770437-47534a67-17e9-414f-8805-0364b39b96ac.gif
+
 Installation
 ============
 
