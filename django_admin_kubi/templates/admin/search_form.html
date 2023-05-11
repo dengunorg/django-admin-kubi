@@ -1,0 +1,18 @@
+{% load i18n static %}
+{% if cl.search_fields %}
+  <form action="" class="search-container d-flex flex-grow-1 border-0" method="get" role="search" id="search-change-list">
+    <div class="form-floating flex-grow-1">
+      <input type="text" class="form-control shadow-none border-0" placeholder='"{{ cl.opts.verbose_name_plural|capfirst }}"' name="{{ search_var }}" value="{{ cl.query }}" id="search-input" autocomplete="off" spellcheck="false" role="combobox" dir="auto">
+      <label for="search-input">{{ cl.opts.verbose_name_plural|capfirst }}</label>
+      {% if cl.query %}
+        <a href="?{% if cl.is_popup %}{{ is_popup_var }}=1{% if cl.add_facets %}&{% endif %}{% endif %}{% if cl.add_facets %}{{ is_facets_var }}{% endif %}" class="btn btn-sm btn-clear" aria-label="{% trans 'clear search' %}"><i class="fa fa-times"></i></a>
+      {% endif %}
+    </div>
+    <button class="btn btn-link link-body-emphasis" type="submit"><i class="fa fa-search"></i></button>
+    {% for pair in cl.params.items %}
+      {% if pair.0 != search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endif %}
+    {% endfor %}
+  </form>
+{% else %}
+  <span class="breadcrumb-item active">{{ cl.opts.verbose_name_plural|capfirst }}</span>
+{% endif %}

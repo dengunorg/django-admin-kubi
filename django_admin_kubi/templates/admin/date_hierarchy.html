@@ -1,0 +1,24 @@
+{% load i18n %}
+{% if show %}
+  <li class="nav-item dropdown d-flex">
+    {% if back %}
+      <a href="{{ back.link }}" class="nav-link date-hierarchy-undo"><i class="fa fa-arrow-left"></i></a>
+    {% else %}
+      <a class="nav-link date-hierarchy-undo disabled"><i class="fa fa-calendar"></i></a>
+    {% endif %}
+    <a class="nav-link dropdown-toggle date-hierarchy-toggle" data-bs-toggle="dropdown" href="#">
+      &nbsp; {% if choice %}{{choice}}{% else %}{% trans 'By year' %}{% endif %}
+      <b class="caret"></b>
+    </a>
+    {% if choices %}
+      <div class="dropdown-menu date-hierarchy-menu">
+        {% for choice in choices %}
+          <a class="dropdown-item{% if not choice.link %} active{% endif %}"
+             href="{% if choice.link %}{{ choice.link }}{% else %}#{% endif %}">
+              {{ choice.title }}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </li>
+{% endif %}

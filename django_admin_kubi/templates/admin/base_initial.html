@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block css_commons %}{% endblock css_commons %}
+
+{% block header %}{% endblock %}
+
+{% block page-header %}{% endblock %}
+
+{% block branding %}{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block layout %}initial-layout{% endblock %}
+
+{% block content %}
+  <div class="text-center centered-container container">
+    {% block initial-header %}{% include 'admin/branding.html' %}{% endblock %}
+    {% block initial-content %}{% endblock %}
+    {% block initial-footer %}<p class="mt-5 mb-3 text-muted">&copy; Dengun – {% now "Y" %}</p>{% endblock %}
+  </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  kubi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "npm install && npm start && npm run watch"
+    volumes:
+     - ./django_admin_kubi/:/src
+     - node-modules:/src/node_modules
+    tty: true
+
+volumes:
+  node-modules: {}

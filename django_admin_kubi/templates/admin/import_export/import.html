@@ -1,0 +1,82 @@
+{% extends "admin/import_export/base.html" %}
+{% load i18n admin_urls import_export_tags %}
+
+{% block breadcrumbs_last %}
+  <span class="breadcrumb-item active">{% trans "Import" %}</span>
+{% endblock %}
+
+{% block form_top %}
+   {% if confirm_form %}
+      <p class="alert alert-warning">
+        <strong>{% trans "Preview" %}</strong><br>
+        {% trans "Below is a preview of data to be imported. If you are satisfied with the results, click 'Confirm import'" %}
+      </p>
+     {% if result %}
+      {% if not result.has_errors %}
+         <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th width="120px"></th>
+                  {% for field in result.diff_headers %}
+                    <th>{{ field }}</th>
+                  {% endfor %}
+                </tr>
+                </thead>
+                {% for row in result.rows %}
+                  <tr>
+                    <td>
+                      {% if row.import_type == 'new' %}
+                        {% trans "New" %}
+                      {% elif row.import_type == 'skip' %}
+                        {% trans "Skipped" %}
+                      {% elif row.import_type == 'delete' %}
+                        {% trans "Delete" %}
+                      {% elif row.import_type == 'update' %}
+                        {% trans "Update" %}
+                      {% endif %}
+                    </td>
+                    {% for field in row.diff %}
+                      <td>{{ field }}</td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+            </table>
+         </div>
+      {% endif %}
+    {% endif %}
+  {% else %}
+    <p>{% trans "This importer will import the following fields:" %}&nbsp;<code>{{ fields|join:", " }}</code></p>
+   {% endif %}
+{% endblock %}
+
+{% block field_sets %}
+  {% if confirm_form %}
+    {# Render Confirm Form #}
+    {{ confirm_form.as_p }}
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block admin_form %}
+  {% if confirm_form %}
+    {# Override Form URL for Confirm Form #}
+    {% url opts|admin_urlname:'process_import' as form_url %}
+  {% endif %}
+  {{ block.super }}
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+  {% if confirm_form %}
+    <div class="form-actions row">
+      <div class="col-xs-12 text-end save-options-box">
+        <a href="../" class="btn btn-default">{% trans 'Cancel' %}</a>
+        <a href="#" class="btn btn-default cancel-link">{% trans 'Back' %}</a>
+        <input type="submit" class="btn btn-primary" name="confirm" value="{% trans 'Confirm Import' %}"/>
+      </div>
+    </div>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "admin/base_site.html" %}
+{% load i18n l10n admin_urls static admin_kubi_tags %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
+  {{ media }}
+  <script type="text/javascript" src="{% static 'admin/js/cancel.js' %}"></script>
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+  {% spaceless %}
+    <nav class="breadcrumb">
+      {% breadcrumbs_icon opts %}
+      <a class="breadcrumb-item" href="{% url opts|admin_urlname:'changelist' %}">
+        {{ opts.verbose_name_plural|capfirst }}
+      </a>
+      {% block breadcrumbs_last %}{% endblock %}
+    </nav>
+  {% endspaceless %}
+{% endblock %}
+{% endif %}
+
+
+{% block content %}
+
+  {% block non_field_errors %}
+    {% if result %}
+      {% if result.has_errors %}
+        <p class="alert alert-danger">
+        {% if result.row_errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+        </p>
+        <h2>{% trans "Errors" %}</h2>
+        <ul class="list-group">
+          {% for error in result.base_errors %}
+            <li class="list-group-item list-group-item-warning">
+              {{ error.error }}
+              <div class="traceback">{{ error.traceback|linebreaks }}</div>
+            </li>
+          {% endfor %}
+          {% for line, errors in result.row_errors %}
+            {% for error in errors %}
+              <li class="list-group-item list-group-item-danger">
+                <span class="badge">{% trans "Line number" %}: {{ line }}</span>
+                <div class="row">
+                  <div class="col-xs-6">
+                    {{ error.error }}
+                  </div>
+                  <div class="col-xs-4">
+                    <div><code>{{ error.row.values|join:", " }}</code></div>
+                  </div>
+                </div>
+                <div class="traceback hide">
+                  <hr/>
+                  <div class="well">{{ error.traceback|linebreaks }}</div>
+                </div>
+              </li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+
+  {% block admin_form %}
+    <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>
+      {% csrf_token %}
+
+      {% block form_top %}
+      {% endblock %}
+
+      {% block field_sets %}
+        {% for fieldset in adminform %}
+          {% include "admin/includes/fieldset.html" %}
+        {% endfor %}
+      {% endblock %}
+
+       {% block submit_buttons_bottom %}
+         <div class="form-actions row">
+          <div class="col-xs-12 text-end save-options-box">
+            <a href="../" class="btn btn-default">{% trans 'Cancel' %}</a>
+            <input type="submit" class="btn btn-primary" value="{% trans 'Submit' %}"/>
+          </div>
+        </div>
+      {% endblock %}
+
+    {% block admin_change_form_document_ready %}
+     {{ block.super }}
+    {% endblock %}
+
+    </form>
+  {% endblock %}
+
+{% endblock %}

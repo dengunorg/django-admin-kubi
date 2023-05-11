@@ -1,0 +1,18 @@
+{% load i18n admin_urls admin_relation_modify %}
+
+<div class="form-actions row">
+  <div class="col">
+    {% if show_delete_link %}
+      {% relation_admin_url 'delete' original.pk|admin_urlquote as delete_url %}
+      <div class="delete-link-box">
+        <a href="{% add_preserved_filters delete_url %}" class="btn btn-danger">{% trans "Delete" %}</a>
+      </div>
+    {% endif %}
+    <span class="d-sm-none"><hr/></span>
+  </div>
+  <div class="col-xs-12 col-md-6 text-end save-options-box">
+    <input type="submit" value="{% trans 'Save & close' %}" name="_save" {{ onclick_attrib }} class="btn btn-default"/>
+    <span class="d-none d-sm-inline">&nbsp;&nbsp;{% trans 'or' %}&nbsp;&nbsp;</span>
+    <input type="submit" value="{% trans 'Save' %}" name="_continue" {{ onclick_attrib }} class="btn btn-primary"/>
+  </div>
+</div>

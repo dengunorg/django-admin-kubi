@@ -1,0 +1,59 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_kubi_tags %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
+{% endblock %}
+
+{% block bodyclass %}search{% endblock %}
+
+{% block breadcrumbs %}
+{% spaceless %}
+  <nav class="breadcrumb">
+    <span class="breadcrumb-icon"><i class="fa fa-th-large"></i></span>
+    {% translate 'Search' as search_label_text %}
+    {% include 'admin/search_base_form.html' with search_label=search_label_text only %}
+  </nav>
+{% endspaceless %}
+{% endblock %}
+
+{% block content_title %}
+  <h1>
+    {% trans 'Search' %}
+    <small>
+      <i class="fa fa-angle-double-right"></i>
+      {% trans 'searching for'%} '{{term}}'
+    </small>
+  </h1>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-3 mb-3">
+  <div class="alert alert-info">
+    {% blocktrans with term=term count counter=total_results%}
+      <strong>{{ counter }}</strong> result found for '{{term}}'
+      {% plural %}
+      <strong>{{ counter }}</strong> results found for '{{term}}'
+    {% endblocktrans %}
+  </div>
+
+
+  <div class="row">
+    {% for item in results %}
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card mb-3">
+          <div class="card-header">
+            {{ item.opts.verbose_name_plural|capfirst }} <span class="badge bg-secondary">{{item.results|length}} {% trans 'found' %}</span>
+          </div>
+          <div class="list-group list-group-flush">
+            {% for obj in item.results %}
+              <a class="list-group-item" href="{% url item.url.1 obj.pk %}">{{obj}}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

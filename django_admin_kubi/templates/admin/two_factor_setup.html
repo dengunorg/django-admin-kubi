@@ -1,0 +1,73 @@
+{% extends "admin/base_initial.html" %}
+{% load i18n static admin_kubi_tags %}
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+f
+{% block initial-header %}
+  {{ block.super }}
+
+  {% if user.is_authenticated %}
+    <hr/>
+    <p class="errornote alert alert-warning">
+    {% blocktrans trimmed %}
+      You are authenticated as {{ username }}, but are not authorized to
+      access this page. Would you like to login to a different account?
+    {% endblocktrans %}
+    </p>
+  {% endif %}
+
+{% endblock %}
+
+{% block initial-content %}
+  <h1>{% trans 'Administration' %} - {{ title }}</h1>
+  <hr/>
+
+
+{% if form.user_device %}
+<p>
+    {{ form.qrcode|safe }}
+    <br/>
+    <br/>
+    <input type="text" value="{{ form.user_device.config_url }}" class="form-control" readonly/>
+</p>
+<br/>
+<form action="{% url 'admin:login' %}" method="get" id="login-form">
+    <div class="submit-row">
+    <input type="submit" value="{% translate 'Login' %}" class="btn btn-primary">
+    </div>
+</form>
+
+{% else %}
+<p class="alert alert-warning">
+  {% blocktranslate trimmed %}
+      This account requires a two factor device.
+  {% endblocktranslate %}
+</p>
+<form action="{{ app_path }}" method="post" id="login-form" class="text-left">{% csrf_token %}
+  <div class="form-group">
+    {% if request.GET.u %}
+    {{ form.username.label_tag }}
+    <p><strong>{{ request.GET.u }}</strong></p>
+    <input type="hidden" value="{{ request.GET.u }}" name="{{ form.username.html_name }}"/>
+    {% else %}
+    {{ form.username.errors }}
+    {{ form.username.label_tag }} {{ form.username|add_class:"form-control" }}
+    {% endif %}
+  </div>
+  <div class="form-group">
+    {{ form.password.errors }}
+    {{ form.password.label_tag }} {{ form.password|add_class:"form-control" }}
+    <input type="hidden" name="next" value="{{ next }}">
+  </div>
+  {% url 'admin_password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+  <div class="password-reset-link">
+    <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
+  </div>
+  {% endif %}
+  <div class="submit-row text-end">
+    <input type="submit" value="{% translate 'Setup Two Factor' %}" class="btn btn-primary">
+  </div>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,280 @@
+// Custom bootstrap variable overrides
+@import "bootstrap_variable_overrides";
+
+// Bootstrap and its default variables
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Your style
+
+@mixin font-size($sizeValue) {
+    font-size: $sizeValue + px;
+    font-size: ($sizeValue / 16) + em;
+}
+
+$header-height: 60px;
+$sidebar-width: 220px;
+
+.main-layout {
+    padding-top: $header-height;
+    padding-bottom: $header-height;
+    min-height: 100vh;
+}
+
+.sicon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 0px;
+    vertical-align: middle;
+}
+
+.btn-reset {
+    padding: 2px;
+    line-height: 15px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+.content {
+    position: relative;
+}
+
+.field-column {
+    min-width: 100px;
+}
+
+.fieldset-toggle {
+    margin-top: -4px;
+    display: none;
+}
+.fieldset-toggle.collapsed {
+    display: inline-block;
+}
+
+.empty-form {
+    display: none;
+}
+
+
+@include media-breakpoint-up(lg) {
+    .main-layout {
+        padding-bottom: 0px;
+        padding-left: $sidebar-width;
+    }
+    body.change-form .module-left-section {
+        padding-left: 44px !important;
+    }
+
+}
+
+.app-list td {
+    width: 1px;
+}
+
+.text-required {
+    color: shift-color($danger, 30%) !important;
+}
+
+.errorlist {
+    @extend .invalid-feedback;
+    list-style: none;
+    margin: 5px 0px 0px 0px;
+    padding: 0px;
+    display: block !important;
+    li {
+        list-style: none;
+    }
+}
+.errorlist~input[type="text"], .errorlist~select {
+    @extend .is-invalid;
+}
+
+
+.form-group.has-error {
+    .form-control {
+        @extend .is-invalid;
+    }
+
+    .form-error {
+        @extend .invalid-feedback;
+        display: block;
+    }
+}
+
+.module-left-section .form-group .btn-success,
+.module-left-section .btn-group .btn-success {
+    max-width: 256px;
+}
+
+.search-container {
+    margin-top: -7px;
+    margin-left: -6px;
+    input {
+        padding-left: 10px !important;
+        font-size: 0.8rem !important;
+    }
+    label {
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+        color: var(--#{$prefix}breadcrumb-item-active-color);
+        padding-left: 5px;
+    }
+    label:after {
+        height: 1em !important;
+    }
+    .btn-clear {
+        position: absolute;
+        top: 14px;
+        right: 0px;
+    }
+}
+.search-spacer {
+    padding: 0px 25px;
+    color: transparent;
+}
+.btn-toolbar {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    z-index: 999;
+    background-color: var(--#{$prefix}breadcrumb-bg);
+    padding: 10px 0;
+}
+
+.related-links {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.form-group {
+    position: relative;
+}
+
+fieldset.module,
+.inline-group.row {
+    border-bottom: 1px var(--#{$prefix}dark-border-subtle) solid;
+}
+
+.inline-group.row fieldset.module {
+    border: 0;
+    margin-top: 0;
+}
+
+fieldset.module h3 {
+    font-size: 1.2rem;
+}
+
+.inline-group .table-responsive {
+    margin-top: -12px;
+}
+
+.inline-group .table thead th {
+    border-top: 0px;
+}
+
+.inline-group .table .delete {
+    text-align: right;
+}
+
+.inline-group .has_original td {
+    padding-top: 26px;
+}
+
+.inline-group .original {
+    padding: 0px !important;
+    font-size: 75%;
+}
+
+.inline-group .original .original-content {
+    position: absolute;
+    padding: 4px 12px;
+}
+
+.form-group .form-label.required {
+    font-weight: bold;
+}
+
+fieldset.module.collapse {
+    display: block;
+}
+
+.object-tools {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.object-tools li {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 5px 0;
+    }
+}
+
+.object-tools.show-tools {
+    display: block;
+}
+
+.initial-layout {
+    padding-top: 80px;
+
+    .sidebar {
+        display: none;
+    }
+
+    .centered-container {
+        margin: auto;
+        display: block;
+        max-width: 600px;
+    }
+}
+
+.brand-logo {
+    fill: var(--#{$prefix}emphasis-color);
+}
+
+body.login, body.auth, body.logout {
+    background-color: var(--#{$prefix}body-bg);
+    .centered-container {
+        max-width: 420px !important;
+    }
+    .brand-logo {
+        width: 98px;
+        margin: auto;
+    }
+}
+
+.recent-actions {
+    min-width: 320px;
+}
+
+.add-row td {
+    border: 0px;
+}
+
+.w-sm {max-width: 540px;}
+.w-md {max-width: 720px;}
+.w-lg {max-width: 960px;}
+.w-xl {max-width: 540px;}
+.w-xxl {max-width: 1140px;}
+
+.bi {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+    fill: currentcolor;
+}
+
+// KUBI
+@import "change_list";
+@import "widgets";
+@import "sidebar";
+@import "breadcrumbs";
+@import "translation";

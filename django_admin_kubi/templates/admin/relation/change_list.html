@@ -1,0 +1,48 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls admin_relation_modify admin_kubi_tags %}
+
+
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    {% spaceless %}
+      <nav class="breadcrumb">
+        {% relation_admin_breadcrumbs %}
+        <span class="breadcrumb-item active">{{ cl.opts.verbose_name_plural|capfirst }}</span>
+      </nav>
+    {% endspaceless %}
+  {% endblock %}
+{% endif %}
+
+
+{% block object-tools %}
+  {% if has_add_permission %}
+    <div class="btn-toolbar" role="toolbar">
+      {% block object-tools-items %}
+        <div class="btn-group">
+          {% relation_admin_url 'add' as add_url %}
+          {% if add_url %}
+            <a href="{% add_preserved_filters add_url is_popup to_field %}" class="btn btn-success">
+              <i class="fa fa-plus-square mr-2"></i>
+              {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+            </a>
+          {% endif %}
+        </div>
+      {% endblock %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+
+{% block emptylist-items %}
+  {% relation_admin_url 'add' as add_url %}
+  <a href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink btn btn-success btn-lg">
+    <i class="fa fa-plus-square mr-2"></i> {% blocktrans with cl.opts.verbose_name as name %}Add a {{ name }}{% endblocktrans %}
+  </a>
+{% endblock %}
+
+{% block content %}
+  {% block relation_navigation %}
+    {% relation_admin_navigation %}
+  {% endblock %}
+  {{ block.super }}
+{% endblock %}

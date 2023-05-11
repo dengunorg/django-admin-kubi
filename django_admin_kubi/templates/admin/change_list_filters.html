@@ -1,0 +1,11 @@
+{% load i18n admin_list admin_kubi_tags %}
+{% if cl.date_hierarchy or cl.has_filters %}
+<ul class="navbar-nav mr-auto">
+	{% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
+	{% block filters %}
+		{% if cl.has_filters %}
+			{% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+		{% endif %}
+	{% endblock %}
+</ul>
+{% endif %}

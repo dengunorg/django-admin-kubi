@@ -1,0 +1,61 @@
+{% load i18n static admin_urls admin_kubi_tags %}
+
+
+<nav class="sidebar text-light">
+  <nav class="navbar navbar-dark">
+    <button class="navbar-toggler rounded-0" type="button" data-bs-toggle="sidebar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <div class="branding p-2">
+    <a href="/admin" class="brand-logo" tabindex="-1">
+      {% include 'admin/logo.svg' only %}
+    </a>
+    <span class="fs-5">Admin</span>
+  </div>
+
+  <div class="menu-container mt-2 mb-2">
+    <div class="menu">
+      {% admin_menu %}
+    </div>
+  </div>
+
+  <div class="identity p-2">
+    {{ user|user_avatar }}
+    <div class="user">
+      <strong>{% filter force_escape %}{{ user|user_short_name }}{% endfilter %}</strong>
+      {% if user.is_active and user.is_staff %}
+        <div class="dropdown">
+          <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+            {% filter force_escape %}{{ user|user_type }}{% endfilter %}
+          </button>
+          <div class="dropdown-menu dropdown-menu-dark">
+            <div class="px-3 py-1">
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch" value="dark">
+                <label class="form-check-label pt-1" for="themeSwitch">
+                  {% translate 'Dark Mode' %}
+                  <svg class="bi ms-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                </label>
+              </div>
+
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% if user.has_usable_password %}{% url user|user_admin_urlname:'change' user.pk|admin_urlquote %}{% else %}#{% endif %}"><i class="fa fa-pencil-alt"></i> {% trans 'Manage Account' %}</a>
+            {% block userlinks %}
+              {% if user.has_usable_password %}
+                <a class="dropdown-item" href="{% url 'admin:password_change' %}"><i class="fa fa-key"></i> {% trans 'Change password' %}</a>
+              {% endif %}
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'admin:logout' %}"><i class="fa fa-power-off"></i> {% trans 'Log out' %}</a>
+            {% endblock %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</nav>
+

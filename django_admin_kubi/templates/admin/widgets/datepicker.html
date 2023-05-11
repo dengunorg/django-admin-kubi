@@ -1,0 +1,13 @@
+<div class="input-append">
+	<input{{final_attrs}} />
+	<span class="add-on"><i class="fa fa-calendar"></i></span>
+</div>
+<script>
+(function($){
+	field = $(":input[name='{{name}}']");
+	field.datepicker({dateFormat: "{{dateformat}}"});
+	field.next().click(function(){
+		field.focus();
+	});
+})(django.jQuery)
+</script>

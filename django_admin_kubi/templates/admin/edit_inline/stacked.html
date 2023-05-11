@@ -1,0 +1,90 @@
+{% load i18n admin_urls static %}
+<div class="js-inline-admin-formset inline-group"
+     id="{{ inline_admin_formset.formset.prefix }}-group"
+     data-inline-type="stacked"
+     data-inline-formset="{{ inline_admin_formset.inline_formset_data }}">
+  <fieldset class="module {{ inline_admin_formset.classes }}">
+    <div class="row">
+      <div class="col module-left-section py-4 pe-4 bg-body-tertiary">
+        <h3>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h3>
+        {% if inline_admin_formset.opts.description %}
+          <div class="description">{{ inline_admin_formset.opts.description|safe }}</div>
+        {% endif %}
+        <div class="form-group"></div>
+      </div>
+      <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 module-right-section py-4 px-4">
+        {{ inline_admin_formset.formset.management_form }}
+        {{ inline_admin_formset.formset.non_form_errors }}
+
+        {% for inline_admin_form in inline_admin_formset %}
+
+          <div class="card mb-3 inline-related{% if inline_admin_formset.opts.is_unique %} inline-unique{% endif %}{% if inline_admin_form.original or inline_admin_form.show_url %} has_original{% endif %}{% if forloop.last %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
+
+            {% if not inline_admin_formset.opts.is_unique %}
+              <div class="card-header">
+                <div class="card-title">
+                  {% if inline_admin_form.original %}
+                    {{ inline_admin_form.original }}
+                    {% if inline_admin_form.model_admin.show_change_link and inline_admin_form.model_admin.has_registered_model %} <a href="{% url inline_admin_form.model_admin.opts|admin_urlname:'change' inline_admin_form.original.pk|admin_urlquote %}" class="inlinechangelink"><i class="fa fa-edit"></i><span class="sr-only">{% trans "Change" %}</span></a>{% endif %}
+                  {% else %}
+                    <span class="inline_label">#{{ forloop.counter }}</span>
+                  {% endif %}
+                  {% if inline_admin_form.show_url %}<br/><a class="small" href="{{ inline_admin_form.absolute_url }}"><i class="fa fa-link"></i> {% trans "View on site" %}</a>{% endif %}
+                </div>
+                {% if inline_admin_formset.formset.can_delete and inline_admin_formset.has_delete_permission and inline_admin_form.original %}
+                  <span class="js-inline-remove-trigger btn btn-secondary inline-original-deletelink">
+                    <span class="cb d-none">{{ inline_admin_form.deletion_field.field }}</span>
+                    <i class="fa fa-trash fa-sm"></i><span class="sr-only">{{ inline_admin_form.deletion_field.label_tag }}</span>
+                  </span>
+                {% endif %}
+              </div>
+            {% endif %}
+            <div class="card-body">
+              {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+              {% for fieldset in inline_admin_form %}
+                {% include "admin/includes/fieldset.html" with is_inline=True %}
+              {% endfor %}
+              {% if inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
+              {{ inline_admin_form.fk_field.field }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+
+<script type="text/javascript">
+  (function($) {
+
+    $(document).ready(function() {
+
+      setTimeout(function(){
+        $formset = $('#{{ inline_admin_formset.formset.prefix }}-group');
+        $addRow = $formset.find('.add-row');
+        if ($addRow.length > 0) {
+          $addbutton = $addRow.find('a').prepend('<i class="fa fa-plus-circle"></i> ');
+        }
+      }, 50);
+
+      $("#{{ inline_admin_formset.formset.prefix }}-group .js-inline-remove-trigger").on('click', function() {
+          var $cb = $(this).find(":input"), $card = $(this).parents('.card');
+          if($cb.prop("checked")){
+              $cb.prop("checked", "");
+              $card.removeClass("border-danger ");
+              $(this).find('.fa-undo').removeClass('fa-undo').addClass('fa-trash');
+          } else {
+              $cb.prop("checked", "checked");
+              $card.addClass('border-danger ');
+              $(this).find('.fa-trash').removeClass('fa-trash').addClass('fa-undo');
+          }
+
+      });
+
+    });
+
+  })(django.jQuery);
+</script>

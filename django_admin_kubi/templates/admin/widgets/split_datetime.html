@@ -1,0 +1,15 @@
+<div class="datetime">
+  <div class="row">
+    <div class="col-12 col-sm">
+      <div class="form-group">
+        {{ date_label }} {% with widget=widget.subwidgets.0 %}{% include widget.template_name %}{% endwith %}
+      </div>
+    </div>
+    <div class="col-12 col-sm">
+      <div class="form-group">
+        {{ time_label }} {% with widget=widget.subwidgets.1 %}{% include widget.template_name %}{% endwith %}
+      </div>
+    </div>
+    <div class="col-12 col-sm flex-grow-1"></div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{% load i18n static admin_kubi_tags %}
+
+{% has_kubi_feature 'ADMIN_SEARCH' as has_admin_search %}
+{% url 'kubi-search' as kubi_search_url %}
+
+{% if kubi_search_url and has_admin_search %}
+  <form class="search-container d-flex flex-grow-1 border-0" method="GET" action="{{ kubi_search_url }}">
+    <div class="form-floating flex-grow-1">
+      <input tabindex="0" type="text" name="q" class="form-control shadow-none border-0" id="search-input" placeholder="{% trans 'Search...' %}" autocomplete="off" spellcheck="false" role="combobox" dir="auto">
+      <label for="search-input">{{ search_label }}</label>
+    </div>
+    <button class="btn btn-link link-body-emphasis" type="submit"><i class="fa fa-search"></i></button>
+  </form>
+{% else %}
+  <span class="breadcrumb-item active">{{ search_label }}</span>
+{% endif %}

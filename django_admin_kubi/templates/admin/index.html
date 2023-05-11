@@ -1,0 +1,57 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+
+{% block breadcrumbs %}
+  {% spaceless %}
+    <nav class="breadcrumb">
+      <span class="breadcrumb-icon"><i class="fa fa-th-large"></i></span>
+      {% translate 'Dashboard' as search_label_text %}
+      {% include 'admin/search_base_form.html' with search_label=search_label_text only %}
+    </nav>
+  {% endspaceless %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="app-list col">
+      {% if app_list %}
+        {% for app in app_list %}
+        <h5 class="mt-1 px-3">
+          <a href="{{ app.app_url }}" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
+            {% blocktrans with name=app.name %}{{ name }}{% endblocktrans %}
+          </a>
+        </h5>
+        <div class="list-group mb-4">
+          {% for model in app.models %}
+          <div class="bg-body-tertiary list-group-item list-group-item-action d-flex gap-3 justify-content-between align-items-center">
+            <h6 class="mb-0">
+            {% if model.admin_url %}
+              <a href="{{ model.admin_url }}" class="link-body-emphasis">{{ model.name }}</a>
+            {% else %}
+              {{ model.name }}
+            {% endif %}
+            </h6>
+            <div class="btn-group btn-group-sm">
+              {% if model.add_url %}
+                <a href="{{ model.add_url }}" class="btn btn-outline-success">{% trans 'Add' %}</a>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      {% else %}
+        <h6 class="mt-1 px-3">{% translate "Permissions" %}</h6>
+        <div class="alert alert-danger">{% translate "You don't have permission to edit anything." %}</div>
+      {% endif %}
+    </div>
+
+    {% include 'admin/recent_actions.html' %}
+  </div>
+</div>
+{% endblock %}

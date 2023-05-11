@@ -1,0 +1,24 @@
+{% extends "admin/base_initial.html" %}
+{% load i18n static %}
+
+{% block bodyclass %}{{ block.super }} logout{% endblock %}
+
+{% block initial-content %}
+
+  <h1>{% trans "Log out" %}</h1>
+  <hr/>
+  <p class="alert alert-secondary">{% trans "Thanks for spending some quality time with the app today." %}</p>
+
+{% endblock %}
+
+{% block initial-footer %}
+  {% url 'admin:index' as admin_url %}
+  {% if admin_url %}
+    <br/>
+    <p>
+      <a class="btn btn-link text-muted" href="{{ admin_url }}">
+        {% trans 'Go back to the login page.' %}
+      </a>
+    </p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% spaceless %}
+  <li class="nav-item{% if is_selected %} active{% endif %}">
+    {% if children %}
+      <a class="nav-link collapsed" role="button" data-bs-toggle="collapse" href="#{{ title|slugify }}">
+        {% if icon %}<i class="fa fa-default {{ icon }} nav-link-icon"></i>{% endif %}
+        {{ title }}
+        <i class="fa fa-angle-down collapse-ident"></i>
+      </a>
+    {% else %}
+      <a class="nav-link" href="{{ url }}">
+        {% if icon %}<i class="fa fa-default {{ icon }} nav-link-icon"></i>{% endif %}
+        <span>{{ title }}</span>
+      </a>
+    {% endif %}
+
+    {% if children %}
+      <ul class="nav-children collapse" id="{{ title|slugify }}">
+        {% for child_item in children %}
+          {{ child_item.render }}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </li>
+{% endspaceless %}

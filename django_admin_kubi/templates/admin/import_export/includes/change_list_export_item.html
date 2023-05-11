@@ -1,0 +1,7 @@
+{% load i18n admin_urls %}
+
+<a href="{% url opts|admin_urlname:'export' %}{{ cl.get_query_string }}" class="btn btn-outline-success export_link">
+  <i class="fas fa-file-export"></i> {% trans "Export" %}
+</a>
+
+

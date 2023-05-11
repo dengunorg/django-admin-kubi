@@ -1,0 +1,31 @@
+{
+  "name": "django_admin_kubi",
+  "version": "2.0.0",
+  "description": "Django admin kubi theme",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp",
+    "watch": "gulp watch"
+  },
+  "author": "Dengun",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^5.3.0-alpha3",
+    "del": "^3.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "merge-stream": "^1.0.1",
+    "sass": "^1.49.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap-icons": "^1.10.2"
+  }
+}

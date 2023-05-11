@@ -1,0 +1,72 @@
+{% extends "admin/base_initial.html" %}
+{% load i18n static %}
+
+{% block bodyclass %}{{ block.super }} login auth{% endblock %}
+
+{% block initial-content %}
+  <form id="login-form" action="{{ app_path }}" method="post" class="w-100 m-auto" novalidate>
+    {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">{% translate 'Administration' %} - {{ title }}</h1>
+
+    {% if user.is_authenticated %}
+      <p class="errornote alert alert-warning">
+      {% blocktranslate trimmed %}
+        You are authenticated as {{ username }}, but are not authorized to
+        access this page. Would you like to login to a different account?
+      {% endblocktranslate %}
+      </p>
+    {% endif %}
+
+    {% if form.errors and not form.non_field_errors %}
+      <div class="errornote alert alert-danger alert-dismissible">
+        {% blocktranslate count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <p class="errornote alert alert-danger alert-dismissible">
+          {{ error }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </p>
+      {% endfor %}
+    {% endif %}
+
+    <div class="form-floating">
+      <input type="text"
+             placeholder="{{ form.username.label }}"
+             class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+             name="{{ form.username.html_name }}"
+             id="{{ form.username.html_name }}"
+             value="{% firstof form.username.value "" %}"
+             required>
+      <label for="{{ form.username.html_name }}">{{ form.username.label }}</label>
+      {{ form.username.errors }}
+    </div>
+    <div class="form-floating">
+      <input type="password"
+             placeholder="{% translate 'Password' %}"
+             class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+             name="{{ form.password.html_name }}"
+             id="{{ form.password.html_name }}"
+             value=""
+            required>
+      <label for="{{ form.password.html_name }}">{% translate 'Password' %}</label>
+      {{ form.password.errors }}
+    </div>
+    <input type="hidden" name="this_is_the_login_form" value="1" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">{% translate 'Log in' %}</button>
+  </form>
+
+  {% url 'admin_password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+    <br/>
+    <p>
+      <a class="link-body-emphasis" href="{{ password_reset_url }}">
+        {% translate 'Forgotten your password or username?' %}
+      </a>
+    </p>
+  {% endif %}
+
+{% endblock %}

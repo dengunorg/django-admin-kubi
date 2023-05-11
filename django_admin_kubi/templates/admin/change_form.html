@@ -1,0 +1,186 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_urls admin_modify admin_kubi_tags %}
+
+{% block extrahead %}{{ block.super }}
+<script src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    {% spaceless %}
+      <nav class="breadcrumb">
+        {% breadcrumbs_icon opts %}
+        {% if has_change_permission %}
+          <a class="breadcrumb-item" href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        {% else %}
+          <span class="breadcrumb-item">{{ opts.verbose_name_plural|capfirst }}</span>
+        {% endif %}
+        <span class="breadcrumb-item active">{% if add %}{% trans 'Add' %}{% else %}{{ original|truncate_title }}{% endif %}</span>
+      </nav>
+    {% endspaceless %}
+  {% endblock %}
+{% endif %}
+
+{% block object-tools %}
+  {% if change %}
+    {% if not is_popup %}
+      <ul class="object-tools">
+        {% block object-tools-items %}
+          {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+          {% if history_url %}
+            <li>
+              <a href="{{ history_url }}" class="btn historylink btn-link link-body-emphasis">
+                <i class="fa fa-book"></i> {% trans "History" %}
+              </a>
+            </li>
+          {% endif %}
+          {% if has_absolute_url %}
+            <li>
+              <a href="{{ absolute_url }}" class="btn btn-link viewsitelink">
+                <i class="fa fa-globe"></i> {% trans "View on site" %}
+              </a>
+            </li>
+          {% endif %}
+        {% endblock %}
+      </ul>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+
+{% block messages-extra %}
+ {% if errors %}
+ {% if errors|length == 1 %}{% translate "Please correct the error below." as error_msg %}{% else %}{% translate "Please correct the errors below." as error_msg  %}{% endif %}
+    {% if adminform.form.non_field_errors %}
+      {% include 'admin/message.html' with message=adminform.form.non_field_errors title="error" only %}
+    {% else %}
+      {% include 'admin/message.html' with message=error_msg title="error" only %}
+    {% endif %}
+ {% endif %}
+{% endblock messages-extra %}
+
+{% block content %}
+
+  <form class="main-form container-fluid" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" role="form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
+
+    {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1" />{% endif %}
+    {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}" />{% endif %}
+
+    {% block object-toolbar %}
+      <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group">
+          {% block object-toolbar-cancel %}
+            <a href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-secondary">{% trans 'Cancel' %}</a>
+          {% endblock object-toolbar-cancel %}
+          <input type="submit" value="{% trans 'Save' %}" name="_continue" {{ onclick_attrib }} class="btn btn-primary save-top"/>
+        </div>
+      </div>
+    {% endblock object-toolbar %}
+
+	  {% block before_field_sets %}{% endblock %}
+
+    {% block field_sets %}
+      {% get_fieldsets_and_inlines as fieldsets_and_inlines %}
+      {% for type, fieldset_or_inline in fieldsets_and_inlines %}
+        {% if type == 'fieldset' %}
+          {% with fieldset=fieldset_or_inline %}
+            {% include "admin/includes/fieldset.html" %}
+          {% endwith %}
+        {% elif type == 'inline' %}
+          {% with inline_admin_formset=fieldset_or_inline %}
+            {% include inline_admin_formset.opts.template %}
+          {% endwith %}
+        {% endif %}
+      {% endfor %}
+    {% endblock %}
+
+
+    {% block after_field_sets %}{% endblock %}
+
+    {% block inline_field_sets %}{% endblock %}
+
+    {% block after_related_objects %}{% endblock %}
+
+    {% block submit_buttons_bottom %}
+      <div class="row align-items-stretch">
+        <div class="col py-4 pe-4 bg-body-tertiary d-none d-sm-block">
+          &nbsp;
+        </div>
+        <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 py-4 px-4">
+          {% submit_row %}
+        </div>
+      </div>
+    {% endblock %}
+
+    {% block admin_change_form_document_ready %}
+      <script type="text/javascript"
+              id="django-admin-form-add-constants"
+              src="{% static 'admin/js/change_form.js' %}"
+              {% if adminform and add %}
+                  data-model-name="{{ opts.model_name }}"
+              {% endif %}>
+      </script>
+    {% endblock %}
+
+    {# JavaScript for prepopulated fields #}
+    {% prepopulated_fields_js %}
+  </form>
+
+  {% include 'admin/translation_field_switch.html' only %}
+{% endblock %}
+
+{% block js_footer %}
+  {{ block.super }}
+
+  <script type="text/javascript" src='{% static 'js/tabbed_translation_fields.js' %}'></script>
+  <script>
+  var watchInput=function(e,t,n){var r=e(t);var i=r.val();if(r.data("lastValue")===undefined){r.data("lastValue",i)}var s=r.data("lastValue");if(s!=i){r.data("lastValue",i);r.trigger({type:"valueChange",message:i,time:new Date})}setTimeout(function(){watchInput(e,t,n)},n)};
+
+  !function ($,window) {
+    "use strict";
+
+      var translate_affix = function(){
+      var offset = 1;
+      if($(window).height() < $(document).height()){
+          var max = $(document).height() - $(window).height();
+      } else {
+          var max = $(window).height() - $(document).height();
+      }
+      if($(window).scrollTop() >= max - offset){
+          $(".language_trigger_container").addClass("bottom");
+      } else {
+          $(".language_trigger_container").removeClass("bottom");
+      }
+
+    }
+    $(document).ready(function(){
+      if($("ul.object-tools").length>0 && $("form fieldset div.main-col").length>0){
+        $("form fieldset div.main-col ").append($("ul.object-tools"));
+        $("ul.object-tools").addClass("show-tools");
+      }
+      translate_affix();
+      $('.add-another').click(function(e) {
+        e.preventDefault();
+        showAddAnotherPopup(this);
+      });
+      $('.related-lookup').click(function(e) {
+        e.preventDefault();
+        showRelatedObjectLookupPopup(this);
+      });
+      {% if adminform and add %}
+          $('form#{{ opts.model_name }}_form :input[type="text"]:visible:enabled:first').focus()
+      {% endif %}
+    });
+
+    $(window).scroll(translate_affix);
+    $(window).resize(translate_affix);
+
+  }(django.jQuery, window);
+  </script>
+
+{% endblock js_footer %}

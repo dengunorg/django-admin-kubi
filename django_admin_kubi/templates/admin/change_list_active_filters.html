@@ -1,0 +1,15 @@
+{% load i18n admin_list admin_kubi_tags %}
+
+{% with result_list_length=cl.result_list|length full_result_count=cl.full_result_count %}
+  <div class="change-list-counter">
+    {% blocktrans count counter=result_list_length with full_result_count=full_result_count verbose_name=cl.opts.verbose_name|capfirst verbose_name_plural=cl.opts.verbose_name_plural|capfirst %}
+      Showing {{ counter }} of {{ full_result_count }} {{ verbose_name }}
+    {% plural %}
+      Showing {{ counter }} of {{ full_result_count }} {{ verbose_name_plural }}
+    {% endblocktrans %}
+
+    {% if cl.list_filter|length > 0 and result_list_length != full_result_count %}
+      , <a href="?{% if cl.is_popup %}pop=1{% endif %}">{% trans 'clear filters' %}</a>
+    {% endif %}
+  </div>
+{% endwith %}

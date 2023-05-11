@@ -1,0 +1,40 @@
+{% load i18n %}
+{% if show_addon %}
+<div id="datetimepicker_{{name}}" class="input-group timepicker datetimepicker" data-date-pickdate="false" data-date-language="pt">
+here
+    <input {{final_attrs}}>
+    <span class="input-group-addon">
+        <span class="fa fa-clock-o"></span>
+    </span>
+</div>
+{% if js_init %}
+<script>
+(function($){
+    $('#datetimepicker_{{name}}').datetimepicker({
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-chevron-up",
+            down: "fa fa-chevron-down"
+        }
+    });
+})(django.jQuery)
+</script>
+{% endif %}
+{% else %}
+<input {{final_attrs}}>
+{% if js_init %}
+<script>
+(function($){
+    $('#id_{{name}}').datetimepicker({
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-chevron-up",
+            down: "fa fa-chevron-down"
+        }
+    });
+})(django.jQuery)
+</script>
+{% endif %}
+{% endif %}

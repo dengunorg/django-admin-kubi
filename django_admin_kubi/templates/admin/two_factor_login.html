@@ -1,0 +1,122 @@
+{% extends "admin/base_initial.html" %}
+{% load i18n static admin_kubi_tags %}
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+f
+{% block initial-header %}
+  {{ block.super }}
+
+  {% if user.is_authenticated %}
+    <hr/>
+    <p class="errornote alert alert-warning">
+    {% blocktrans trimmed %}
+      You are authenticated as {{ username }}, but are not authorized to
+      access this page. Would you like to login to a different account?
+    {% endblocktrans %}
+    </p>
+  {% endif %}
+
+{% endblock %}
+
+{% block initial-content %}
+  <h1>{% trans 'Administration' %} - {{ title }}</h1>
+  <hr/>
+  <form id="login-form" action="{{ app_path }}" method="post">
+    {% csrf_token %}
+
+    {% if form.errors and not form.non_field_errors %}
+    <div class="errornote alert alert-danger alert-dismissible">
+        {% blocktrans count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+
+    {% if form.get_user and not form.has_otp_device and form.auth_two_factor_method == 'strict' %}
+    {% else %}
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="errornote alert alert-danger alert-dismissible">
+          {{ error }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% endif %}
+
+    {% if form.get_user %}
+
+        {% if form.has_otp_device %}
+            <div class="form-group {% if form.otp_device.errors %}has-error{% endif %}">
+                <label for="id_otp_device">{% trans 'OTP Device:' %}</label>
+                {{ form.otp_device|add_class:"form-control" }}
+                {{ form.otp_device.errors }}
+            </div>
+            <div class="form-group {% if form.otp_token.errors %}has-error{% endif %}">
+                <label for="id_otp_token" class="required">{% trans 'OTP Token:' %}</label>
+                {{ form.otp_token|add_class:"form-control" }}
+                {{ form.otp_token.errors }}
+            </div>
+        {% else %}
+            {% if form.auth_two_factor_method == 'strict' %}
+            <script>
+                window.location.href = "{% url 'admin:opt-setup' %}?u={% firstof form.username.value "" %}";
+            </script>
+            {% endif %}
+        {% endif %}
+        <input type="hidden" name="{{ form.username.html_name }}"
+        value="{% firstof form.username.value "" %}"/>
+        <input type="hidden" name="{{ form.password.html_name }}"
+        value="{% firstof form.password.value "" %}"/>
+
+        <div class="col-auto">
+            <input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}">
+            &nbsp;
+            <input class="btn btn-secondary" type="submit" name="otp_challenge" value="{% trans 'Get OTP Challenge' %}" />
+        </div>
+    {% else %}
+    <div class="form-row">
+        <div class="form-group col-sm-5 {% if form.username.errors %}has-error{% endif %}">
+            <label for="{{ form.username.html_name }}" class="sr-only">{{ form.username.label }}</label>
+            <input type="text"
+                placeholder="{{ form.username.label }}"
+                class="form-control"
+                name="{{ form.username.html_name }}"
+                id="{{ form.username.html_name }}"
+                value="{% firstof form.username.value "" %}"
+                required>
+            {{ form.username.errors }}
+        </div>
+        <div class="form-group col-sm-5 {% if form.password.errors %}has-error{% endif %}">
+            <label for="{{ form.password.html_name }}" class="sr-only">{% trans 'Password' %}</label>
+            <input type="password"
+                placeholder="{% trans 'Password' %}"
+                class="form-control"
+                name="{{ form.password.html_name }}"
+                id="{{ form.password.html_name }}"
+                value=""
+                required>
+            {{ form.password.errors }}
+        </div>
+
+        <div class="col-auto">
+            <input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}">
+        </div>
+    </div>
+    {% endif %}
+    <input type="hidden" name="this_is_the_login_form" value="1" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+{% endblock %}
+
+{% block initial-footer %}
+  {% url 'admin_password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+    <br/>
+    <p class="forgotten-password">
+      <a class="btn btn-link text-muted" href="{{ password_reset_url }}">
+        {% trans 'Forgotten your password or username?' %}
+      </a>
+    </p>
+  {% endif %}
+{% endblock %}

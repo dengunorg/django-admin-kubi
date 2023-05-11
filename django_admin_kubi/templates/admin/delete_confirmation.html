@@ -1,0 +1,57 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_urls admin_kubi_tags %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} delete-confirmation{% endblock %}
+
+{% block breadcrumbs %}
+  {% spaceless %}
+    <nav class="breadcrumb">
+      {% breadcrumbs_icon opts %}
+      <a class="breadcrumb-item" href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+      <a class="breadcrumb-item" href="{% url opts|admin_urlname:'change' object.pk|admin_urlquote %}">{{ object|truncatewords:"18" }}</a>
+      <span class="breadcrumb-item active">{% trans 'Delete' %}</span>
+    </nav>
+  {% endspaceless %}
+{% endblock %}
+
+
+{% block content %}
+  <div id="content-main" class="mb-3 mt-3 container-fluid">
+  {% if perms_lacking %}
+      <p class="errornote alert alert-danger fade show">{% blocktrans with escaped_object=object %}Deleting the {{ object_name }} '{{ escaped_object }}' would result in deleting related objects, but your account doesn't have permission to delete the following types of objects:{% endblocktrans %}</p>
+      <ul>
+      {% for obj in perms_lacking %}
+        <li>{{ obj }}</li>
+      {% endfor %}
+      </ul>
+  {% elif protected %}
+      <p class="errornote alert alert-danger fade show">{% blocktrans with escaped_object=object %}Deleting the {{ object_name }} '{{ escaped_object }}' would require deleting the following protected related objects:{% endblocktrans %}</p>
+      <ul>
+      {% for obj in protected %}
+        <li>{{ obj }}</li>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p class="errornote alert alert-danger fade show">{% blocktrans with escaped_object=object %}Are you sure you want to delete the {{ object_name }} "{{ escaped_object }}"? All of the following related items will be deleted:{% endblocktrans %}</p>
+      {% include "admin/includes/object_delete_summary.html" %}
+
+      <div class="card mb-3">
+        <h5 class="card-header">{% trans "Objects" %}</h5>
+        <div class="card-body">
+          <ul>{{ deleted_objects|unordered_list }}</ul>
+        </div>
+      </div>
+
+      <form method="post">
+        {% csrf_token %}
+        <div>
+          <input type="hidden" name="post" value="yes" />
+          {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1" />{% endif %}
+          {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}" />{% endif %}
+          <input type="submit" class="btn btn-danger" value="{% trans "Yes, I'm sure" %}" />
+          <a href="../" class="button cancel-link btn btn-link">{% trans "No, take me back" %}</a>
+        </div>
+      </form>
+  {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% if menu %}
+  <ul class="nav flex-column">
+  	{% for menu_item in menu %}
+  		{{ menu_item.render }}
+  	{% endfor %}
+  </ul>
+{% endif %}

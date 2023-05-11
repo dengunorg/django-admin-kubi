@@ -1,0 +1,51 @@
+{% load i18n admin_kubi_tags %}
+{% if not is_inline %}
+  <fieldset class="module aligned {{ fieldset.classes }}">
+    <div class="row align-items-stretch">
+      <div class="col {% if not fieldset.name and forloop.counter0 == 0 %}main-col{% endif %} module-left-section py-4 px-4 bg-body-tertiary">
+        <h3>
+          {% if not fieldset.name and forloop.counter0 == 0 and not is_inline %}{{ title }}{% endif %}
+          {% if fieldset.name == "settings" %}{% trans 'Settings' %}{% else %}{% if fieldset.name %}{{ fieldset.name }}{% endif %}{% endif %}
+        </h3>
+        {% if fieldset.description %}
+          <div class="description">{{ fieldset.description|safe }}</div>
+        {% endif %}
+
+      </div>
+{% endif %}
+
+      <div class="{% if not is_inline %}col-xs-12 col-sm-8 col-lg-8 col-xl-9 module-right-section py-4 px-4{% endif %}">
+        {% if 'collapsable' in fieldset.classes %}
+        <button class="btn btn-secondary fieldset-toggle {% if 'collapse' in fieldset.classes %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#fieldset-{{forloop.counter}}-ct" aria-expanded="false" aria-controls="collapseExample">
+          {% translate 'edit' %} <i class="fa fa-angle-down"></i>
+        </button>
+        {% endif %}
+        <div id="fieldset-{{forloop.counter}}-ct" class="fieldset-fields {% if 'collapsable' in fieldset.classes %}collapse{% endif %} {% if 'collapse' not in fieldset.classes %}show{% endif %}">
+        {% for line in fieldset %}
+          {% if not line.fields|length_is:'1' %}
+            <div class="row">
+          {% endif %}
+
+          {% for field in line %}
+            {% if not line.fields|length_is:'1' %}
+              <div class="{{ line.fields|line_class }}">
+            {% endif %}
+
+            {% include 'admin/includes/field_form_group.html' with field=field disable_labels=disable_labels is_inline=is_inline only %}
+
+            {% if not line.fields|length_is:'1' %}
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          {% if not line.fields|length_is:'1' %}
+            </div>
+          {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+
+{% if not is_inline %}
+    </div>
+  </fieldset>
+{% endif %}

@@ -1,0 +1,17 @@
+{% extends "admin/base_initial.html" %}
+{% load i18n static %}
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+
+{% block initial-content %}
+  <h1>{{ title }}</h1>
+  <hr/>
+  <p class="errornote alert alert-danger">
+    {% trans "Something's wrong with your database installation. Make sure the appropriate database tables have been created, and make sure the database is readable by the appropriate user." %}
+  </p>
+
+{% endblock %}
+
+{% block initial-footer %}
+{% endblock %}

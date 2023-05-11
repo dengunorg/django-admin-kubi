@@ -1,0 +1,88 @@
+{% load i18n admin_kubi_tags %}
+
+{% if as_td %}
+  <td class="field-column {% if field.errors %} has-error{% endif %} {% if field.field.name %} field-{{ field.field.name }}{% endif %} {% if field.field|widget_type == 'slugwidget' %}slug-widget{% endif %}">
+{% else %}
+  <div class="form-group mb-3{% if field.errors %} has-error{% endif %} {% if field.field.name %} field-{{ field.field.name }}{% endif %} {% if field.field|widget_type == 'slugwidget' %}slug-widget{% endif %}">
+{% endif %}
+
+
+  {% if field.is_checkbox %}
+    <div class="form-check">
+      {{ field.field|add_class:"form-check-input" }}
+      <label class="form-check-label" for="{{ field.field.id_for_label }}">
+        {{ field.field.label }}
+      </label>
+      {% for error in field.field.errors %}
+        <div class="form-error">{{ error }}</div>
+      {% endfor %}
+
+      {% if field.field.help_text %}
+        <div class="help form-text text-muted">
+          {{ field.field.help_text|safe }}
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+
+
+    {% if field.field|widget_type == 'adminsplitdatetime' %}
+      {{ field.field|label_tag }}
+    {% else %}
+      {% if not disable_labels %}
+        {% if field.is_readonly %}
+          <label class="form-label">{{ field.field.label }}:</label>
+        {% else %}
+          {% if not field.field.is_hidden %}
+            {{ field.field|label_tag }}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    {% if field.field.field.widget.attrs.unit %}
+    <div class="input-group">
+    {% endif %}
+
+    {% if field.is_readonly %}
+      <p class="form-control-static">{{ field.contents|linebreaksbr }}</p>
+    {% elif field.field|widget_type == 'adminsplitdatetime' %}
+      {{ field.field }}
+    {% else %}
+      {% if field.field|widget_type == 'adminradioselect' or field.field|widget_type == 'radioselect'  %}
+        <div class="admin-radio {{field.field.name}}">{{ field.field }}</div>
+      {% elif field.field|widget_type == 'readonlypasswordhashwidget' %}
+        {{ field.field|add_class:"form-control-plaintext" }}
+      {% elif field.field|widget_type == 'colorwidget' %}
+        {{ field.field|add_class:"form-control form-control-color" }}
+      {% elif field.field|widget_type == 'select' %}
+        {{ field.field|add_class:"form-select" }}
+      {% elif 'selectize' in field.field|widget_type %}
+        {{ field.field }}
+      {% else %}
+        {{ field.field|add_class:"form-control" }}
+      {% endif %}
+    {% endif %}
+
+    {% if field.field.field.widget.attrs.unit %}
+      <span class="input-group-text">{{ field.field.field.widget.attrs.unit }}</span>
+    </div>
+    {% endif %}
+
+    {% for error in field.field.errors %}
+      <div class="form-error">{{ error }}</div>
+    {% endfor %}
+
+    {% if field.field.help_text %}
+      <div class="help form-text text-muted">
+        {{ field.field.help_text|safe }}
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+{% if as_td %}
+  </td>
+{% else %}
+  </div>
+{% endif %}

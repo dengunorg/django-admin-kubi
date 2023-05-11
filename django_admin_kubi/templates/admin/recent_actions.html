@@ -1,0 +1,64 @@
+{% load i18n log admin_kubi_tags %}
+
+{% has_kubi_feature 'ADMIN_HISTORY' as has_admin_history %}
+
+{% if has_admin_history and app_list %}
+  <div class="recent-actions col-4">
+    <h5 class="mt-1 px-3">
+      {% if is_app_index %}
+        {% for app in app_list %}
+          {% blocktrans with app.name as name %}{{ name }}{% endblocktrans %}
+        {% endfor %}
+      {% endif %}
+      <a href="{% url 'kubi-history' %}">{% trans 'Recent Actions' %}</a>
+    </h5>
+    {% if is_app_index %}
+      {% get_admin_log_for_app 10 as admin_log for_user user %}
+    {% else %}
+      {% get_admin_log 10 as admin_log for_user user %}
+    {% endif %}
+    {% if not admin_log %}
+      <div class="alert alert-warning">{% trans 'Currently there are no actions for this user.' %}</div>
+    {% else %}
+      <div class="list-group">
+      {% for entry in admin_log %}
+        {% with message=entry.get_change_message admin_url=entry.get_admin_url content_type=entry.content_type %}
+          <a {% if not entry.is_deletion %}{% if admin_url %}href="{{ admin_root_url }}{{ admin_url }}"{% endif %}{% endif %} class="list-group-item list-group-item-action d-flex gap-3 py-3 {% if entry.is_deletion %}disabled{% endif %}">
+            <span class="fs-5 {% if entry.is_addition %}text-success{% elif entry.is_deletion %}text-danger{% endif %}">
+            {% if entry.is_addition %}
+              <i class="fa fa-plus"></i>
+            {% elif entry.is_change %}
+              <i class="fa fa-edit"></i>
+            {% elif entry.is_deletion %}
+              <i class="fa fa-trash"></i>
+            {% endif %}
+            </span>
+            <div class="d-flex justify-content-between gap-2 w-100">
+              <div>
+                <h6 class="mb-0 text-truncate">
+                  {{ entry.object_repr }}
+                  <small class="badge {% if entry.is_addition %}bg-success{% elif entry.is_deletion %}bg-danger{% else %}bg-secondary{% endif %}">
+                  {% if content_type %}
+                    {% filter capfirst %}{% trans content_type.name %}{% endfilter %}
+                  {% else %}
+                    {% trans 'Unknown content' %}
+                  {% endif %}
+                  </small>
+                </h6>
+                  <p class="m-0 opacity-75 small">
+                    {% if entry.is_deletion %}
+                      {% translate "Deleted" %}
+                    {% else %}
+                      {{ message }}
+                    {% endif %}
+                  </p>
+              </div>
+              <small class="opacity-50 text-nowrap">{{ entry.action_time|naturaltimeshort }}</small>
+            </div>
+          </a>
+        {% endwith %}
+      {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

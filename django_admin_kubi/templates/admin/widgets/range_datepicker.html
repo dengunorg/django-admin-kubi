@@ -1,0 +1,26 @@
+<div class="input-append">
+	<input{{final_attrs}} />
+	<span class="add-on"><i class="fa fa-calendar"></i></span>
+</div>
+<script>
+(function($){
+
+	$(document).ready(function(){
+		var field = $(":input[name='{{name}}']");
+		var to_field = $(":input[name='{{to}}']");
+		var date_format = "{{dateformat}}";
+	
+		field.datepicker({
+			dateFormat: date_format,
+			onClose: function(dateText){
+                var dateTemp = $.datepicker.parseDate(date_format, dateText);
+                to_field.datepicker('option', {% if pos == "start" %}'minDate'{% else %}'maxDate'{% endif %}, dateTemp);
+            }
+		});
+		
+		field.next().click(function(){
+			field.focus();
+		});
+	});
+})(django.jQuery)
+</script>

@@ -1,0 +1,10 @@
+{% load i18n admin_kubi_tags %}
+
+{% breadcrumbs_icon root.opts %}
+{% for item in breadcrumbs %}
+  {% if item.has_change_permission %}
+    <a class="breadcrumb-item" href="{{ item.url }}">{{ item.name|capfirst }}</a>
+  {% else %}
+    <span class="breadcrumb-item active">{{ item.name|capfirst }}</span>
+  {% endif %}
+{% endfor %}

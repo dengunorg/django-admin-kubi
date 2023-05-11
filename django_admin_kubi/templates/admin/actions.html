@@ -1,0 +1,69 @@
+{% load i18n %}
+<div class="actions actions-nav d-none" role="toolbar" aria-label="Toolbar with button groups">
+	<div class="btn-group btn-group-sm" role="group" aria-label="Changelist actions">
+	  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			{% trans 'Bulk actions' %}&nbsp;
+			{% if actions_selection_counter %}
+				<span class="action-counter badge" data-actions-icnt="{{ cl.result_list|length }}">{{ selection_note }}</span>
+				{% if cl.result_count != cl.result_list|length %}
+					<span class="all badge bg-default">{{ selection_note_all }}</span>
+				{% endif %}
+			{% endif %}
+	  </button>
+	  <div class="dropdown-menu actions-dropdown" role="action-menu"></div>
+	</div>
+
+	<div class="btn-group btn-group-sm actions-input">
+		<div class="d-none">
+		  {% for field in action_form %}{% if field.label %}<label>{{ field.label }} {% endif %}{{ field }}{% if field.label %}</label>{% endif %}{% endfor %}
+		</div>
+		<button type="submit" class="btn btn-dark actions-go d-none" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Apply" %}</button>
+	</div>
+
+
+	{% if actions_selection_counter %}
+	  {% if cl.result_count != cl.result_list|length %}
+	    <span class="question">
+	        <a href="#" title="{% trans "Click here to select the objects across all pages" %}">{% blocktrans with cl.result_count as total_count %}Select all {{ total_count }} {{ module_name }}{% endblocktrans %}</a>
+	    </span>
+	    <span class="clear"><a href="#" class=""><i class="fa fa-undo"></i> {% trans "Clear selection" %}</a></span>
+	  {% endif %}
+	{% endif %}
+</div>
+
+
+<script type="text/javascript">
+(function ($) {
+
+  $(document).ready(function(){
+
+  	$('input[name="_selected_action"], #action-toggle').on('change', function(){
+  		if($('input[name="_selected_action"]:checked').length>0){
+  			$('.actions-nav').removeClass('d-none');
+  		} else {
+  			$('.actions-nav').addClass('d-none');
+  		}
+  	});
+
+		var action_submit = $(".actions-go");
+		var input = $(".actions-input select");
+
+		input.find("option").each(function(i,el){
+
+			var el = $(el);
+			if(el.prop("value")!=""){
+				var item = $('<a class="dropdown-item" href="#" data-value="'+el.val()+'">'+el.text()+'</a>');
+				$(".actions-dropdown").append(item);
+				item.on('click', function(e){
+					input.val($(this).data("value"));
+					action_submit.removeClass("d-none");
+					action_submit.click();
+				});
+			}
+
+		});
+
+	});
+
+})(django.jQuery);
+</script>

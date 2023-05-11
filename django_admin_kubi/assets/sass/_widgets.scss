@@ -1,0 +1,973 @@
+$gray700AsRGB: rgba($gray-700, 0.999);
+$colorAsRGB: rgba($primary, 0.999);
+$whiteAsRGB: rgba($white, 0.999);
+
+
+/* SELECTOR (FILTER INTERFACE) */
+
+.selector {
+    float:none;
+    display: flex;
+    align-items: center;
+}
+
+.selector select {
+    @extend .form-select;
+    @extend .rounded-top-0;
+    height: 17em;
+}
+
+.selector-available, .selector-chosen {
+    text-align: center;
+    margin-bottom: 5px;
+    height: 24rem;
+    flex-grow: 1;
+    width: 50%;
+}
+
+.selector-chosen select {
+    height: 19.25em;
+}
+
+.selector-available h2, .selector-chosen h2 {
+    padding: 0.3rem 1rem;
+    font-size: 1rem;
+    margin: 0px;
+    @extend .alert;
+    @extend .rounded-bottom-0;
+    border-bottom: 0px;
+}
+
+.selector-available h2 {
+    @extend .alert-secondary;
+}
+.selector-chosen h2 {
+    @extend .alert-primary;
+}
+
+.selector .selector-filter {
+    position: relative;
+    border-width: 0 1px;
+    font-size: 0.8rem;
+    line-height: 2.2rem;
+    margin: 0;
+    text-align: left;
+}
+
+.selector .selector-filter label,
+.inline-group .aligned .selector .selector-filter label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    opacity: 0.5;
+    overflow: hidden;
+    line-height: 1;
+}
+
+.selector .selector-available input {
+    @extend .form-control;
+    @extend .rounded-0;
+}
+
+.selector ul.selector-chooser {
+    width: 22px;
+    margin: 0 5px 0 5px;
+    padding: 0;
+}
+
+.selector-chooser li {
+    margin: 0;
+    padding: 3px;
+    list-style-type: none;
+}
+
+.selector-add, .selector-remove {
+    width: 16px;
+    height: 16px;
+    display: block;
+    text-indent: -3000px;
+    overflow: hidden;
+    cursor: default;
+    opacity: 0.3;
+}
+
+.active.selector-add, .active.selector-remove {
+    opacity: 1;
+}
+
+.active.selector-add:hover, .active.selector-remove:hover {
+    cursor: pointer;
+}
+
+.selector-add {
+    position: relative;
+    &:before {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        text-indent: 0px;
+        content: "";
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='#{$colorAsRGB}' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg>") no-repeat;
+        background-position: center center;
+    }
+}
+
+.selector-remove {
+    position: relative;
+    &:before {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        text-indent: 0px;
+        content: "";
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='#{$colorAsRGB}' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'></path></svg>") no-repeat;
+        background-position: center center;
+    }
+}
+
+a.selector-chooseall, a.selector-clearall {
+    @extend .btn;
+    @extend .btn-link;
+    text-align: left;
+    margin: 1px auto 3px;
+    overflow: hidden;
+    text-decoration: none;
+    opacity: 0.3;
+}
+
+a.active.selector-chooseall, a.active.selector-clearall {
+    opacity: 1;
+}
+
+a.active.selector-chooseall:hover, a.active.selector-clearall:hover {
+    cursor: pointer;
+}
+
+a.selector-chooseall {
+    cursor: default;
+    &:after {
+        display: inline-block;
+        content: "";
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='#{$colorAsRGB}' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg>") no-repeat;
+        background-position: center center;
+        width: 15px;
+        height: 12px;
+        margin-left: 5px;
+    }
+}
+
+a.selector-clearall {
+    cursor: default;
+    &:before {
+        display: inline-block;
+        content: "";
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='#{$colorAsRGB}' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'></path></svg>") no-repeat;
+        background-position: center center;
+        width: 15px;
+        height: 12px;
+        margin-right: 5px;
+    }
+}
+
+.selector .selector-available ul.sorted_list input{
+    margin-left: 10px;
+}
+
+/* STACKED SELECTORS */
+
+.stacked {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stacked .selector-available, .stacked .selector-chosen {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+}
+
+.stacked select {
+    height: 10em;
+}
+
+.stacked .selector-chooseall, .stacked .selector-clearall {
+    display: none;
+}
+
+.stacked ul.selector-chooser {
+    margin: auto;
+    margin-bottom: 12px;
+    width: 44px;
+}
+
+.stacked .selector-chooser li {
+    float:left;
+}
+
+.stacked {
+    .selector-add {
+        position: relative;
+        &:before {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            text-indent: 0px;
+            content: "";
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='#{$gray700AsRGB}' d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path></svg>") no-repeat;
+            background-position: center center;
+        }
+    }
+
+    .selector-remove {
+        position: relative;
+        &:before {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            text-indent: 0px;
+            content: "";
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='#{$gray700AsRGB}' d='M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z'></path></svg>") no-repeat;
+            background-position: center center;
+        }
+    }
+}
+
+/* DATE AND TIME */
+
+.datetime {
+    line-height: 10px;
+    margin: 0;
+    padding: 0;
+    color: $gray-600;
+    font-size: 0.75rem;
+}
+
+.datetime span {
+    color: $gray-700;
+}
+
+.datetime input, .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField {
+    @extend .form-control;
+    margin-top: 10px;
+}
+
+table p.datetime {
+    font-size: 11px;
+    margin-left: 0;
+    padding-left: 0;
+}
+.date-hierarchy-undo {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    background-color: $gray-400;
+}
+.datetimeshortcuts {
+    position: relative;
+    top: 0px;
+}
+.datetimeshortcuts a {
+    @extend .btn, .btn-link, .btn-sm;
+}
+.datetimeshortcuts .clock-icon, .datetimeshortcuts .date-icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-align: center;
+    color: inherit;
+    margin-top: -2px;
+    font-size: 1rem;
+    width: 17px;
+    height: 15px;
+}
+
+.datetimeshortcuts .clock-icon {
+    color: $primary;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='#{$colorAsRGB}' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z'></path></svg>") no-repeat;
+}
+
+.datetimeshortcuts .date-icon {
+    color: $primary;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='#{$colorAsRGB}' d='M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z'></path></svg>") no-repeat;
+}
+
+.timezonewarning {
+    color: $gray-700;
+    font-size: 0.7rem;
+}
+
+/* URL */
+
+p.url {
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    color: $gray-600;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.url a {
+    font-weight: normal;
+}
+
+/* FILE UPLOADS */
+
+p.file-upload {
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    color: $gray-600;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.file-upload a {
+    font-weight: normal;
+}
+
+.file-upload .deletelink {
+    margin-left: 5px;
+}
+
+span.clearable-file-input label {
+    color: $gray-800;
+    font-size: 11px;
+    display: inline;
+    float: none;
+}
+
+/* CALENDARS & CLOCKS */
+
+.calendarbox, .clockbox {
+    margin: 5px auto;
+    font-size: 12px;
+    width: 19em;
+    text-align: center;
+    background: $white;
+    border: 1px solid $gray-200;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+}
+
+.clockbox {
+    width: auto;
+}
+
+.calendar {
+    margin: 0;
+    padding: 0;
+}
+
+.calendar table {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    background: white;
+    width: 100%;
+}
+
+.calendar caption, .calendarbox h2, .clockbox h2 {
+    margin: 0;
+    text-align: center;
+    border-top: none;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 0.6rem .75rem;
+    background: $secondary;
+    color: $white;
+    caption-side: top;
+}
+
+.calendar th {
+    padding: 8px 5px;
+    background: $gray-300;
+    border-bottom: 1px solid $gray-400;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    color: $gray-600;
+}
+
+.calendar td {
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    padding: 0;
+    border-top: 1px solid $gray-200;
+    border-bottom: none;
+}
+
+.calendar td.selected a {
+    background: $secondary;
+    color: $white;
+}
+
+.calendar td.nonday {
+    background: $gray-200;
+}
+
+.calendar td.today a {
+    font-weight: 700;
+}
+
+.calendar td a, .timelist a {
+    display: block;
+    font-weight: 400;
+    padding: 6px;
+    text-decoration: none;
+    color: $gray-800;
+}
+
+.calendar td a:focus, .timelist a:focus,
+.calendar td a:hover, .timelist a:hover {
+    background: $primary;
+    color: $white;
+}
+
+.calendar td a:active, .timelist a:active {
+    background: shift-color($primary, 20%);
+    color: $white;
+}
+
+.calendarnav {
+    font-size: 10px;
+    text-align: center;
+    color: $gray-300;
+    margin: 0;
+    padding: 1px 3px;
+}
+
+.calendarnav a:link, #calendarnav a:visited,
+#calendarnav a:focus, #calendarnav a:hover {
+    color: $gray-400;
+}
+
+.calendar-shortcuts {
+    background: $white;
+    font-size: 11px;
+    line-height: 11px;
+    border-top: 1px solid $gray-200;
+    padding: 8px 0;
+    color: $gray-600;
+}
+
+.calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
+    display: block;
+    position: absolute;
+    top: 0px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-indent: -9999px;
+    padding: 0;
+    color: $white;
+}
+
+.calendarnav-previous {
+    left: 0px;
+    &:before{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-indent: 0px;
+        text-align: center;
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+        margin-top: -8px;
+        content: "";
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='#{$whiteAsRGB}' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'></path></svg>") no-repeat;
+        background-position: center center;
+    }
+}
+
+.calendarbox .calendarnav-previous:focus,
+.calendarbox .calendarnav-previous:hover {
+    color: $gray-200;
+}
+
+.calendarnav-next {
+    right: 0px;
+    &:before{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-indent: 0px;
+        text-align: center;
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+        margin-top: -8px;
+        content: "";
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='#{$whiteAsRGB}' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg>") no-repeat;
+        background-position: center center;
+    }
+}
+
+.calendarbox .calendarnav-next:focus,
+.calendarbox .calendarnav-next:hover {
+    color: $gray-200;
+}
+
+.calendar-cancel {
+    margin: 0;
+    padding: 4px 0;
+    font-size: 12px;
+    background: $gray-200;
+    border-top: 1px solid $gray-300;
+    color: $gray-600;
+}
+
+.calendar-cancel:focus, .calendar-cancel:hover {
+    background: $gray-400;
+}
+
+.calendar-cancel a {
+    color: $black;
+    display: block;
+}
+
+ul.timelist, .timelist li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.timelist a {
+    padding: 2px;
+}
+
+/* EDIT INLINE */
+
+.inline-deletelink {
+    @extend .btn, .btn-light;
+    width: 38px;
+    position: relative;
+    text-indent: -9999px;
+    &:before {
+        position: absolute;
+        left: 10px;
+        top: 0px;
+        right: 10px;
+        bottom: 0px;
+        text-indent: 0px;
+        content: "";
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='#{$gray700AsRGB}' d='M0 84V56c0-13.3 10.7-24 24-24h112l9.4-18.7c4-8.2 12.3-13.3 21.4-13.3h114.3c9.1 0 17.4 5.1 21.5 13.3L312 32h112c13.3 0 24 10.7 24 24v28c0 6.6-5.4 12-12 12H12C5.4 96 0 90.6 0 84zm416 56v324c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V140c0-6.6 5.4-12 12-12h360c6.6 0 12 5.4 12 12zm-272 68c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208z'></path></svg>") no-repeat;
+        background-position: center center;
+    }
+}
+
+.inline-group .card-header {
+    display: flex;
+    align-items: center;
+}
+.inline-group .card-title {
+    flex-grow: 1;
+    margin: 0px;
+}
+
+.inline-unique {
+    border: 0px !important;
+}
+.inline-unique .card-body {
+    padding: 0px !important;
+}
+
+.add-related {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.change-related {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+}
+
+.delete-related {
+    position: absolute;
+    top: 0px;
+    right: 40px;
+}
+
+.view-related {
+    display: none;
+}
+
+/* RELATED WIDGET WRAPPER */
+
+.table .related-widget-wrapper {
+    padding-right: 38px;
+    min-width: 100px;
+    position: relative;
+}
+
+.related-widget-wrapper-link {
+    opacity: 0.3;
+}
+
+.table .related-widget-wrapper-link {
+    top: 6px;
+}
+
+
+.related-widget-wrapper-link:link {
+    opacity: .8;
+}
+
+.related-widget-wrapper-link:link:focus,
+.related-widget-wrapper-link:link:hover {
+    opacity: 1;
+}
+
+select + .related-widget-wrapper-link,
+.related-widget-wrapper-link + .related-widget-wrapper-link {
+    margin-left: 7px;
+}
+
+/* SPECTRUM COLOR PICKER WIDGET */
+.sp-container {
+    border-radius: 0;
+    background-color: $light;
+    border: solid 1px $gray-400;
+    padding: 0;
+}
+.sp-replacer {
+    overflow:hidden;
+    cursor:pointer;
+    padding: 0px 5px 0px 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $gray-400;
+    background: $light;
+    color: shift-color($light, 80%);
+}
+.sp-replacer.sp-disabled {
+    cursor:default;
+}
+
+.sp-container button {
+    @extend .btn, ,.btn-sm, .btn-primary;
+}
+
+.sp-cancel {
+    @extend .btn, ,.btn-sm, .btn-link;
+    margin-right: 5px;
+}
+.sp-preview {
+    width: 32px !important;
+    height: 36px !important;
+    border: 0px !important;
+    margin-right: 7px !important;
+}
+.sp-dd {
+    margin-top: 7px;
+}
+
+/* many2many widget */
+
+.many2many-widget-container {
+    display: block !important;
+    min-width: auto !important;
+}
+.many2many-widget-container .btn-group {
+    position: relative !important;
+    top: 0px !important;
+    left: 0px !important;
+}
+
+.dropdown-search-menu {
+    min-width: 200px;
+    .search-item {
+        padding-left: 2.5rem;
+        position: relative;
+        svg, .fa {
+            position: absolute;
+            top: 7px;
+            left: 15px;
+        }
+    }
+    .search {
+      margin-top: -8px;
+      border-bottom: 1px #CCC solid;
+      padding: 0px;
+    }
+    .empty {
+      padding: 5px 15px;
+    }
+
+}
+
+.dropdown-item.selected {
+  color: #555;
+  text-decoration: none;
+  background-color: #FFFAD8;
+}
+
+
+/* sortable table */
+
+.table-sortable .placeholder {
+  height: 0px;
+  border: 0px;
+  z-index: 1;
+}
+
+.table-sortable .placeholder:before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  border-top: 8px transparent solid;
+  border-left: 8px $primary solid;
+  border-bottom: 8px transparent solid;
+  margin-top: -8px;
+}
+
+.table-sortable .dragged {
+  position: absolute;
+  display: inline-block;
+  width: auto !important;
+  height: auto !important;
+  min-width: 200px;
+  border: 0px;
+  background-color: #FFF !important;
+  -webkit-box-shadow: 0 0 8px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.3);
+  z-index: 800;
+}
+.table-sortable .dragged td {
+  display: none;
+}
+.table-sortable .dragged th {
+  display: inline-block;
+}
+.sorting-handle {
+  position: relative;
+  display: block;
+  padding: 0px 5px;
+  cursor: move;
+}
+
+// tinymce overwrites
+
+.tox .tox-toolbar-overlord {
+    background-color: var(--#{$prefix}tertiary-bg) !important;
+}
+.tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary {
+    background-color: var(--#{$prefix}tertiary-bg) !important;
+}
+.tox:not(.tox-tinymce-inline) .tox-editor-header {
+    background-color: var(--#{$prefix}tertiary-bg) !important;
+}
+.tox .tox-tbtn {
+    color: var(--#{$prefix}emphasis-color) !important;
+}
+.tox .tox-tbtn svg {
+    fill: var(--#{$prefix}emphasis-color) !important;
+}
+.tox .tox-tbtn--disabled, .tox .tox-tbtn--disabled:hover, .tox .tox-tbtn:disabled, .tox .tox-tbtn:disabled:hover {
+    color: var(--#{$prefix}secondary-color) !important;
+}
+.tox .tox-tbtn--disabled svg, .tox .tox-tbtn--disabled:hover svg, .tox .tox-tbtn:disabled svg, .tox .tox-tbtn:disabled:hover svg {
+    fill: var(--#{$prefix}secondary-color) !important;
+}
+.tox:not([dir=rtl]) .tox-toolbar__group:not(:last-of-type) {
+    border-right: 1px solid  var(--#{$prefix}border-color) !important;
+}
+.tox-tinymce {
+    border: 1px var(--#{$prefix}border-color) solid !important;
+}
+.tox .tox-pop__dialog {
+    border-color: var(--#{$prefix}border-color) !important;
+    background-color: var(--#{$prefix}tertiary-bg) !important;
+}
+.tox .tox-pop.tox-pop--top::before {
+    border-color: transparent transparent var(--#{$prefix}border-color) transparent !important;
+}
+.tox .tox-pop.tox-pop--top::after {
+    border-color: transparent transparent var(--#{$prefix}border-color) transparent !important;
+}
+.tox .tox-statusbar {
+    border-color: var(--#{$prefix}border-color) !important;
+    background-color: var(--#{$prefix}tertiary-bg) !important;
+    color: var(--#{$prefix}tertiary-color) !important;
+}
+.tox .tox-edit-area__iframe {
+    color-scheme: normal !important;
+    background-color: transparent !important;
+}
+.tox .tox-statusbar a, .tox .tox-statusbar__path-item, .tox .tox-statusbar__wordcount {
+    color: var(--#{$prefix}tertiary-color) !important;
+}
+.tox .tox-statusbar__resize-handle svg {
+    fill: var(--#{$prefix}tertiary-color) !important;
+}
+
+.tox .tox-tbtn:hover, .tox .tox-tbtn:focus {
+    background: var(--#{$prefix}primary) !important;
+}
+.tox .tox-tbtn--enabled, .tox .tox-tbtn--enabled:hover {
+    background: var(--#{$prefix}primary-bg-subtle) !important;
+    color: var(--#{$prefix}primary-border-subtle) !important;
+}
+.tox .tox-tbtn--enabled svg, .tox .tox-tbtn--enabled:hover svg {
+    fill: var(--#{$prefix}primary-border-subtle) !important;
+}
+.tox .tox-split-button:hover {
+    box-shadow: none !important;
+}
+.is-focus, .focus {
+    outline: 0 !important;
+    // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
+    box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color) !important;
+}
+.tox-tinymce.is-focus {
+    border-color: $input-focus-border-color !important;
+}
+
+.has-error .tox-tinymce {
+    border-color: var(--#{$prefix}form-invalid-color) !important;
+}
+.has-error .is-focus,
+.has-error .focus {
+    outline: 0 !important;
+    // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
+    box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) rgba(var(--#{$prefix}danger-rgb), .25) !important;
+}
+
+.selectize-control {
+    display: block;
+}
+.input-group>.selectize-control {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.selectize-input {
+    @extend .form-control;
+}
+.input-group .selectize-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+
+.input-group>.select2-container {
+    flex: 1 1 auto !important;
+    width: 1% !important;
+    min-width: 0 !important;
+}
+
+.select2-container .selection {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: stretch !important;
+    width: 100% !important;
+}
+
+.select2 {
+    @extend .form-control;
+    display: flex !important;
+    padding: 0px !important;
+    align-items: stretch !important;
+}
+
+.select2-container--focus {
+    outline: 0 !important;
+    // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
+    box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color) !important;
+}
+.select2-container--default .select2-selection--single,
+.select2-container--admin-autocomplete .select2-selection--single,
+.select2-container .select2-selection--multiple {
+    background-color: transparent !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+    display: flex !important;
+    flex: 1 1 auto !important;
+    height: auto !important;
+}
+
+.select2-container--admin-autocomplete .select2-search--dropdown {
+    background-color: var(--#{$prefix}tertiary-bg) !important;
+}
+.select2-container--admin-autocomplete .select2-search--dropdown .select2-search__field {
+    background: var(--#{$prefix}body-bg) !important;
+    color: var(--#{$prefix}body-color) !important;
+    border: 1px solid var(--#{$prefix}border-color) !important;
+    border-radius: 4px;
+}
+.select2-container--admin-autocomplete .select2-selection--single .select2-selection__arrow {
+    top: auto !important;
+}
+
+.select2-container--admin-autocomplete .select2-selection--single, .select2-container--admin-autocomplete .select2-selection--multiple {
+    min-height: 36px !important;
+    font-size: 1rem !important;
+    padding: 0.25rem 0.4rem !important;
+    align-items: center !important;
+}
+
+.select2-container--admin-autocomplete .select2-results > .select2-results__options {
+    max-height: 200px;
+    overflow-y: auto;
+    color: var(--#{$prefix}body-color) !important;
+    background: var(--#{$prefix}body-bg) !important;
+}
+
+.select2-container--admin-autocomplete .select2-results__option[aria-selected=true] {
+    color: var(--#{$prefix}primary-text-emphasis) !important;
+    background: var(--#{$prefix}primary-bg-subtle) !important;
+}
+.select2-container--admin-autocomplete .select2-results__option--highlighted[aria-selected] {
+    color: var(--#{$prefix}primary-text-emphasis) !important;
+}
+
+.select2-dropdown {
+    background-color: var(--#{$prefix}body-bg) !important;
+    border: 1px solid var(--#{$prefix}border-color) !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    display: flex !important;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+    display: flex !important;
+}
+
+.select2-container--admin-autocomplete .select2-selection--multiple .select2-selection__choice {
+    border: 1px solid var(--#{$prefix}primary-border-subtle) !important;
+    color: var(--#{$prefix}primary-text-emphasis) !important;
+    background: var(--#{$prefix}primary-bg-subtle) !important;
+    float: none !important;
+    display: flex !important;
+}
+
+.select2-container--disabled {
+    background-color: var(--bs-secondary-bg) !important;
+    opacity: 1 !important;
+}
+
+body>.select2-container {
+    z-index: 1100 !important;
+}

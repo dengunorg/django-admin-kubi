@@ -1,0 +1,18 @@
+{% load i18n %}
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="title">{% blocktrans with filter_title=title %}{{ filter_title }}{% endblocktrans %}</span>
+    {% for choice in choices %}
+      {% if choice.selected %}
+        <span class="badge rounded-pill text-bg-secondary">{{ choice.display }}</span>
+      {% endif %}
+    {% endfor %}
+  </a>
+  <div class="dropdown-menu dropdown-menu-lg-end">
+    {% for choice in choices %}
+      <a class="dropdown-item {% if choice.selected %} active{% endif %}" href="{{ choice.query_string|iriencode }}">
+        {{ choice.display }}
+      </a>
+    {% endfor %}
+  </div>
+</li>

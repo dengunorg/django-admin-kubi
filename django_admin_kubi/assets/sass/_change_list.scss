@@ -1,0 +1,168 @@
+
+.action-checkbox-column input,
+.action-checkbox input {
+    @extend .form-check-input;
+}
+
+.results table td input[type="text"] {
+    @extend .form-control;
+}
+.results table td select {
+    @extend .form-select;
+}
+
+#changelist-form {
+	position: relative;
+}
+#changelist-form.active .action-checkbox-column{
+	background-color: var(--#{$prefix}gray-100);
+}
+#changelist-form .action-checkbox-column{
+	height: 36px;
+	width: 36px;
+}
+#changelist-form .actions-nav {
+	padding: 2px;
+	background-color: var(--#{$prefix}body-bg);
+	.btn-group {
+		display: inline-block;
+	}
+	.btn {
+		height: 38px;
+		margin: 0px;
+		font-size: 0.9rem;
+		cursor: pointer;
+		.badge {
+			line-height: 22px;
+			padding: 0px 8px;
+			margin-right: 8px;
+		}
+	}
+	.action-counter {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+}
+
+#result_list .action-checkbox-column, #result_list .action-checkbox {
+	text-align: center;
+}
+
+#result_list thead .text {
+	white-space: nowrap;
+}
+
+#changelist-form .table .selected td, #changelist-form .table .selected th {
+	background-color: var(--#{$prefix}warning-bg-subtle);
+
+}
+
+.sortremove i{
+	color: $danger;
+}
+
+.empty-list {
+	padding-top: 2%;
+
+	text-align: center;
+
+	.breadcrumb-icon {
+		color: $secondary;
+		margin: 0px;
+		font-size: 6em;
+		float: none;
+	}
+	.text {
+		margin: 1.5em 0;
+		color: shift-color($secondary, -50%);
+	}
+}
+
+.btn-clear {
+	background-color: transparent;
+	color: $gray-600;
+	font-size: 0.7rem;
+	line-height: 1.3rem;
+}
+
+.input-group .btn-clear {
+	position: absolute;
+	z-index: 100;
+	right: 40px;
+}
+
+#searchbar {
+	font-size: 0.9rem;
+}
+
+#changelist {
+	.navbar {
+		padding-top: 0px;
+		padding-bottom: 0px;
+		.nav-link, .navbar-brand {
+			padding: 1rem 1.4rem 1rem 0.7rem;
+			border-top: 1px var(--#{$prefix}border-color) solid;
+			.title {
+				display: block;
+				white-space: nowrap;
+			}
+		}
+
+		.navbar-brand {
+			font-size: 1rem;
+			border: 0px;
+		}
+
+		.navbar-toggler {
+			position: absolute;
+			z-index: 2;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			right: 0px;
+			height: 50px;
+			border: 0px;
+			cursor: pointer;
+			text-align: right;
+		}
+	}
+}
+
+.change-list-counter {
+	font-size: 0.8rem;
+	color: $gray-700;
+	padding: 0.4rem;
+}
+
+@media (min-width: 992px) {
+
+	#changelist-form .actions-nav {
+		padding: 0px;
+		position: absolute;
+		left: 38px;
+		right: 0px;
+	}
+	#changelist {
+		.navbar {
+			.nav-link {
+				border-top: 0px;
+				border-left: 1px var(--#{$prefix}border-color) solid;
+			}
+		}
+	}
+}
+
+@media (min-width: 1124px) {
+
+	#changelist {
+		.navbar {
+			.nav-link {
+				.title {
+					display: inline-block;
+				}
+				.badge {
+					margin-left: 5px;
+				}
+			}
+		}
+	}
+}

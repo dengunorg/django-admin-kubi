@@ -1,0 +1,61 @@
+.breadcrumb {
+  grid-area: header;
+  display: flex;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 800;
+  height: $header-height;
+  overflow: hidden;
+  padding: .5rem 1rem;
+  padding-left: 4.3rem;
+  border-bottom: 1px var(--#{$prefix}dark-border-subtle) solid;
+  margin: 0px;
+  background-color: var(--#{$prefix}body-bg);
+}
+
+.breadcrumb-item {
+  line-height: 2.6rem;
+  min-height: 44px;
+  font-size: 1.4rem;
+}
+
+.breadcrumb-icon {
+  float:left;
+  margin-right: 6px;
+  line-height: 2.6rem;
+  width: 22px;
+  min-height: 44px;
+  text-align: center;
+  color: var(--#{$prefix}emphasis-color);
+  font-size: 1.4rem;
+}
+
+.breadcrumb-icon svg {
+  max-width: 100%;
+}
+
+@include media-breakpoint-up(lg) {
+  .breadcrumb {
+    padding-left: 1rem;
+    left: $sidebar-width;
+  }
+}
+
+@media (max-width: 490px) {
+  .search-spacer {
+    display: none;
+  }
+  .btn-toolbar {
+    position: static;
+    padding: 15px;
+  }
+}
+
+
+@media (max-width: 380px) {
+  .breadcrumb-icon {
+    display: none;
+  }
+}

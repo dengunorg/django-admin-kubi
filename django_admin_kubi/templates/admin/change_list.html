@@ -1,0 +1,131 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_list admin_kubi_tags %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  {% if cl.formset or action_form %}
+    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+  {% endif %}
+  {{ media.css }}
+  {% if not actions_on_top and not actions_on_bottom %}
+    <style>
+      #changelist table thead th:first-child {width: inherit}
+    </style>
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  {{ media.js }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
+
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    {% spaceless %}
+      <nav class="breadcrumb">
+        {% breadcrumbs_icon cl.opts %}
+        {% block search %}{% search_form cl %}{% endblock %}
+        {% if has_add_permission %}
+          <div class="search-spacer">{% translate 'Add' %}</div>
+        {% endif %}
+      </nav>
+    {% endspaceless %}
+  {% endblock %}
+{% endif %}
+
+{% block coltype %}flex{% endblock %}
+
+{% block object-tools %}
+  {% if has_add_permission %}
+    <div class="btn-toolbar" role="toolbar">
+      {% block object-tools-items %}
+        <div class="btn-group">
+          {% url cl.opts|admin_urlname:'add' as add_url %}
+          {% if add_url %}
+            <a href="{% add_preserved_filters add_url is_popup to_field %}" class="btn btn-success">
+              <i class="fa fa-plus-square mr-2"></i>
+              {% translate 'Add' %}
+            </a>
+          {% endif %}
+        </div>
+      {% endblock %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  <div id="content-main" class="mt-3 mb-3 container-fluid">
+    {% if cl.formset.errors %}
+        <p class="errornote alert alert-danger">
+        {% if cl.formset.total_error_count == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+        </p>
+        {{ cl.formset.non_form_errors }}
+    {% endif %}
+
+    <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+
+      {% if has_add_permission and not cl.full_result_count %}
+
+        {% block emptylist %}
+          <div class="empty-list">
+            {% breadcrumbs_icon cl.opts %}
+            <h2 class="text">{% blocktrans with cl.opts.verbose_name_plural as name %}You haven't added any {{ name }} yet{% endblocktrans %}</h2>
+            {% block emptylist-items %}
+              {% url cl.opts|admin_urlname:'add' as add_url %}
+              <a href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink btn btn-success btn-lg">
+                <i class="fa fa-plus-square mr-2"></i> {% blocktrans with cl.opts.verbose_name as name %}Add a {{ name }}{% endblocktrans %}
+              </a>
+            {% endblock emptylist-items %}
+          </div>
+        {% endblock emptylist %}
+
+      {% else %}
+
+        {% if cl.date_hierarchy or cl.has_filters %}
+          <div class="navbar navbar-expand-lg navbar-light bg-body-tertiary" role="filters">
+            <a class="navbar-brand" href="#">
+              <i class="fa fa-filter"></i>
+              {% translate 'Filter' %}
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+
+            <div class="collapse navbar-collapse" id="filters">
+              {% include 'admin/change_list_filters.html' %}
+            </div>
+          </div>
+
+          {% include 'admin/change_list_active_filters.html' %}
+
+        {% endif %}
+
+      {% endif %}
+
+      <form id="changelist-form"
+            action=""
+            method="post" {% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %}
+            {% if action_form and actions_on_top and cl.full_result_count %}
+              class="with-top-actions {% if cl.result_count == 0 %}hide{% endif %}"
+            {% endif %}
+            class="{% if cl.full_result_count == 0 %}hide{% endif %}"
+            novalidate>
+        {% csrf_token %}
+        {% if cl.formset %}
+          <div>{{ cl.formset.management_form }}</div>
+        {% endif %}
+
+        {% block result_list %}
+          {% if action_form and cl.full_result_count %}
+            {% admin_actions %}
+          {% endif %}
+          {% result_list cl %}
+        {% endblock %}
+
+        {% block pagination %}{% pagination cl %}{% endblock %}
+      </form>
+    </div>
+  </div>
+{% endblock %}
