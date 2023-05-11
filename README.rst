@@ -70,6 +70,6 @@ Configuration settings
 .. code:: python
 
     DJANGO_ADMIN_KUBI = {
-        'ADMIN_HISTORY': True,
-        'ADMIN_SEARCH': True
+        'ADMIN_HISTORY': True,  # enables the history action panel
+        'ADMIN_SEARCH': True,  # enables a full modal search
     }
