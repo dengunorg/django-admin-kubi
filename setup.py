@@ -17,7 +17,7 @@ setup(
     license='BSD',
     long_description=open('description.rst').read(),
     classifiers=[
-        'Development Status :: v1 Released',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
