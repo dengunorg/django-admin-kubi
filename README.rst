@@ -16,6 +16,8 @@ Django admin Kubi applies a face lift for the Django admin interface and mechani
 * Admin Search View
 * Admin LogEntry view
 * django-modeltranslation support
+* django-import-export support
+* django-two-factor-auth support
 
 Quick Demo
 ==========
@@ -81,3 +83,40 @@ Configuration settings
         'ADMIN_HISTORY': True,  # enables the history action panel
         'ADMIN_SEARCH': True,  # enables a full modal search
     }
+
+How to use the AdminMenu
+========================
+
+* create a new file containing the Menu structure that you desire, here is an example.
+
+.. code:: python
+    from django.urls import reverse
+    from django.utils.translation import gettext_lazy as _
+
+    from django_admin_kubi.admin_menu.items import MenuItem, ModelItem, ModelList
+    from django_admin_kubi.admin_menu.menu import Menu
+
+    admin_models = ("apps.users.*",)
+
+
+    class MyAdminMenu(Menu):
+        dashboard = MenuItem(title=_('Dashboard'), url=reverse('admin:index'), icon="fa-th-large")
+        content = ModelItem(model='apps.content.models.Content')
+        media = ModelItem(model='apps.media.models.MediaPhoto')
+        docs = ModelItem(model='apps.media.models.MediaDocument')
+        locations = ModelList(
+            models=(
+                'cities_light.models.Country',
+                'cities_light.models.Region',
+            ),
+            title=_('Locations'),
+            icon='fa-thumbtack',
+        )
+        components = ModelItem(model='apps.components.models.Component')
+        users = ModelList(_('Administration'), models=admin_models, icon="fa-cogs")
+
+* in your settings.py you can replace the menu using ADMIN_MENU.
+
+.. code:: python
+
+    ADMIN_MENU = "project.admin_menu.MyAdminMenu"

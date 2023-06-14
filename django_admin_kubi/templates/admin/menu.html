@@ -45,6 +45,10 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% if user.has_usable_password %}{% url user|user_admin_urlname:'change' user.pk|admin_urlquote %}{% else %}#{% endif %}"><i class="fa fa-pencil-alt"></i> {% trans 'Manage Account' %}</a>
             {% block userlinks %}
+              {% url 'two_factor:profile' as two_factor_url %}
+              {% if two_factor_url %}
+                <a class="dropdown-item" href="{{ two_factor_url }}"><i class="fa fa-lock"></i> {% trans 'Account Security' %}</a>
+              {% endif %}
               {% if user.has_usable_password %}
                 <a class="dropdown-item" href="{% url 'admin:password_change' %}"><i class="fa fa-key"></i> {% trans 'Change password' %}</a>
               {% endif %}

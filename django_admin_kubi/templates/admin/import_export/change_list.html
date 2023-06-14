@@ -1,0 +1,30 @@
+{% extends base_change_list_template %}
+{% load i18n admin_urls %}
+
+{# Original template renders object-tools only when has_add_permission is True. #}
+{# This hack allows sub templates to add to object-tools #}
+{% block object-tools %}
+  <div class="btn-toolbar" role="toolbar">
+    <div class="btn-group">
+        <div class="btn-group">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-cog"></i>
+            </a>
+            <ul class="dropdown-menu">
+                {% block object-tools-items %}
+                {% endblock %}
+            </ul>
+        </div>
+        {% if has_add_permission %}
+            {% url cl.opts|admin_urlname:'add' as add_url %}
+            {% if add_url %}
+            <a href="{% add_preserved_filters add_url is_popup to_field %}" class="btn btn-success">
+                <i class="fa fa-plus-square mr-2"></i>
+                {% translate 'Add' %}
+            </a>
+            {% endif %}
+        {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

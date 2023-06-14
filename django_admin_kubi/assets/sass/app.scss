@@ -130,7 +130,7 @@ $sidebar-width: 220px;
     }
 }
 .search-spacer {
-    padding: 0px 25px;
+    padding: 0px;
     color: transparent;
 }
 .btn-toolbar {
@@ -200,21 +200,33 @@ fieldset.module.collapse {
     display: block;
 }
 
-.object-tools {
-    display: none;
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
+.change-list {
+    .object-tools {
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        right: 15px;
+        z-index: 1000;
+    }
 }
 
-.object-tools li {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
+.change-form {
+    .object-tools {
+        display: none;
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
 
-    .btn {
-        font-size: 0.85rem;
-        padding: 5px 0;
+    .object-tools li {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+
+        .btn {
+            font-size: 0.85rem;
+            padding: 5px 0;
+        }
     }
 }
 

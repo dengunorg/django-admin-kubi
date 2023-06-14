@@ -1,43 +1,48 @@
-{% load i18n %}
+{% load i18n admin_kubi_tags %}
 <div class="actions actions-nav d-none" role="toolbar" aria-label="Toolbar with button groups">
-	<div class="btn-group btn-group-sm" role="group" aria-label="Changelist actions">
-	  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<div class="btn-group" role="group" aria-label="Changelist actions">
+	  <div class="btn-group" role="group">
+		<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
 			{% trans 'Bulk actions' %}&nbsp;
 			{% if actions_selection_counter %}
 				<span class="action-counter badge" data-actions-icnt="{{ cl.result_list|length }}">{{ selection_note }}</span>
 				{% if cl.result_count != cl.result_list|length %}
-					<span class="all badge bg-default">{{ selection_note_all }}</span>
+					<span class="all badge bg-warning">{{ selection_note_all }}</span>
 				{% endif %}
 			{% endif %}
-	  </button>
-	  <div class="dropdown-menu actions-dropdown" role="action-menu"></div>
-	</div>
+		</button>
+		<ul class="dropdown-menu actions-dropdown" role="action-menu"></ul>
+	  </div>
 
-	<div class="btn-group btn-group-sm actions-input">
-		<div class="d-none">
-		  {% for field in action_form %}{% if field.label %}<label>{{ field.label }} {% endif %}{{ field }}{% if field.label %}</label>{% endif %}{% endfor %}
+	  {% for field in action_form %}
+		<div class="{% if field.name == 'action' %}d-none{% elif field.name == 'select_across' %}d-none{% else %}input-group{% endif %}">
+			{% if field.label %}<div class="input-group-text text-nowrap">{{ field.label }}</div>{% endif %}
+			{{ field|add_class:"form-select" }}
 		</div>
-		<button type="submit" class="btn btn-dark actions-go d-none" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Apply" %}</button>
-	</div>
-
+      {% endfor %}
+	  <button type="submit" class="btn btn-primary actions-go d-none" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Apply" %}</button>
 
 	{% if actions_selection_counter %}
 	  {% if cl.result_count != cl.result_list|length %}
+	  <div class="btn-group ms-2" role="group">
 	    <span class="question">
-	        <a href="#" title="{% trans "Click here to select the objects across all pages" %}">{% blocktrans with cl.result_count as total_count %}Select all {{ total_count }} {{ module_name }}{% endblocktrans %}</a>
+	        <a href="#" class="btn btn-link text-nowrap" title="{% trans "Click here to select the objects across all pages" %}">{% blocktrans with cl.result_count as total_count %}Select all {{ total_count }} {{ module_name }}{% endblocktrans %}</a>
 	    </span>
-	    <span class="clear"><a href="#" class=""><i class="fa fa-undo"></i> {% trans "Clear selection" %}</a></span>
+	    <span class="clear"><a href="#" class="btn btn-link text-nowrap"><i class="fa fa-undo"></i> {% trans "Clear selection" %}</a></span>
+	  </div>
 	  {% endif %}
 	{% endif %}
+	</div>
 </div>
 
 
 <script type="text/javascript">
 (function ($) {
-
   $(document).ready(function(){
 
-  	$('input[name="_selected_action"], #action-toggle').on('change', function(){
+    if (!$('body.change-list .actions-nav')) { return; }
+
+    $('input[name="_selected_action"], #action-toggle').on('change', function(){
   		if($('input[name="_selected_action"]:checked').length>0){
   			$('.actions-nav').removeClass('d-none');
   		} else {
@@ -45,25 +50,41 @@
   		}
   	});
 
-		var action_submit = $(".actions-go");
-		var input = $(".actions-input select");
-
-		input.find("option").each(function(i,el){
-
+	const $actionSubmit = $(".actions-go");
+	const $input = $(".actions-nav select[name='action']");
+    const actionItems = [];
+    const deleteActionItems = [];
+		$input.find("option").each(function(i, el){
 			var el = $(el);
 			if(el.prop("value")!=""){
-				var item = $('<a class="dropdown-item" href="#" data-value="'+el.val()+'">'+el.text()+'</a>');
-				$(".actions-dropdown").append(item);
-				item.on('click', function(e){
-					input.val($(this).data("value"));
-					action_submit.removeClass("d-none");
-					action_submit.click();
-				});
+        const obj = {'value': el.val(), 'text': el.text()};
+				if(obj.value.toLowerCase().includes('delete_selected')) {
+          deleteActionItems.push(obj)
+				} else {
+          actionItems.push(obj)
+        }
 			}
-
 		});
 
-	});
+    for (let i = 0; i < actionItems.length; i++) {
+	  $(".actions-dropdown").append($('<li><a class="dropdown-item" href="#" data-value="'+actionItems[i].value+'">'+actionItems[i].text+'</a></li>'));
+    }
+    if (actionItems.length > 0) {
+      $(".actions-dropdown").append('<li><hr class="dropdown-divider"></li>');
+    }
+    for (let i = 0; i < deleteActionItems.length; i++) {
+      $(".actions-dropdown").append($('<li><a class="dropdown-item text-danger-emphasis" href="#" data-value="'+deleteActionItems[i].value+'">'+deleteActionItems[i].text+'</a></li>'));
+    }
 
+    $(".actions-dropdown a").each(function(i, el){
+      $(el).on('click', function(){
+        $(".actions-dropdown .dropdown-item").removeClass("active");
+        $(this).addClass("active");
+        $input.val($(this).data("value")).trigger('change');
+        $actionSubmit.removeClass("d-none");
+      })
+    });
+
+  });
 })(django.jQuery);
 </script>
