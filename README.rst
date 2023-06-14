@@ -90,6 +90,7 @@ How to use the AdminMenu
 * create a new file containing the Menu structure that you desire, here is an example.
 
 .. code:: python
+
     from django.urls import reverse
     from django.utils.translation import gettext_lazy as _
 
@@ -114,6 +115,7 @@ How to use the AdminMenu
         )
         components = ModelItem(model='apps.components.models.Component')
         users = ModelList(_('Administration'), models=admin_models, icon="fa-cogs")
+
 
 * in your settings.py you can replace the menu using ADMIN_MENU.
 
