@@ -12542,7 +12542,7 @@ textarea.form-control-lg {
 }
 
 .search-spacer {
-  padding: 0px 25px;
+  padding: 0px;
   color: transparent;
 }
 
@@ -12613,19 +12613,26 @@ fieldset.module.collapse {
   display: block;
 }
 
-.object-tools {
+.change-list .object-tools {
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  right: 15px;
+  z-index: 1000;
+}
+
+.change-form .object-tools {
   display: none;
   margin: 0px;
   padding: 0px;
   list-style: none;
 }
-
-.object-tools li {
+.change-form .object-tools li {
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
-.object-tools li .btn, .object-tools li .sp-cancel, .object-tools li .sp-container button, .sp-container .object-tools li button, .object-tools li .inline-deletelink, .object-tools li .datetimeshortcuts a, .datetimeshortcuts .object-tools li a, .object-tools li a.selector-chooseall, .object-tools li a.selector-clearall {
+.change-form .object-tools li .btn, .change-form .object-tools li .sp-cancel, .change-form .object-tools li .sp-container button, .sp-container .change-form .object-tools li button, .change-form .object-tools li .inline-deletelink, .change-form .object-tools li .datetimeshortcuts a, .datetimeshortcuts .change-form .object-tools li a, .change-form .object-tools li a.selector-chooseall, .change-form .object-tools li a.selector-clearall {
   font-size: 0.85rem;
   padding: 5px 0;
 }
@@ -12713,19 +12720,8 @@ body.login .brand-logo, body.auth .brand-logo, body.logout .brand-logo {
   padding: 2px;
   background-color: var(--bs-body-bg);
 }
-#changelist-form .actions-nav .btn-group {
-  display: inline-block;
-}
-#changelist-form .actions-nav .btn, #changelist-form .actions-nav .sp-cancel, #changelist-form .actions-nav .sp-container button, .sp-container #changelist-form .actions-nav button, #changelist-form .actions-nav .inline-deletelink, #changelist-form .actions-nav .datetimeshortcuts a, .datetimeshortcuts #changelist-form .actions-nav a, #changelist-form .actions-nav a.selector-chooseall, #changelist-form .actions-nav a.selector-clearall {
-  height: 38px;
-  margin: 0px;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-#changelist-form .actions-nav .btn .badge, #changelist-form .actions-nav .sp-cancel .badge, #changelist-form .actions-nav .sp-container button .badge, .sp-container #changelist-form .actions-nav button .badge, #changelist-form .actions-nav .inline-deletelink .badge, #changelist-form .actions-nav .datetimeshortcuts a .badge, .datetimeshortcuts #changelist-form .actions-nav a .badge, #changelist-form .actions-nav a.selector-chooseall .badge, #changelist-form .actions-nav a.selector-clearall .badge {
-  line-height: 22px;
-  padding: 0px 8px;
-  margin-right: 8px;
+#changelist-form .actions-nav .hidden {
+  display: none !important;
 }
 #changelist-form .actions-nav .action-counter {
   background-color: rgba(0, 0, 0, 0.3);

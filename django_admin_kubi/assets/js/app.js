@@ -1,5 +1,13 @@
 var app = {
   init: function () {
+    const _self = this;
+    $(document).ready(function(){
+      if ($('.change-list .btn-toolbar').length > 0) {
+        setTimeout(function() {
+          $('.search-spacer').width($('.change-list .btn-toolbar').outerWidth());
+        }, 123);
+      }
+    })
 
     $('.fieldset-fields.collapse').each(function(i, el){
       if($(el).find(".has-error").length > 0) {
@@ -28,8 +36,6 @@ var app = {
     const toastList = [...toastTriggerList].map(toastTriggerEl => (
       new bootstrap.Toast(toastTriggerEl).show()
     ))
-  },
-  functionOne: function () {
   },
   scrollTop: function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });

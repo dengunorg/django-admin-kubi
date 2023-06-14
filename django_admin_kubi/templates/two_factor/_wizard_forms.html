@@ -1,0 +1,41 @@
+{% load i18n static %}
+{{ wizard.management_form }}
+
+{% with form=wizard.form %}
+    {% if form.errors and not form.non_field_errors %}
+    <div class="errornote alert alert-danger alert-dismissible">
+    {% blocktranslate count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class="errornote alert alert-danger alert-dismissible">
+        {{ error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </p>
+    {% endfor %}
+    {% endif %}
+
+
+    {% for field in form %}
+    {% if field.name == 'method' %}
+        {{ field }}
+    {% else %}
+    <div class="form-floating">
+        <input type="{{field.field.widget.input_type}}"
+               placeholder="{{ field.label }}"
+               class="form-control {% if field.errors %}is-invalid{% endif %}"
+               name="{{ field.html_name }}"
+               id="{{ field.html_name }}"
+               value="{% firstof field.value "" %}"
+               autocomplete="off"
+               required>
+        <label for="{{ field.html_name }}">{{ field.label }}</label>
+        {{ field.errors }}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
+{% endwith %}

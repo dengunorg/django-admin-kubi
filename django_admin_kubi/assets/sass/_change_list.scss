@@ -24,19 +24,8 @@
 #changelist-form .actions-nav {
 	padding: 2px;
 	background-color: var(--#{$prefix}body-bg);
-	.btn-group {
-		display: inline-block;
-	}
-	.btn {
-		height: 38px;
-		margin: 0px;
-		font-size: 0.9rem;
-		cursor: pointer;
-		.badge {
-			line-height: 22px;
-			padding: 0px 8px;
-			margin-right: 8px;
-		}
+	.hidden {
+		display: none !important;
 	}
 	.action-counter {
 		background-color: rgba(0, 0, 0, 0.3);

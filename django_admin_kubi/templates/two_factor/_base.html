@@ -1,0 +1,50 @@
+{% load i18n static admin_urls admin_kubi_tags %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}" data-bs-theme="auto">
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta charset="utf-8">
+{% block extrastyle %}{% endblock %}
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/app.min.css" %}" />
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
+{% block extrahead %}{% endblock %}
+{% block responsive %}
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    {% if LANGUAGE_BIDI %}<link rel="stylesheet" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}
+{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+<script type="text/javascript" src="{% static "js/color-mode.js" %}"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}auth{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}">
+
+  <!-- Layout -->
+<div class="{% block layout %}initial-layout{% endblock %}">
+
+  <div class="text-center centered-container container">
+    {% block initial-header %}{% include 'admin/branding.html' %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block initial-footer %}{% include 'admin/footer.html' %}{% endblock %}
+  </div>
+
+  <!-- END Content -->
+</div>
+{% block footer %}{% endblock %}
+
+<!-- END Layout -->
+{% block js_footer_commons %}
+  <script type="text/javascript" src="{% static "admin/js/vendor/bootstrap.bundle.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "admin/js/vendor/popper.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/force_jquery.js" %}"></script>
+  <script type="text/javascript" src="{% static "admin/js/app.min.js" %}"></script>
+{% endblock js_footer_commons %}
+
+{% block js_footer %}{% endblock js_footer %}
+
+</body>
+</html>

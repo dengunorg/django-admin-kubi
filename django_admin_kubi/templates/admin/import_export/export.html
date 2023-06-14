@@ -1,16 +1,51 @@
 {% extends "admin/import_export/base.html" %}
-{% load i18n admin_urls import_export_tags %}
+{% load i18n admin_kubi_tags %}
+{% load admin_urls %}
+{% load import_export_tags %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ form.media }}
+{% endblock %}
 
 {% block breadcrumbs_last %}
-  <span class="breadcrumb-item active">{% trans "Export" %}</span>
+{% trans "Export" %}
 {% endblock %}
 
-{% block submit_buttons_bottom %}
-<div class="form-actions row">
-  <div class="col-xs-12 text-end save-options-box">
-    <a href="../" class="btn btn-default">{% trans 'Done' %}</a>
-    <input type="submit" class="btn btn-primary" value="{% trans 'Submit' %}"/>
-  </div>
+{% block content %}
+
+<div class="container-fluid">
+        <div class="row justify-content-center">
+        <form action="" method="POST" class="col col-md-6 col-lg-5 mt-5">
+        {% csrf_token %}
+
+            <fieldset class="module aligned">
+            {% for field in form %}
+                <div class="mb-3">
+                {{ field|label_tag }}
+                {% if field|widget_type == 'select' %}
+                    {{ field|add_class:"form-select" }}
+                {% else %}
+                    {{ field|add_class:"form-control" }}
+                {% endif %}
+                {% for error in field.field.errors %}
+                    <div class="form-error">{{ error }}</div>
+                {% endfor %}
+
+                {% if field.field.help_text %}
+                    <div class="help form-text text-muted">
+                    {{ field.field.help_text|safe }}
+                    </div>
+                {% endif %}
+                </div>
+            {% endfor %}
+            </fieldset>
+
+            <div class="mt-3">
+            <input type="submit" class="btn btn-lg btn-primary w-100" value="{% trans "Submit" %}">
+            </div>
+        </form>
+
+    </div>
 </div>
 {% endblock %}
-

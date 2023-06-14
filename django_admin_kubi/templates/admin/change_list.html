@@ -28,7 +28,7 @@
         {% breadcrumbs_icon cl.opts %}
         {% block search %}{% search_form cl %}{% endblock %}
         {% if has_add_permission %}
-          <div class="search-spacer">{% translate 'Add' %}</div>
+          <div class="search-spacer"></div>
         {% endif %}
       </nav>
     {% endspaceless %}
@@ -38,21 +38,20 @@
 {% block coltype %}flex{% endblock %}
 
 {% block object-tools %}
-  {% if has_add_permission %}
-    <div class="btn-toolbar" role="toolbar">
-      {% block object-tools-items %}
-        <div class="btn-group">
-          {% url cl.opts|admin_urlname:'add' as add_url %}
-          {% if add_url %}
-            <a href="{% add_preserved_filters add_url is_popup to_field %}" class="btn btn-success">
-              <i class="fa fa-plus-square mr-2"></i>
-              {% translate 'Add' %}
-            </a>
-          {% endif %}
-        </div>
-      {% endblock %}
+  <div class="btn-toolbar" role="toolbar">
+    <div class="btn-group">
+      {% block object-tools-items %}{% endblock %}
+      {% if has_add_permission %}
+        {% url cl.opts|admin_urlname:'add' as add_url %}
+        {% if add_url %}
+          <a href="{% add_preserved_filters add_url is_popup to_field %}" class="btn btn-success">
+            <i class="fa fa-plus-square mr-2"></i>
+            {% translate 'Add' %}
+          </a>
+        {% endif %}
+      {% endif %}
     </div>
-  {% endif %}
+  </div>
 {% endblock %}
 
 {% block content %}

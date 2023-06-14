@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<button type="submit" class="w-100 btn btn-lg btn-primary mt-3">{% trans "Next" %}</button>
+
+{% if cancel_url %}
+  <a href="{{ cancel_url }}"
+     class="float-right btn btn-link">{% trans "Cancel" %}</a>
+{% endif %}
+
+{% if wizard.steps.prev and not setup %}
+  <button name="wizard_goto_step" type="submit"
+          value="{{ wizard.steps.prev }}"
+          class="w-100 btn btn-link mt-3">{% trans "Back" %}</button>
+{% endif %}
