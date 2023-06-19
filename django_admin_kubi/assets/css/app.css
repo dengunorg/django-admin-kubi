@@ -2100,7 +2100,7 @@ progress {
   color: var(--bs-secondary-color);
 }
 
-.form-control, .select2, .selectize-input, .datetime input, .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField, .selector .selector-available input, .results table td input[type=text] {
+.form-control, .select2, .selectize-input, .datetime input, .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField, .selector .selector-available input, .selector .selector-chosen input, .results table td input[type=text] {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
@@ -2119,45 +2119,45 @@ progress {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .form-control, .select2, .selectize-input, .datetime input, .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField, .selector .selector-available input, .results table td input[type=text] {
+  .form-control, .select2, .selectize-input, .datetime input, .form-row .datetime input.vDateField, .form-row .datetime input.vTimeField, .selector .selector-available input, .selector .selector-chosen input, .results table td input[type=text] {
     transition: none;
   }
 }
-.form-control[type=file], [type=file].select2, [type=file].selectize-input, .datetime input[type=file], .form-row .datetime input[type=file].vDateField, .form-row .datetime input[type=file].vTimeField, .selector .selector-available input[type=file], .results table td input[type=file][type=text] {
+.form-control[type=file], [type=file].select2, [type=file].selectize-input, .datetime input[type=file], .form-row .datetime input[type=file].vDateField, .form-row .datetime input[type=file].vTimeField, .selector .selector-available input[type=file], .selector .selector-chosen input[type=file], .results table td input[type=file][type=text] {
   overflow: hidden;
 }
-.form-control[type=file]:not(:disabled):not([readonly]), [type=file].select2:not(:disabled):not([readonly]), [type=file].selectize-input:not(:disabled):not([readonly]), .datetime input[type=file]:not(:disabled):not([readonly]), .selector .selector-available input[type=file]:not(:disabled):not([readonly]), .results table td input[type=file][type=text]:not(:disabled):not([readonly]) {
+.form-control[type=file]:not(:disabled):not([readonly]), [type=file].select2:not(:disabled):not([readonly]), [type=file].selectize-input:not(:disabled):not([readonly]), .datetime input[type=file]:not(:disabled):not([readonly]), .selector .selector-available input[type=file]:not(:disabled):not([readonly]), .selector .selector-chosen input[type=file]:not(:disabled):not([readonly]), .results table td input[type=file][type=text]:not(:disabled):not([readonly]) {
   cursor: pointer;
 }
-.form-control:focus, .select2:focus, .selectize-input:focus, .datetime input:focus, .form-row .datetime input.vDateField:focus, .form-row .datetime input.vTimeField:focus, .selector .selector-available input:focus, .results table td input[type=text]:focus {
+.form-control:focus, .select2:focus, .selectize-input:focus, .datetime input:focus, .form-row .datetime input.vDateField:focus, .form-row .datetime input.vTimeField:focus, .selector .selector-available input:focus, .selector .selector-chosen input:focus, .results table td input[type=text]:focus {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
   border-color: #86b7fe;
   outline: 0;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
-.form-control::-webkit-date-and-time-value, .select2::-webkit-date-and-time-value, .selectize-input::-webkit-date-and-time-value, .datetime input::-webkit-date-and-time-value, .form-row .datetime input.vDateField::-webkit-date-and-time-value, .form-row .datetime input.vTimeField::-webkit-date-and-time-value, .selector .selector-available input::-webkit-date-and-time-value, .results table td input[type=text]::-webkit-date-and-time-value {
+.form-control::-webkit-date-and-time-value, .select2::-webkit-date-and-time-value, .selectize-input::-webkit-date-and-time-value, .datetime input::-webkit-date-and-time-value, .form-row .datetime input.vDateField::-webkit-date-and-time-value, .form-row .datetime input.vTimeField::-webkit-date-and-time-value, .selector .selector-available input::-webkit-date-and-time-value, .selector .selector-chosen input::-webkit-date-and-time-value, .results table td input[type=text]::-webkit-date-and-time-value {
   min-width: 85px;
   height: 1.5em;
   margin: 0;
 }
-.form-control::-webkit-datetime-edit, .select2::-webkit-datetime-edit, .selectize-input::-webkit-datetime-edit, .datetime input::-webkit-datetime-edit, .form-row .datetime input.vDateField::-webkit-datetime-edit, .form-row .datetime input.vTimeField::-webkit-datetime-edit, .selector .selector-available input::-webkit-datetime-edit, .results table td input[type=text]::-webkit-datetime-edit {
+.form-control::-webkit-datetime-edit, .select2::-webkit-datetime-edit, .selectize-input::-webkit-datetime-edit, .datetime input::-webkit-datetime-edit, .form-row .datetime input.vDateField::-webkit-datetime-edit, .form-row .datetime input.vTimeField::-webkit-datetime-edit, .selector .selector-available input::-webkit-datetime-edit, .selector .selector-chosen input::-webkit-datetime-edit, .results table td input[type=text]::-webkit-datetime-edit {
   display: block;
   padding: 0;
 }
-.form-control::-moz-placeholder, .select2::-moz-placeholder, .selectize-input::-moz-placeholder, .datetime input::-moz-placeholder, .form-row .datetime input.vDateField::-moz-placeholder, .form-row .datetime input.vTimeField::-moz-placeholder, .selector .selector-available input::-moz-placeholder, .results table td input[type=text]::-moz-placeholder {
+.form-control::-moz-placeholder, .select2::-moz-placeholder, .selectize-input::-moz-placeholder, .datetime input::-moz-placeholder, .form-row .datetime input.vDateField::-moz-placeholder, .form-row .datetime input.vTimeField::-moz-placeholder, .selector .selector-available input::-moz-placeholder, .selector .selector-chosen input::-moz-placeholder, .results table td input[type=text]::-moz-placeholder {
   color: var(--bs-secondary-color);
   opacity: 1;
 }
-.form-control::placeholder, .select2::placeholder, .selectize-input::placeholder, .datetime input::placeholder, .form-row .datetime input.vDateField::placeholder, .form-row .datetime input.vTimeField::placeholder, .selector .selector-available input::placeholder, .results table td input[type=text]::placeholder {
+.form-control::placeholder, .select2::placeholder, .selectize-input::placeholder, .datetime input::placeholder, .form-row .datetime input.vDateField::placeholder, .form-row .datetime input.vTimeField::placeholder, .selector .selector-available input::placeholder, .selector .selector-chosen input::placeholder, .results table td input[type=text]::placeholder {
   color: var(--bs-secondary-color);
   opacity: 1;
 }
-.form-control:disabled, .select2:disabled, .selectize-input:disabled, .datetime input:disabled, .form-row .datetime input.vDateField:disabled, .form-row .datetime input.vTimeField:disabled, .selector .selector-available input:disabled, .results table td input[type=text]:disabled {
+.form-control:disabled, .select2:disabled, .selectize-input:disabled, .datetime input:disabled, .form-row .datetime input.vDateField:disabled, .form-row .datetime input.vTimeField:disabled, .selector .selector-available input:disabled, .selector .selector-chosen input:disabled, .results table td input[type=text]:disabled {
   background-color: var(--bs-secondary-bg);
   opacity: 1;
 }
-.form-control::file-selector-button, .select2::file-selector-button, .selectize-input::file-selector-button, .datetime input::file-selector-button, .form-row .datetime input.vDateField::file-selector-button, .form-row .datetime input.vTimeField::file-selector-button, .selector .selector-available input::file-selector-button, .results table td input[type=text]::file-selector-button {
+.form-control::file-selector-button, .select2::file-selector-button, .selectize-input::file-selector-button, .datetime input::file-selector-button, .form-row .datetime input.vDateField::file-selector-button, .form-row .datetime input.vTimeField::file-selector-button, .selector .selector-available input::file-selector-button, .selector .selector-chosen input::file-selector-button, .results table td input[type=text]::file-selector-button {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
   -webkit-margin-end: 0.75rem;
@@ -2173,11 +2173,11 @@ progress {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .form-control::file-selector-button, .select2::file-selector-button, .selectize-input::file-selector-button, .datetime input::file-selector-button, .form-row .datetime input.vDateField::file-selector-button, .form-row .datetime input.vTimeField::file-selector-button, .selector .selector-available input::file-selector-button, .results table td input[type=text]::file-selector-button {
+  .form-control::file-selector-button, .select2::file-selector-button, .selectize-input::file-selector-button, .datetime input::file-selector-button, .form-row .datetime input.vDateField::file-selector-button, .form-row .datetime input.vTimeField::file-selector-button, .selector .selector-available input::file-selector-button, .selector .selector-chosen input::file-selector-button, .results table td input[type=text]::file-selector-button {
     transition: none;
   }
 }
-.form-control:hover:not(:disabled):not([readonly])::file-selector-button, .select2:hover:not(:disabled):not([readonly])::file-selector-button, .selectize-input:hover:not(:disabled):not([readonly])::file-selector-button, .datetime input:hover:not(:disabled):not([readonly])::file-selector-button, .selector .selector-available input:hover:not(:disabled):not([readonly])::file-selector-button, .results table td input[type=text]:hover:not(:disabled):not([readonly])::file-selector-button {
+.form-control:hover:not(:disabled):not([readonly])::file-selector-button, .select2:hover:not(:disabled):not([readonly])::file-selector-button, .selectize-input:hover:not(:disabled):not([readonly])::file-selector-button, .datetime input:hover:not(:disabled):not([readonly])::file-selector-button, .selector .selector-available input:hover:not(:disabled):not([readonly])::file-selector-button, .selector .selector-chosen input:hover:not(:disabled):not([readonly])::file-selector-button, .results table td input[type=text]:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: var(--bs-secondary-bg);
 }
 
@@ -2580,7 +2580,7 @@ textarea.form-control-lg {
 .form-floating {
   position: relative;
 }
-.form-floating > .form-control, .form-floating > .select2, .form-floating > .selectize-input, .datetime .form-floating > input, .form-row .datetime .form-floating > input.vDateField, .form-row .datetime .form-floating > input.vTimeField, .selector .selector-available .form-floating > input, .results table td .form-floating > input[type=text],
+.form-floating > .form-control, .form-floating > .select2, .form-floating > .selectize-input, .datetime .form-floating > input, .form-row .datetime .form-floating > input.vDateField, .form-row .datetime .form-floating > input.vTimeField, .selector .selector-available .form-floating > input, .selector .selector-chosen .form-floating > input, .results table td .form-floating > input[type=text],
 .form-floating > .form-control-plaintext,
 .form-floating > .form-select,
 .selector .form-floating > select,
@@ -2609,28 +2609,28 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.form-floating > .form-control, .form-floating > .select2, .form-floating > .selectize-input, .datetime .form-floating > input, .form-row .datetime .form-floating > input.vDateField, .form-row .datetime .form-floating > input.vTimeField, .selector .selector-available .form-floating > input, .results table td .form-floating > input[type=text],
+.form-floating > .form-control, .form-floating > .select2, .form-floating > .selectize-input, .datetime .form-floating > input, .form-row .datetime .form-floating > input.vDateField, .form-row .datetime .form-floating > input.vTimeField, .selector .selector-available .form-floating > input, .selector .selector-chosen .form-floating > input, .results table td .form-floating > input[type=text],
 .form-floating > .form-control-plaintext {
   padding: 1rem 0.75rem;
 }
-.form-floating > .form-control::-moz-placeholder, .form-floating > .select2::-moz-placeholder, .form-floating > .selectize-input::-moz-placeholder, .datetime .form-floating > input::-moz-placeholder, .form-row .datetime .form-floating > input.vDateField::-moz-placeholder, .form-row .datetime .form-floating > input.vTimeField::-moz-placeholder, .selector .selector-available .form-floating > input::-moz-placeholder, .results table td .form-floating > input[type=text]::-moz-placeholder, .form-floating > .form-control-plaintext::-moz-placeholder {
+.form-floating > .form-control::-moz-placeholder, .form-floating > .select2::-moz-placeholder, .form-floating > .selectize-input::-moz-placeholder, .datetime .form-floating > input::-moz-placeholder, .form-row .datetime .form-floating > input.vDateField::-moz-placeholder, .form-row .datetime .form-floating > input.vTimeField::-moz-placeholder, .selector .selector-available .form-floating > input::-moz-placeholder, .selector .selector-chosen .form-floating > input::-moz-placeholder, .results table td .form-floating > input[type=text]::-moz-placeholder, .form-floating > .form-control-plaintext::-moz-placeholder {
   color: transparent;
 }
-.form-floating > .form-control::placeholder, .form-floating > .select2::placeholder, .form-floating > .selectize-input::placeholder, .datetime .form-floating > input::placeholder, .form-row .datetime .form-floating > input.vDateField::placeholder, .form-row .datetime .form-floating > input.vTimeField::placeholder, .selector .selector-available .form-floating > input::placeholder, .results table td .form-floating > input[type=text]::placeholder,
+.form-floating > .form-control::placeholder, .form-floating > .select2::placeholder, .form-floating > .selectize-input::placeholder, .datetime .form-floating > input::placeholder, .form-row .datetime .form-floating > input.vDateField::placeholder, .form-row .datetime .form-floating > input.vTimeField::placeholder, .selector .selector-available .form-floating > input::placeholder, .selector .selector-chosen .form-floating > input::placeholder, .results table td .form-floating > input[type=text]::placeholder,
 .form-floating > .form-control-plaintext::placeholder {
   color: transparent;
 }
-.form-floating > .form-control:not(:-moz-placeholder-shown), .form-floating > .select2:not(:-moz-placeholder-shown), .form-floating > .selectize-input:not(:-moz-placeholder-shown), .datetime .form-floating > input:not(:-moz-placeholder-shown), .selector .selector-available .form-floating > input:not(:-moz-placeholder-shown), .results table td .form-floating > input[type=text]:not(:-moz-placeholder-shown), .form-floating > .form-control-plaintext:not(:-moz-placeholder-shown) {
+.form-floating > .form-control:not(:-moz-placeholder-shown), .form-floating > .select2:not(:-moz-placeholder-shown), .form-floating > .selectize-input:not(:-moz-placeholder-shown), .datetime .form-floating > input:not(:-moz-placeholder-shown), .selector .selector-available .form-floating > input:not(:-moz-placeholder-shown), .selector .selector-chosen .form-floating > input:not(:-moz-placeholder-shown), .results table td .form-floating > input[type=text]:not(:-moz-placeholder-shown), .form-floating > .form-control-plaintext:not(:-moz-placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
-.form-floating > .form-control:focus, .form-floating > .select2:focus, .form-floating > .selectize-input:focus, .datetime .form-floating > input:focus, .selector .selector-available .form-floating > input:focus, .results table td .form-floating > input[type=text]:focus, .form-floating > .form-control:not(:placeholder-shown), .form-floating > .select2:not(:placeholder-shown), .form-floating > .selectize-input:not(:placeholder-shown), .datetime .form-floating > input:not(:placeholder-shown), .selector .selector-available .form-floating > input:not(:placeholder-shown), .results table td .form-floating > input[type=text]:not(:placeholder-shown),
+.form-floating > .form-control:focus, .form-floating > .select2:focus, .form-floating > .selectize-input:focus, .datetime .form-floating > input:focus, .selector .selector-available .form-floating > input:focus, .selector .selector-chosen .form-floating > input:focus, .results table td .form-floating > input[type=text]:focus, .form-floating > .form-control:not(:placeholder-shown), .form-floating > .select2:not(:placeholder-shown), .form-floating > .selectize-input:not(:placeholder-shown), .datetime .form-floating > input:not(:placeholder-shown), .selector .selector-available .form-floating > input:not(:placeholder-shown), .selector .selector-chosen .form-floating > input:not(:placeholder-shown), .results table td .form-floating > input[type=text]:not(:placeholder-shown),
 .form-floating > .form-control-plaintext:focus,
 .form-floating > .form-control-plaintext:not(:placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
-.form-floating > .form-control:-webkit-autofill, .form-floating > .select2:-webkit-autofill, .form-floating > .selectize-input:-webkit-autofill, .datetime .form-floating > input:-webkit-autofill, .selector .selector-available .form-floating > input:-webkit-autofill, .results table td .form-floating > input[type=text]:-webkit-autofill,
+.form-floating > .form-control:-webkit-autofill, .form-floating > .select2:-webkit-autofill, .form-floating > .selectize-input:-webkit-autofill, .datetime .form-floating > input:-webkit-autofill, .selector .selector-available .form-floating > input:-webkit-autofill, .selector .selector-chosen .form-floating > input:-webkit-autofill, .results table td .form-floating > input[type=text]:-webkit-autofill,
 .form-floating > .form-control-plaintext:-webkit-autofill {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
@@ -2639,16 +2639,17 @@ textarea.form-control-lg {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
-.form-floating > .form-control:not(:-moz-placeholder-shown) ~ label, .form-floating > .select2:not(:-moz-placeholder-shown) ~ label, .form-floating > .selectize-input:not(:-moz-placeholder-shown) ~ label, .datetime .form-floating > input:not(:-moz-placeholder-shown) ~ label, .selector .selector-available .form-floating > input:not(:-moz-placeholder-shown) ~ label, .results table td .form-floating > input[type=text]:not(:-moz-placeholder-shown) ~ label {
+.form-floating > .form-control:not(:-moz-placeholder-shown) ~ label, .form-floating > .select2:not(:-moz-placeholder-shown) ~ label, .form-floating > .selectize-input:not(:-moz-placeholder-shown) ~ label, .datetime .form-floating > input:not(:-moz-placeholder-shown) ~ label, .selector .selector-available .form-floating > input:not(:-moz-placeholder-shown) ~ label, .selector .selector-chosen .form-floating > input:not(:-moz-placeholder-shown) ~ label, .results table td .form-floating > input[type=text]:not(:-moz-placeholder-shown) ~ label {
   color: rgba(var(--bs-body-color-rgb), 0.65);
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
-.form-floating > .form-control:focus ~ label, .form-floating > .select2:focus ~ label, .form-floating > .selectize-input:focus ~ label, .datetime .form-floating > input:focus ~ label, .selector .selector-available .form-floating > input:focus ~ label, .results table td .form-floating > input[type=text]:focus ~ label,
+.form-floating > .form-control:focus ~ label, .form-floating > .select2:focus ~ label, .form-floating > .selectize-input:focus ~ label, .datetime .form-floating > input:focus ~ label, .selector .selector-available .form-floating > input:focus ~ label, .selector .selector-chosen .form-floating > input:focus ~ label, .results table td .form-floating > input[type=text]:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label,
 .form-floating > .select2:not(:placeholder-shown) ~ label,
 .form-floating > .selectize-input:not(:placeholder-shown) ~ label,
 .datetime .form-floating > input:not(:placeholder-shown) ~ label,
 .selector .selector-available .form-floating > input:not(:placeholder-shown) ~ label,
+.selector .selector-chosen .form-floating > input:not(:placeholder-shown) ~ label,
 .results table td .form-floating > input[type=text]:not(:placeholder-shown) ~ label,
 .form-floating > .form-control-plaintext ~ label,
 .form-floating > .form-select ~ label,
@@ -2657,7 +2658,7 @@ textarea.form-control-lg {
   color: rgba(var(--bs-body-color-rgb), 0.65);
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
-.form-floating > .form-control:not(:-moz-placeholder-shown) ~ label::after, .form-floating > .select2:not(:-moz-placeholder-shown) ~ label::after, .form-floating > .selectize-input:not(:-moz-placeholder-shown) ~ label::after, .datetime .form-floating > input:not(:-moz-placeholder-shown) ~ label::after, .selector .selector-available .form-floating > input:not(:-moz-placeholder-shown) ~ label::after, .results table td .form-floating > input[type=text]:not(:-moz-placeholder-shown) ~ label::after {
+.form-floating > .form-control:not(:-moz-placeholder-shown) ~ label::after, .form-floating > .select2:not(:-moz-placeholder-shown) ~ label::after, .form-floating > .selectize-input:not(:-moz-placeholder-shown) ~ label::after, .datetime .form-floating > input:not(:-moz-placeholder-shown) ~ label::after, .selector .selector-available .form-floating > input:not(:-moz-placeholder-shown) ~ label::after, .selector .selector-chosen .form-floating > input:not(:-moz-placeholder-shown) ~ label::after, .results table td .form-floating > input[type=text]:not(:-moz-placeholder-shown) ~ label::after {
   position: absolute;
   inset: 1rem 0.375rem;
   z-index: -1;
@@ -2666,12 +2667,13 @@ textarea.form-control-lg {
   background-color: var(--bs-body-bg);
   border-radius: var(--bs-border-radius);
 }
-.form-floating > .form-control:focus ~ label::after, .form-floating > .select2:focus ~ label::after, .form-floating > .selectize-input:focus ~ label::after, .datetime .form-floating > input:focus ~ label::after, .selector .selector-available .form-floating > input:focus ~ label::after, .results table td .form-floating > input[type=text]:focus ~ label::after,
+.form-floating > .form-control:focus ~ label::after, .form-floating > .select2:focus ~ label::after, .form-floating > .selectize-input:focus ~ label::after, .datetime .form-floating > input:focus ~ label::after, .selector .selector-available .form-floating > input:focus ~ label::after, .selector .selector-chosen .form-floating > input:focus ~ label::after, .results table td .form-floating > input[type=text]:focus ~ label::after,
 .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
 .form-floating > .select2:not(:placeholder-shown) ~ label::after,
 .form-floating > .selectize-input:not(:placeholder-shown) ~ label::after,
 .datetime .form-floating > input:not(:placeholder-shown) ~ label::after,
 .selector .selector-available .form-floating > input:not(:placeholder-shown) ~ label::after,
+.selector .selector-chosen .form-floating > input:not(:placeholder-shown) ~ label::after,
 .results table td .form-floating > input[type=text]:not(:placeholder-shown) ~ label::after,
 .form-floating > .form-control-plaintext ~ label::after,
 .form-floating > .form-select ~ label::after,
@@ -2685,7 +2687,7 @@ textarea.form-control-lg {
   background-color: var(--bs-body-bg);
   border-radius: var(--bs-border-radius);
 }
-.form-floating > .form-control:-webkit-autofill ~ label, .form-floating > .select2:-webkit-autofill ~ label, .form-floating > .selectize-input:-webkit-autofill ~ label, .datetime .form-floating > input:-webkit-autofill ~ label, .selector .selector-available .form-floating > input:-webkit-autofill ~ label, .results table td .form-floating > input[type=text]:-webkit-autofill ~ label {
+.form-floating > .form-control:-webkit-autofill ~ label, .form-floating > .select2:-webkit-autofill ~ label, .form-floating > .selectize-input:-webkit-autofill ~ label, .datetime .form-floating > input:-webkit-autofill ~ label, .selector .selector-available .form-floating > input:-webkit-autofill ~ label, .selector .selector-chosen .form-floating > input:-webkit-autofill ~ label, .results table td .form-floating > input[type=text]:-webkit-autofill ~ label {
   color: rgba(var(--bs-body-color-rgb), 0.65);
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
@@ -2706,7 +2708,7 @@ textarea.form-control-lg {
   align-items: stretch;
   width: 100%;
 }
-.input-group > .form-control, .input-group > .select2, .input-group > .selectize-input, .datetime .input-group > input, .form-row .datetime .input-group > input.vDateField, .form-row .datetime .input-group > input.vTimeField, .selector .selector-available .input-group > input, .results table td .input-group > input[type=text],
+.input-group > .form-control, .input-group > .select2, .input-group > .selectize-input, .datetime .input-group > input, .form-row .datetime .input-group > input.vDateField, .form-row .datetime .input-group > input.vTimeField, .selector .selector-available .input-group > input, .selector .selector-chosen .input-group > input, .results table td .input-group > input[type=text],
 .input-group > .form-select,
 .selector .input-group > select,
 .results table td .input-group > select,
@@ -2716,7 +2718,7 @@ textarea.form-control-lg {
   width: 1%;
   min-width: 0;
 }
-.input-group > .form-control:focus, .input-group > .select2:focus, .input-group > .selectize-input:focus, .datetime .input-group > input:focus, .selector .selector-available .input-group > input:focus, .results table td .input-group > input[type=text]:focus,
+.input-group > .form-control:focus, .input-group > .select2:focus, .input-group > .selectize-input:focus, .datetime .input-group > input:focus, .selector .selector-available .input-group > input:focus, .selector .selector-chosen .input-group > input:focus, .results table td .input-group > input[type=text]:focus,
 .input-group > .form-select:focus,
 .selector .input-group > select:focus,
 .results table td .input-group > select:focus,
@@ -2746,7 +2748,7 @@ textarea.form-control-lg {
   border-radius: var(--bs-border-radius);
 }
 
-.input-group-lg > .form-control, .input-group-lg > .select2, .input-group-lg > .selectize-input, .datetime .input-group-lg > input, .form-row .datetime .input-group-lg > input.vDateField, .form-row .datetime .input-group-lg > input.vTimeField, .selector .selector-available .input-group-lg > input, .results table td .input-group-lg > input[type=text],
+.input-group-lg > .form-control, .input-group-lg > .select2, .input-group-lg > .selectize-input, .datetime .input-group-lg > input, .form-row .datetime .input-group-lg > input.vDateField, .form-row .datetime .input-group-lg > input.vTimeField, .selector .selector-available .input-group-lg > input, .selector .selector-chosen .input-group-lg > input, .results table td .input-group-lg > input[type=text],
 .input-group-lg > .form-select,
 .selector .input-group-lg > select,
 .results table td .input-group-lg > select,
@@ -2763,7 +2765,7 @@ textarea.form-control-lg {
   border-radius: var(--bs-border-radius-lg);
 }
 
-.input-group-sm > .form-control, .input-group-sm > .select2, .input-group-sm > .selectize-input, .datetime .input-group-sm > input, .form-row .datetime .input-group-sm > input.vDateField, .form-row .datetime .input-group-sm > input.vTimeField, .selector .selector-available .input-group-sm > input, .results table td .input-group-sm > input[type=text],
+.input-group-sm > .form-control, .input-group-sm > .select2, .input-group-sm > .selectize-input, .datetime .input-group-sm > input, .form-row .datetime .input-group-sm > input.vDateField, .form-row .datetime .input-group-sm > input.vTimeField, .selector .selector-available .input-group-sm > input, .selector .selector-chosen .input-group-sm > input, .results table td .input-group-sm > input[type=text],
 .input-group-sm > .form-select,
 .selector .input-group-sm > select,
 .results table td .input-group-sm > select,
@@ -2794,6 +2796,7 @@ textarea.form-control-lg {
 .input-group:not(.has-validation) > .form-floating:not(:last-child) > .selectize-input,
 .datetime .input-group:not(.has-validation) > .form-floating:not(:last-child) > input,
 .selector .selector-available .input-group:not(.has-validation) > .form-floating:not(:last-child) > input,
+.selector .selector-chosen .input-group:not(.has-validation) > .form-floating:not(:last-child) > input,
 .results table td .input-group:not(.has-validation) > .form-floating:not(:last-child) > input[type=text],
 .input-group:not(.has-validation) > .form-floating:not(:last-child) > .form-select,
 .selector .input-group:not(.has-validation) > .form-floating:not(:last-child) > select,
@@ -2808,6 +2811,7 @@ textarea.form-control-lg {
 .input-group.has-validation > .form-floating:nth-last-child(n+3) > .selectize-input,
 .datetime .input-group.has-validation > .form-floating:nth-last-child(n+3) > input,
 .selector .selector-available .input-group.has-validation > .form-floating:nth-last-child(n+3) > input,
+.selector .selector-chosen .input-group.has-validation > .form-floating:nth-last-child(n+3) > input,
 .results table td .input-group.has-validation > .form-floating:nth-last-child(n+3) > input[type=text],
 .input-group.has-validation > .form-floating:nth-last-child(n+3) > .form-select,
 .selector .input-group.has-validation > .form-floating:nth-last-child(n+3) > select,
@@ -2820,7 +2824,7 @@ textarea.form-control-lg {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.input-group > .form-floating:not(:first-child) > .form-control, .input-group > .form-floating:not(:first-child) > .select2, .input-group > .form-floating:not(:first-child) > .selectize-input, .datetime .input-group > .form-floating:not(:first-child) > input, .selector .selector-available .input-group > .form-floating:not(:first-child) > input, .results table td .input-group > .form-floating:not(:first-child) > input[type=text],
+.input-group > .form-floating:not(:first-child) > .form-control, .input-group > .form-floating:not(:first-child) > .select2, .input-group > .form-floating:not(:first-child) > .selectize-input, .datetime .input-group > .form-floating:not(:first-child) > input, .selector .selector-available .input-group > .form-floating:not(:first-child) > input, .selector .selector-chosen .input-group > .form-floating:not(:first-child) > input, .results table td .input-group > .form-floating:not(:first-child) > input[type=text],
 .input-group > .form-floating:not(:first-child) > .form-select,
 .selector .input-group > .form-floating:not(:first-child) > select,
 .results table td .input-group > .form-floating:not(:first-child) > select {
@@ -2857,7 +2861,7 @@ textarea.form-control-lg {
   display: block;
 }
 
-.was-validated .form-control:valid, .was-validated .select2:valid, .was-validated .selectize-input:valid, .was-validated .datetime input:valid, .datetime .was-validated input:valid, .was-validated .selector .selector-available input:valid, .selector .selector-available .was-validated input:valid, .was-validated .results table td input[type=text]:valid, .results table td .was-validated input[type=text]:valid, .form-control.is-valid, .is-valid.select2, .is-valid.selectize-input, .datetime input.is-valid, .form-row .datetime input.is-valid.vDateField, .form-row .datetime input.is-valid.vTimeField, .selector .selector-available input.is-valid, .results table td input.is-valid[type=text] {
+.was-validated .form-control:valid, .was-validated .select2:valid, .was-validated .selectize-input:valid, .was-validated .datetime input:valid, .datetime .was-validated input:valid, .was-validated .selector .selector-available input:valid, .selector .selector-available .was-validated input:valid, .was-validated .selector .selector-chosen input:valid, .selector .selector-chosen .was-validated input:valid, .was-validated .results table td input[type=text]:valid, .results table td .was-validated input[type=text]:valid, .form-control.is-valid, .is-valid.select2, .is-valid.selectize-input, .datetime input.is-valid, .form-row .datetime input.is-valid.vDateField, .form-row .datetime input.is-valid.vTimeField, .selector .selector-available input.is-valid, .selector .selector-chosen input.is-valid, .results table td input.is-valid[type=text] {
   border-color: var(--bs-form-valid-border-color);
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -2865,7 +2869,7 @@ textarea.form-control-lg {
   background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.was-validated .form-control:valid:focus, .was-validated .select2:valid:focus, .was-validated .selectize-input:valid:focus, .was-validated .datetime input:valid:focus, .datetime .was-validated input:valid:focus, .was-validated .selector .selector-available input:valid:focus, .selector .selector-available .was-validated input:valid:focus, .was-validated .results table td input[type=text]:valid:focus, .results table td .was-validated input[type=text]:valid:focus, .form-control.is-valid:focus, .is-valid.select2:focus, .is-valid.selectize-input:focus, .datetime input.is-valid:focus, .selector .selector-available input.is-valid:focus, .results table td input.is-valid[type=text]:focus {
+.was-validated .form-control:valid:focus, .was-validated .select2:valid:focus, .was-validated .selectize-input:valid:focus, .was-validated .datetime input:valid:focus, .datetime .was-validated input:valid:focus, .was-validated .selector .selector-available input:valid:focus, .selector .selector-available .was-validated input:valid:focus, .was-validated .selector .selector-chosen input:valid:focus, .selector .selector-chosen .was-validated input:valid:focus, .was-validated .results table td input[type=text]:valid:focus, .results table td .was-validated input[type=text]:valid:focus, .form-control.is-valid:focus, .is-valid.select2:focus, .is-valid.selectize-input:focus, .datetime input.is-valid:focus, .selector .selector-available input.is-valid:focus, .selector .selector-chosen input.is-valid:focus, .results table td input.is-valid[type=text]:focus {
   border-color: var(--bs-form-valid-border-color);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-success-rgb), 0.25);
 }
@@ -2924,7 +2928,7 @@ textarea.form-control-lg {
   margin-left: 0.5em;
 }
 
-.was-validated .input-group > .form-control:not(:focus):valid, .was-validated .input-group > .select2:not(:focus):valid, .was-validated .input-group > .selectize-input:not(:focus):valid, .was-validated .datetime .input-group > input:not(:focus):valid, .datetime .was-validated .input-group > input:not(:focus):valid, .was-validated .selector .selector-available .input-group > input:not(:focus):valid, .selector .selector-available .was-validated .input-group > input:not(:focus):valid, .was-validated .results table td .input-group > input[type=text]:not(:focus):valid, .results table td .was-validated .input-group > input[type=text]:not(:focus):valid, .input-group > .form-control:not(:focus).is-valid, .input-group > .select2:not(:focus).is-valid, .input-group > .selectize-input:not(:focus).is-valid, .datetime .input-group > input:not(:focus).is-valid, .selector .selector-available .input-group > input:not(:focus).is-valid, .results table td .input-group > input[type=text]:not(:focus).is-valid,
+.was-validated .input-group > .form-control:not(:focus):valid, .was-validated .input-group > .select2:not(:focus):valid, .was-validated .input-group > .selectize-input:not(:focus):valid, .was-validated .datetime .input-group > input:not(:focus):valid, .datetime .was-validated .input-group > input:not(:focus):valid, .was-validated .selector .selector-available .input-group > input:not(:focus):valid, .selector .selector-available .was-validated .input-group > input:not(:focus):valid, .was-validated .selector .selector-chosen .input-group > input:not(:focus):valid, .selector .selector-chosen .was-validated .input-group > input:not(:focus):valid, .was-validated .results table td .input-group > input[type=text]:not(:focus):valid, .results table td .was-validated .input-group > input[type=text]:not(:focus):valid, .input-group > .form-control:not(:focus).is-valid, .input-group > .select2:not(:focus).is-valid, .input-group > .selectize-input:not(:focus).is-valid, .datetime .input-group > input:not(:focus).is-valid, .selector .selector-available .input-group > input:not(:focus).is-valid, .selector .selector-chosen .input-group > input:not(:focus).is-valid, .results table td .input-group > input[type=text]:not(:focus).is-valid,
 .was-validated .input-group > .form-select:not(:focus):valid,
 .was-validated .selector .input-group > select:not(:focus):valid,
 .selector .was-validated .input-group > select:not(:focus):valid,
@@ -2971,6 +2975,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error input ~ .invalid-feedback,
 .form-group.has-error .selector .selector-available input ~ .invalid-feedback,
 .selector .selector-available .form-group.has-error input ~ .invalid-feedback,
+.form-group.has-error .selector .selector-chosen input ~ .invalid-feedback,
+.selector .selector-chosen .form-group.has-error input ~ .invalid-feedback,
 .form-group.has-error .results table td input[type=text] ~ .invalid-feedback,
 .results table td .form-group.has-error input[type=text] ~ .invalid-feedback,
 .form-group.has-error .form-control ~ .form-error,
@@ -2980,6 +2986,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error input ~ .form-error,
 .form-group.has-error .selector .selector-available input ~ .form-error,
 .selector .selector-available .form-group.has-error input ~ .form-error,
+.form-group.has-error .selector .selector-chosen input ~ .form-error,
+.selector .selector-chosen .form-group.has-error input ~ .form-error,
 .form-group.has-error .results table td input[type=text] ~ .form-error,
 .results table td .form-group.has-error input[type=text] ~ .form-error,
 .errorlist ~ input[type=text] ~ .invalid-feedback,
@@ -2994,6 +3002,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error input ~ .errorlist,
 .form-group.has-error .selector .selector-available input ~ .errorlist,
 .selector .selector-available .form-group.has-error input ~ .errorlist,
+.form-group.has-error .selector .selector-chosen input ~ .errorlist,
+.selector .selector-chosen .form-group.has-error input ~ .errorlist,
 .form-group.has-error .results table td input[type=text] ~ .errorlist,
 .results table td .form-group.has-error input[type=text] ~ .errorlist,
 .errorlist ~ input[type=text] ~ .errorlist,
@@ -3006,6 +3016,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error input ~ .invalid-tooltip,
 .form-group.has-error .selector .selector-available input ~ .invalid-tooltip,
 .selector .selector-available .form-group.has-error input ~ .invalid-tooltip,
+.form-group.has-error .selector .selector-chosen input ~ .invalid-tooltip,
+.selector .selector-chosen .form-group.has-error input ~ .invalid-tooltip,
 .form-group.has-error .results table td input[type=text] ~ .invalid-tooltip,
 .results table td .form-group.has-error input[type=text] ~ .invalid-tooltip,
 .errorlist ~ input[type=text] ~ .invalid-tooltip,
@@ -3013,7 +3025,7 @@ textarea.form-control-lg {
   display: block;
 }
 
-.was-validated .form-control:invalid, .was-validated .select2:invalid, .was-validated .selectize-input:invalid, .was-validated .datetime input:invalid, .datetime .was-validated input:invalid, .was-validated .selector .selector-available input:invalid, .selector .selector-available .was-validated input:invalid, .was-validated .results table td input[type=text]:invalid, .results table td .was-validated input[type=text]:invalid, .form-control.is-invalid, .is-invalid.select2, .is-invalid.selectize-input, .datetime input.is-invalid, .form-row .datetime input.is-invalid.vDateField, .form-row .datetime input.is-invalid.vTimeField, .selector .selector-available input.is-invalid, .results table td input.is-invalid[type=text], .form-group.has-error .form-control, .form-group.has-error .select2, .form-group.has-error .selectize-input, .form-group.has-error .datetime input, .datetime .form-group.has-error input, .form-group.has-error .selector .selector-available input, .selector .selector-available .form-group.has-error input, .form-group.has-error .results table td input[type=text], .results table td .form-group.has-error input[type=text], .errorlist ~ input.form-control[type=text], .errorlist ~ input[type=text].select2, .errorlist ~ input[type=text].selectize-input, .datetime .errorlist ~ input[type=text], .selector .selector-available .errorlist ~ input[type=text], .results table td .errorlist ~ input[type=text], .errorlist ~ select.form-control, .errorlist ~ select.select2, .errorlist ~ select.selectize-input {
+.was-validated .form-control:invalid, .was-validated .select2:invalid, .was-validated .selectize-input:invalid, .was-validated .datetime input:invalid, .datetime .was-validated input:invalid, .was-validated .selector .selector-available input:invalid, .selector .selector-available .was-validated input:invalid, .was-validated .selector .selector-chosen input:invalid, .selector .selector-chosen .was-validated input:invalid, .was-validated .results table td input[type=text]:invalid, .results table td .was-validated input[type=text]:invalid, .form-control.is-invalid, .is-invalid.select2, .is-invalid.selectize-input, .datetime input.is-invalid, .form-row .datetime input.is-invalid.vDateField, .form-row .datetime input.is-invalid.vTimeField, .selector .selector-available input.is-invalid, .selector .selector-chosen input.is-invalid, .results table td input.is-invalid[type=text], .form-group.has-error .form-control, .form-group.has-error .select2, .form-group.has-error .selectize-input, .form-group.has-error .datetime input, .datetime .form-group.has-error input, .form-group.has-error .selector .selector-available input, .selector .selector-available .form-group.has-error input, .form-group.has-error .selector .selector-chosen input, .selector .selector-chosen .form-group.has-error input, .form-group.has-error .results table td input[type=text], .results table td .form-group.has-error input[type=text], .errorlist ~ input.form-control[type=text], .errorlist ~ input[type=text].select2, .errorlist ~ input[type=text].selectize-input, .datetime .errorlist ~ input[type=text], .selector .selector-available .errorlist ~ input[type=text], .selector .selector-chosen .errorlist ~ input[type=text], .results table td .errorlist ~ input[type=text], .errorlist ~ select.form-control, .errorlist ~ select.select2, .errorlist ~ select.selectize-input {
   border-color: var(--bs-form-invalid-border-color);
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
@@ -3021,7 +3033,7 @@ textarea.form-control-lg {
   background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.was-validated .form-control:invalid:focus, .was-validated .select2:invalid:focus, .was-validated .selectize-input:invalid:focus, .was-validated .datetime input:invalid:focus, .datetime .was-validated input:invalid:focus, .was-validated .selector .selector-available input:invalid:focus, .selector .selector-available .was-validated input:invalid:focus, .was-validated .results table td input[type=text]:invalid:focus, .results table td .was-validated input[type=text]:invalid:focus, .form-control.is-invalid:focus, .is-invalid.select2:focus, .is-invalid.selectize-input:focus, .datetime input.is-invalid:focus, .selector .selector-available input.is-invalid:focus, .results table td input.is-invalid[type=text]:focus, .form-group.has-error .form-control:focus, .form-group.has-error .select2:focus, .form-group.has-error .selectize-input:focus, .form-group.has-error .datetime input:focus, .datetime .form-group.has-error input:focus, .form-group.has-error .selector .selector-available input:focus, .selector .selector-available .form-group.has-error input:focus, .form-group.has-error .results table td input[type=text]:focus, .results table td .form-group.has-error input[type=text]:focus, .errorlist ~ input.form-control[type=text]:focus, .errorlist ~ input[type=text].select2:focus, .errorlist ~ input[type=text].selectize-input:focus, .datetime .errorlist ~ input[type=text]:focus, .selector .selector-available .errorlist ~ input[type=text]:focus, .results table td .errorlist ~ input[type=text]:focus, .errorlist ~ select.form-control:focus, .errorlist ~ select.select2:focus, .errorlist ~ select.selectize-input:focus {
+.was-validated .form-control:invalid:focus, .was-validated .select2:invalid:focus, .was-validated .selectize-input:invalid:focus, .was-validated .datetime input:invalid:focus, .datetime .was-validated input:invalid:focus, .was-validated .selector .selector-available input:invalid:focus, .selector .selector-available .was-validated input:invalid:focus, .was-validated .selector .selector-chosen input:invalid:focus, .selector .selector-chosen .was-validated input:invalid:focus, .was-validated .results table td input[type=text]:invalid:focus, .results table td .was-validated input[type=text]:invalid:focus, .form-control.is-invalid:focus, .is-invalid.select2:focus, .is-invalid.selectize-input:focus, .datetime input.is-invalid:focus, .selector .selector-available input.is-invalid:focus, .selector .selector-chosen input.is-invalid:focus, .results table td input.is-invalid[type=text]:focus, .form-group.has-error .form-control:focus, .form-group.has-error .select2:focus, .form-group.has-error .selectize-input:focus, .form-group.has-error .datetime input:focus, .datetime .form-group.has-error input:focus, .form-group.has-error .selector .selector-available input:focus, .selector .selector-available .form-group.has-error input:focus, .form-group.has-error .selector .selector-chosen input:focus, .selector .selector-chosen .form-group.has-error input:focus, .form-group.has-error .results table td input[type=text]:focus, .results table td .form-group.has-error input[type=text]:focus, .errorlist ~ input.form-control[type=text]:focus, .errorlist ~ input[type=text].select2:focus, .errorlist ~ input[type=text].selectize-input:focus, .datetime .errorlist ~ input[type=text]:focus, .selector .selector-available .errorlist ~ input[type=text]:focus, .selector .selector-chosen .errorlist ~ input[type=text]:focus, .results table td .errorlist ~ input[type=text]:focus, .errorlist ~ select.form-control:focus, .errorlist ~ select.select2:focus, .errorlist ~ select.selectize-input:focus {
   border-color: var(--bs-form-invalid-border-color);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
 }
@@ -3031,28 +3043,28 @@ textarea.form-control-lg {
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
-.was-validated .form-select:invalid, .was-validated .selector select:invalid, .selector .was-validated select:invalid, .was-validated .results table td select:invalid, .results table td .was-validated select:invalid, .form-select.is-invalid, .selector select.is-invalid, .results table td select.is-invalid, .form-group.has-error .form-select.form-control, .form-group.has-error .form-select.select2, .form-group.has-error .form-select.selectize-input, .form-group.has-error .datetime input.form-select, .datetime .form-group.has-error input.form-select, .form-group.has-error .selector .selector-available input.form-select, .selector .selector-available .form-group.has-error input.form-select, .form-group.has-error .selector select.form-control, .form-group.has-error .selector select.select2, .form-group.has-error .selector select.selectize-input, .selector .form-group.has-error select.form-control, .selector .form-group.has-error select.select2, .selector .form-group.has-error select.selectize-input, .form-group.has-error .results table td select.form-control, .form-group.has-error .results table td select.select2, .form-group.has-error .results table td select.selectize-input, .results table td .form-group.has-error select.form-control, .results table td .form-group.has-error select.select2, .results table td .form-group.has-error select.selectize-input, .form-group.has-error .results table td input.form-select[type=text], .results table td .form-group.has-error input.form-select[type=text], .errorlist ~ input.form-select[type=text], .errorlist ~ select.form-select, .selector .errorlist ~ select, .results table td .errorlist ~ select {
+.was-validated .form-select:invalid, .was-validated .selector select:invalid, .selector .was-validated select:invalid, .was-validated .results table td select:invalid, .results table td .was-validated select:invalid, .form-select.is-invalid, .selector select.is-invalid, .results table td select.is-invalid, .form-group.has-error .form-select.form-control, .form-group.has-error .form-select.select2, .form-group.has-error .form-select.selectize-input, .form-group.has-error .datetime input.form-select, .datetime .form-group.has-error input.form-select, .form-group.has-error .selector .selector-available input.form-select, .selector .selector-available .form-group.has-error input.form-select, .form-group.has-error .selector .selector-chosen input.form-select, .selector .selector-chosen .form-group.has-error input.form-select, .form-group.has-error .selector select.form-control, .form-group.has-error .selector select.select2, .form-group.has-error .selector select.selectize-input, .selector .form-group.has-error select.form-control, .selector .form-group.has-error select.select2, .selector .form-group.has-error select.selectize-input, .form-group.has-error .results table td select.form-control, .form-group.has-error .results table td select.select2, .form-group.has-error .results table td select.selectize-input, .results table td .form-group.has-error select.form-control, .results table td .form-group.has-error select.select2, .results table td .form-group.has-error select.selectize-input, .form-group.has-error .results table td input.form-select[type=text], .results table td .form-group.has-error input.form-select[type=text], .errorlist ~ input.form-select[type=text], .errorlist ~ select.form-select, .selector .errorlist ~ select, .results table td .errorlist ~ select {
   border-color: var(--bs-form-invalid-border-color);
 }
-.was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .selector select:invalid:not([multiple]):not([size]), .selector .was-validated select:invalid:not([multiple]):not([size]), .was-validated .results table td select:invalid:not([multiple]):not([size]), .results table td .was-validated select:invalid:not([multiple]):not([size]), .was-validated .form-select:invalid:not([multiple])[size="1"], .was-validated .selector select:invalid:not([multiple])[size="1"], .selector .was-validated select:invalid:not([multiple])[size="1"], .was-validated .results table td select:invalid:not([multiple])[size="1"], .results table td .was-validated select:invalid:not([multiple])[size="1"], .form-select.is-invalid:not([multiple]):not([size]), .selector select.is-invalid:not([multiple]):not([size]), .results table td select.is-invalid:not([multiple]):not([size]), .form-group.has-error .form-select.form-control:not([multiple]):not([size]), .form-group.has-error .form-select.select2:not([multiple]):not([size]), .form-group.has-error .form-select.selectize-input:not([multiple]):not([size]), .form-group.has-error .datetime input.form-select:not([multiple]):not([size]), .datetime .form-group.has-error input.form-select:not([multiple]):not([size]), .form-group.has-error .selector .selector-available input.form-select:not([multiple]):not([size]), .selector .selector-available .form-group.has-error input.form-select:not([multiple]):not([size]), .form-group.has-error .selector select.form-control:not([multiple]):not([size]), .form-group.has-error .selector select.select2:not([multiple]):not([size]), .form-group.has-error .selector select.selectize-input:not([multiple]):not([size]), .selector .form-group.has-error select.form-control:not([multiple]):not([size]), .selector .form-group.has-error select.select2:not([multiple]):not([size]), .selector .form-group.has-error select.selectize-input:not([multiple]):not([size]), .form-group.has-error .results table td select.form-control:not([multiple]):not([size]), .form-group.has-error .results table td select.select2:not([multiple]):not([size]), .form-group.has-error .results table td select.selectize-input:not([multiple]):not([size]), .results table td .form-group.has-error select.form-control:not([multiple]):not([size]), .results table td .form-group.has-error select.select2:not([multiple]):not([size]), .results table td .form-group.has-error select.selectize-input:not([multiple]):not([size]), .form-group.has-error .results table td input.form-select[type=text]:not([multiple]):not([size]), .results table td .form-group.has-error input.form-select[type=text]:not([multiple]):not([size]), .errorlist ~ input.form-select[type=text]:not([multiple]):not([size]), .errorlist ~ select.form-select:not([multiple]):not([size]), .selector .errorlist ~ select:not([multiple]):not([size]), .results table td .errorlist ~ select:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"], .selector select.is-invalid:not([multiple])[size="1"], .results table td select.is-invalid:not([multiple])[size="1"], .form-group.has-error .form-select.form-control:not([multiple])[size="1"], .form-group.has-error .form-select.select2:not([multiple])[size="1"], .form-group.has-error .form-select.selectize-input:not([multiple])[size="1"], .form-group.has-error .datetime input.form-select:not([multiple])[size="1"], .datetime .form-group.has-error input.form-select:not([multiple])[size="1"], .form-group.has-error .selector .selector-available input.form-select:not([multiple])[size="1"], .selector .selector-available .form-group.has-error input.form-select:not([multiple])[size="1"], .form-group.has-error .selector select.form-control:not([multiple])[size="1"], .form-group.has-error .selector select.select2:not([multiple])[size="1"], .form-group.has-error .selector select.selectize-input:not([multiple])[size="1"], .selector .form-group.has-error select.form-control:not([multiple])[size="1"], .selector .form-group.has-error select.select2:not([multiple])[size="1"], .selector .form-group.has-error select.selectize-input:not([multiple])[size="1"], .form-group.has-error .results table td select.form-control:not([multiple])[size="1"], .form-group.has-error .results table td select.select2:not([multiple])[size="1"], .form-group.has-error .results table td select.selectize-input:not([multiple])[size="1"], .results table td .form-group.has-error select.form-control:not([multiple])[size="1"], .results table td .form-group.has-error select.select2:not([multiple])[size="1"], .results table td .form-group.has-error select.selectize-input:not([multiple])[size="1"], .form-group.has-error .results table td input.form-select[type=text]:not([multiple])[size="1"], .results table td .form-group.has-error input.form-select[type=text]:not([multiple])[size="1"], .errorlist ~ input.form-select[type=text]:not([multiple])[size="1"], .errorlist ~ select.form-select:not([multiple])[size="1"], .selector .errorlist ~ select:not([multiple])[size="1"], .results table td .errorlist ~ select:not([multiple])[size="1"] {
+.was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .selector select:invalid:not([multiple]):not([size]), .selector .was-validated select:invalid:not([multiple]):not([size]), .was-validated .results table td select:invalid:not([multiple]):not([size]), .results table td .was-validated select:invalid:not([multiple]):not([size]), .was-validated .form-select:invalid:not([multiple])[size="1"], .was-validated .selector select:invalid:not([multiple])[size="1"], .selector .was-validated select:invalid:not([multiple])[size="1"], .was-validated .results table td select:invalid:not([multiple])[size="1"], .results table td .was-validated select:invalid:not([multiple])[size="1"], .form-select.is-invalid:not([multiple]):not([size]), .selector select.is-invalid:not([multiple]):not([size]), .results table td select.is-invalid:not([multiple]):not([size]), .form-group.has-error .form-select.form-control:not([multiple]):not([size]), .form-group.has-error .form-select.select2:not([multiple]):not([size]), .form-group.has-error .form-select.selectize-input:not([multiple]):not([size]), .form-group.has-error .datetime input.form-select:not([multiple]):not([size]), .datetime .form-group.has-error input.form-select:not([multiple]):not([size]), .form-group.has-error .selector .selector-available input.form-select:not([multiple]):not([size]), .selector .selector-available .form-group.has-error input.form-select:not([multiple]):not([size]), .form-group.has-error .selector .selector-chosen input.form-select:not([multiple]):not([size]), .selector .selector-chosen .form-group.has-error input.form-select:not([multiple]):not([size]), .form-group.has-error .selector select.form-control:not([multiple]):not([size]), .form-group.has-error .selector select.select2:not([multiple]):not([size]), .form-group.has-error .selector select.selectize-input:not([multiple]):not([size]), .selector .form-group.has-error select.form-control:not([multiple]):not([size]), .selector .form-group.has-error select.select2:not([multiple]):not([size]), .selector .form-group.has-error select.selectize-input:not([multiple]):not([size]), .form-group.has-error .results table td select.form-control:not([multiple]):not([size]), .form-group.has-error .results table td select.select2:not([multiple]):not([size]), .form-group.has-error .results table td select.selectize-input:not([multiple]):not([size]), .results table td .form-group.has-error select.form-control:not([multiple]):not([size]), .results table td .form-group.has-error select.select2:not([multiple]):not([size]), .results table td .form-group.has-error select.selectize-input:not([multiple]):not([size]), .form-group.has-error .results table td input.form-select[type=text]:not([multiple]):not([size]), .results table td .form-group.has-error input.form-select[type=text]:not([multiple]):not([size]), .errorlist ~ input.form-select[type=text]:not([multiple]):not([size]), .errorlist ~ select.form-select:not([multiple]):not([size]), .selector .errorlist ~ select:not([multiple]):not([size]), .results table td .errorlist ~ select:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"], .selector select.is-invalid:not([multiple])[size="1"], .results table td select.is-invalid:not([multiple])[size="1"], .form-group.has-error .form-select.form-control:not([multiple])[size="1"], .form-group.has-error .form-select.select2:not([multiple])[size="1"], .form-group.has-error .form-select.selectize-input:not([multiple])[size="1"], .form-group.has-error .datetime input.form-select:not([multiple])[size="1"], .datetime .form-group.has-error input.form-select:not([multiple])[size="1"], .form-group.has-error .selector .selector-available input.form-select:not([multiple])[size="1"], .selector .selector-available .form-group.has-error input.form-select:not([multiple])[size="1"], .form-group.has-error .selector .selector-chosen input.form-select:not([multiple])[size="1"], .selector .selector-chosen .form-group.has-error input.form-select:not([multiple])[size="1"], .form-group.has-error .selector select.form-control:not([multiple])[size="1"], .form-group.has-error .selector select.select2:not([multiple])[size="1"], .form-group.has-error .selector select.selectize-input:not([multiple])[size="1"], .selector .form-group.has-error select.form-control:not([multiple])[size="1"], .selector .form-group.has-error select.select2:not([multiple])[size="1"], .selector .form-group.has-error select.selectize-input:not([multiple])[size="1"], .form-group.has-error .results table td select.form-control:not([multiple])[size="1"], .form-group.has-error .results table td select.select2:not([multiple])[size="1"], .form-group.has-error .results table td select.selectize-input:not([multiple])[size="1"], .results table td .form-group.has-error select.form-control:not([multiple])[size="1"], .results table td .form-group.has-error select.select2:not([multiple])[size="1"], .results table td .form-group.has-error select.selectize-input:not([multiple])[size="1"], .form-group.has-error .results table td input.form-select[type=text]:not([multiple])[size="1"], .results table td .form-group.has-error input.form-select[type=text]:not([multiple])[size="1"], .errorlist ~ input.form-select[type=text]:not([multiple])[size="1"], .errorlist ~ select.form-select:not([multiple])[size="1"], .selector .errorlist ~ select:not([multiple])[size="1"], .results table td .errorlist ~ select:not([multiple])[size="1"] {
   --bs-form-select-bg-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   padding-right: 4.125rem;
   background-position: right 0.75rem center, center right 2.25rem;
   background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.was-validated .form-select:invalid:focus, .was-validated .selector select:invalid:focus, .selector .was-validated select:invalid:focus, .was-validated .results table td select:invalid:focus, .results table td .was-validated select:invalid:focus, .form-select.is-invalid:focus, .selector select.is-invalid:focus, .results table td select.is-invalid:focus, .form-group.has-error .form-select.form-control:focus, .form-group.has-error .form-select.select2:focus, .form-group.has-error .form-select.selectize-input:focus, .form-group.has-error .datetime input.form-select:focus, .datetime .form-group.has-error input.form-select:focus, .form-group.has-error .selector .selector-available input.form-select:focus, .selector .selector-available .form-group.has-error input.form-select:focus, .form-group.has-error .selector select.form-control:focus, .form-group.has-error .selector select.select2:focus, .form-group.has-error .selector select.selectize-input:focus, .selector .form-group.has-error select.form-control:focus, .selector .form-group.has-error select.select2:focus, .selector .form-group.has-error select.selectize-input:focus, .form-group.has-error .results table td select.form-control:focus, .form-group.has-error .results table td select.select2:focus, .form-group.has-error .results table td select.selectize-input:focus, .results table td .form-group.has-error select.form-control:focus, .results table td .form-group.has-error select.select2:focus, .results table td .form-group.has-error select.selectize-input:focus, .form-group.has-error .results table td input.form-select[type=text]:focus, .results table td .form-group.has-error input.form-select[type=text]:focus, .errorlist ~ input.form-select[type=text]:focus, .errorlist ~ select.form-select:focus, .selector .errorlist ~ select:focus, .results table td .errorlist ~ select:focus {
+.was-validated .form-select:invalid:focus, .was-validated .selector select:invalid:focus, .selector .was-validated select:invalid:focus, .was-validated .results table td select:invalid:focus, .results table td .was-validated select:invalid:focus, .form-select.is-invalid:focus, .selector select.is-invalid:focus, .results table td select.is-invalid:focus, .form-group.has-error .form-select.form-control:focus, .form-group.has-error .form-select.select2:focus, .form-group.has-error .form-select.selectize-input:focus, .form-group.has-error .datetime input.form-select:focus, .datetime .form-group.has-error input.form-select:focus, .form-group.has-error .selector .selector-available input.form-select:focus, .selector .selector-available .form-group.has-error input.form-select:focus, .form-group.has-error .selector .selector-chosen input.form-select:focus, .selector .selector-chosen .form-group.has-error input.form-select:focus, .form-group.has-error .selector select.form-control:focus, .form-group.has-error .selector select.select2:focus, .form-group.has-error .selector select.selectize-input:focus, .selector .form-group.has-error select.form-control:focus, .selector .form-group.has-error select.select2:focus, .selector .form-group.has-error select.selectize-input:focus, .form-group.has-error .results table td select.form-control:focus, .form-group.has-error .results table td select.select2:focus, .form-group.has-error .results table td select.selectize-input:focus, .results table td .form-group.has-error select.form-control:focus, .results table td .form-group.has-error select.select2:focus, .results table td .form-group.has-error select.selectize-input:focus, .form-group.has-error .results table td input.form-select[type=text]:focus, .results table td .form-group.has-error input.form-select[type=text]:focus, .errorlist ~ input.form-select[type=text]:focus, .errorlist ~ select.form-select:focus, .selector .errorlist ~ select:focus, .results table td .errorlist ~ select:focus {
   border-color: var(--bs-form-invalid-border-color);
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
 }
 
-.was-validated .form-control-color:invalid, .form-control-color.is-invalid, .form-group.has-error .form-control-color.form-control, .form-group.has-error .form-control-color.select2, .form-group.has-error .form-control-color.selectize-input, .form-group.has-error .datetime input.form-control-color, .datetime .form-group.has-error input.form-control-color, .form-group.has-error .selector .selector-available input.form-control-color, .selector .selector-available .form-group.has-error input.form-control-color, .form-group.has-error .results table td input.form-control-color[type=text], .results table td .form-group.has-error input.form-control-color[type=text], .errorlist ~ input.form-control-color[type=text], .errorlist ~ select.form-control-color {
+.was-validated .form-control-color:invalid, .form-control-color.is-invalid, .form-group.has-error .form-control-color.form-control, .form-group.has-error .form-control-color.select2, .form-group.has-error .form-control-color.selectize-input, .form-group.has-error .datetime input.form-control-color, .datetime .form-group.has-error input.form-control-color, .form-group.has-error .selector .selector-available input.form-control-color, .selector .selector-available .form-group.has-error input.form-control-color, .form-group.has-error .selector .selector-chosen input.form-control-color, .selector .selector-chosen .form-group.has-error input.form-control-color, .form-group.has-error .results table td input.form-control-color[type=text], .results table td .form-group.has-error input.form-control-color[type=text], .errorlist ~ input.form-control-color[type=text], .errorlist ~ select.form-control-color {
   width: calc(3rem + calc(1.5em + 0.75rem));
 }
 
 .was-validated .form-check-input:invalid, .was-validated .action-checkbox-column input:invalid, .action-checkbox-column .was-validated input:invalid,
 .was-validated .action-checkbox input:invalid,
 .action-checkbox .was-validated input:invalid, .form-check-input.is-invalid, .action-checkbox-column input.is-invalid,
-.action-checkbox input.is-invalid, .form-group.has-error .form-check-input.form-control, .form-group.has-error .form-check-input.select2, .form-group.has-error .form-check-input.selectize-input, .form-group.has-error .datetime input.form-check-input, .datetime .form-group.has-error input.form-check-input, .form-group.has-error .selector .selector-available input.form-check-input, .selector .selector-available .form-group.has-error input.form-check-input, .form-group.has-error .results table td input.form-check-input[type=text], .results table td .form-group.has-error input.form-check-input[type=text], .form-group.has-error .action-checkbox-column input.form-control, .form-group.has-error .action-checkbox-column input.select2, .form-group.has-error .action-checkbox-column input.selectize-input, .form-group.has-error .action-checkbox-column .datetime input, .datetime .form-group.has-error .action-checkbox-column input, .form-group.has-error .action-checkbox-column .selector .selector-available input, .selector .selector-available .form-group.has-error .action-checkbox-column input, .form-group.has-error .action-checkbox-column .results table td input[type=text], .results table td .form-group.has-error .action-checkbox-column input[type=text], .action-checkbox-column .form-group.has-error input.form-control, .action-checkbox-column .form-group.has-error input.select2, .action-checkbox-column .form-group.has-error input.selectize-input, .action-checkbox-column .form-group.has-error .datetime input, .datetime .action-checkbox-column .form-group.has-error input, .action-checkbox-column .form-group.has-error .selector .selector-available input, .selector .selector-available .action-checkbox-column .form-group.has-error input, .action-checkbox-column .form-group.has-error .results table td input[type=text], .results table td .action-checkbox-column .form-group.has-error input[type=text],
+.action-checkbox input.is-invalid, .form-group.has-error .form-check-input.form-control, .form-group.has-error .form-check-input.select2, .form-group.has-error .form-check-input.selectize-input, .form-group.has-error .datetime input.form-check-input, .datetime .form-group.has-error input.form-check-input, .form-group.has-error .selector .selector-available input.form-check-input, .selector .selector-available .form-group.has-error input.form-check-input, .form-group.has-error .selector .selector-chosen input.form-check-input, .selector .selector-chosen .form-group.has-error input.form-check-input, .form-group.has-error .results table td input.form-check-input[type=text], .results table td .form-group.has-error input.form-check-input[type=text], .form-group.has-error .action-checkbox-column input.form-control, .form-group.has-error .action-checkbox-column input.select2, .form-group.has-error .action-checkbox-column input.selectize-input, .form-group.has-error .action-checkbox-column .datetime input, .datetime .form-group.has-error .action-checkbox-column input, .form-group.has-error .action-checkbox-column .selector .selector-available input, .selector .selector-available .form-group.has-error .action-checkbox-column input, .form-group.has-error .action-checkbox-column .selector .selector-chosen input, .selector .selector-chosen .form-group.has-error .action-checkbox-column input, .form-group.has-error .action-checkbox-column .results table td input[type=text], .results table td .form-group.has-error .action-checkbox-column input[type=text], .action-checkbox-column .form-group.has-error input.form-control, .action-checkbox-column .form-group.has-error input.select2, .action-checkbox-column .form-group.has-error input.selectize-input, .action-checkbox-column .form-group.has-error .datetime input, .datetime .action-checkbox-column .form-group.has-error input, .action-checkbox-column .form-group.has-error .selector .selector-available input, .selector .selector-available .action-checkbox-column .form-group.has-error input, .action-checkbox-column .form-group.has-error .selector .selector-chosen input, .selector .selector-chosen .action-checkbox-column .form-group.has-error input, .action-checkbox-column .form-group.has-error .results table td input[type=text], .results table td .action-checkbox-column .form-group.has-error input[type=text],
 .form-group.has-error .action-checkbox input.form-control,
 .form-group.has-error .action-checkbox input.select2,
 .form-group.has-error .action-checkbox input.selectize-input,
@@ -3060,6 +3072,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error .action-checkbox input,
 .form-group.has-error .action-checkbox .selector .selector-available input,
 .selector .selector-available .form-group.has-error .action-checkbox input,
+.form-group.has-error .action-checkbox .selector .selector-chosen input,
+.selector .selector-chosen .form-group.has-error .action-checkbox input,
 .form-group.has-error .action-checkbox .results table td input[type=text],
 .results table td .form-group.has-error .action-checkbox input[type=text],
 .action-checkbox .form-group.has-error input.form-control,
@@ -3069,6 +3083,8 @@ textarea.form-control-lg {
 .datetime .action-checkbox .form-group.has-error input,
 .action-checkbox .form-group.has-error .selector .selector-available input,
 .selector .selector-available .action-checkbox .form-group.has-error input,
+.action-checkbox .form-group.has-error .selector .selector-chosen input,
+.selector .selector-chosen .action-checkbox .form-group.has-error input,
 .action-checkbox .form-group.has-error .results table td input[type=text],
 .results table td .action-checkbox .form-group.has-error input[type=text], .errorlist ~ input.form-check-input[type=text], .action-checkbox-column .errorlist ~ input[type=text],
 .action-checkbox .errorlist ~ input[type=text], .errorlist ~ select.form-check-input {
@@ -3077,7 +3093,7 @@ textarea.form-control-lg {
 .was-validated .form-check-input:invalid:checked, .was-validated .action-checkbox-column input:invalid:checked, .action-checkbox-column .was-validated input:invalid:checked,
 .was-validated .action-checkbox input:invalid:checked,
 .action-checkbox .was-validated input:invalid:checked, .form-check-input.is-invalid:checked, .action-checkbox-column input.is-invalid:checked,
-.action-checkbox input.is-invalid:checked, .form-group.has-error .form-check-input.form-control:checked, .form-group.has-error .form-check-input.select2:checked, .form-group.has-error .form-check-input.selectize-input:checked, .form-group.has-error .datetime input.form-check-input:checked, .datetime .form-group.has-error input.form-check-input:checked, .form-group.has-error .selector .selector-available input.form-check-input:checked, .selector .selector-available .form-group.has-error input.form-check-input:checked, .form-group.has-error .results table td input.form-check-input[type=text]:checked, .results table td .form-group.has-error input.form-check-input[type=text]:checked, .form-group.has-error .action-checkbox-column input.form-control:checked, .form-group.has-error .action-checkbox-column input.select2:checked, .form-group.has-error .action-checkbox-column input.selectize-input:checked, .form-group.has-error .action-checkbox-column .datetime input:checked, .datetime .form-group.has-error .action-checkbox-column input:checked, .form-group.has-error .action-checkbox-column .selector .selector-available input:checked, .selector .selector-available .form-group.has-error .action-checkbox-column input:checked, .form-group.has-error .action-checkbox-column .results table td input[type=text]:checked, .results table td .form-group.has-error .action-checkbox-column input[type=text]:checked, .action-checkbox-column .form-group.has-error input.form-control:checked, .action-checkbox-column .form-group.has-error input.select2:checked, .action-checkbox-column .form-group.has-error input.selectize-input:checked, .action-checkbox-column .form-group.has-error .datetime input:checked, .datetime .action-checkbox-column .form-group.has-error input:checked, .action-checkbox-column .form-group.has-error .selector .selector-available input:checked, .selector .selector-available .action-checkbox-column .form-group.has-error input:checked, .action-checkbox-column .form-group.has-error .results table td input[type=text]:checked, .results table td .action-checkbox-column .form-group.has-error input[type=text]:checked,
+.action-checkbox input.is-invalid:checked, .form-group.has-error .form-check-input.form-control:checked, .form-group.has-error .form-check-input.select2:checked, .form-group.has-error .form-check-input.selectize-input:checked, .form-group.has-error .datetime input.form-check-input:checked, .datetime .form-group.has-error input.form-check-input:checked, .form-group.has-error .selector .selector-available input.form-check-input:checked, .selector .selector-available .form-group.has-error input.form-check-input:checked, .form-group.has-error .selector .selector-chosen input.form-check-input:checked, .selector .selector-chosen .form-group.has-error input.form-check-input:checked, .form-group.has-error .results table td input.form-check-input[type=text]:checked, .results table td .form-group.has-error input.form-check-input[type=text]:checked, .form-group.has-error .action-checkbox-column input.form-control:checked, .form-group.has-error .action-checkbox-column input.select2:checked, .form-group.has-error .action-checkbox-column input.selectize-input:checked, .form-group.has-error .action-checkbox-column .datetime input:checked, .datetime .form-group.has-error .action-checkbox-column input:checked, .form-group.has-error .action-checkbox-column .selector .selector-available input:checked, .selector .selector-available .form-group.has-error .action-checkbox-column input:checked, .form-group.has-error .action-checkbox-column .selector .selector-chosen input:checked, .selector .selector-chosen .form-group.has-error .action-checkbox-column input:checked, .form-group.has-error .action-checkbox-column .results table td input[type=text]:checked, .results table td .form-group.has-error .action-checkbox-column input[type=text]:checked, .action-checkbox-column .form-group.has-error input.form-control:checked, .action-checkbox-column .form-group.has-error input.select2:checked, .action-checkbox-column .form-group.has-error input.selectize-input:checked, .action-checkbox-column .form-group.has-error .datetime input:checked, .datetime .action-checkbox-column .form-group.has-error input:checked, .action-checkbox-column .form-group.has-error .selector .selector-available input:checked, .selector .selector-available .action-checkbox-column .form-group.has-error input:checked, .action-checkbox-column .form-group.has-error .selector .selector-chosen input:checked, .selector .selector-chosen .action-checkbox-column .form-group.has-error input:checked, .action-checkbox-column .form-group.has-error .results table td input[type=text]:checked, .results table td .action-checkbox-column .form-group.has-error input[type=text]:checked,
 .form-group.has-error .action-checkbox input.form-control:checked,
 .form-group.has-error .action-checkbox input.select2:checked,
 .form-group.has-error .action-checkbox input.selectize-input:checked,
@@ -3085,6 +3101,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error .action-checkbox input:checked,
 .form-group.has-error .action-checkbox .selector .selector-available input:checked,
 .selector .selector-available .form-group.has-error .action-checkbox input:checked,
+.form-group.has-error .action-checkbox .selector .selector-chosen input:checked,
+.selector .selector-chosen .form-group.has-error .action-checkbox input:checked,
 .form-group.has-error .action-checkbox .results table td input[type=text]:checked,
 .results table td .form-group.has-error .action-checkbox input[type=text]:checked,
 .action-checkbox .form-group.has-error input.form-control:checked,
@@ -3094,6 +3112,8 @@ textarea.form-control-lg {
 .datetime .action-checkbox .form-group.has-error input:checked,
 .action-checkbox .form-group.has-error .selector .selector-available input:checked,
 .selector .selector-available .action-checkbox .form-group.has-error input:checked,
+.action-checkbox .form-group.has-error .selector .selector-chosen input:checked,
+.selector .selector-chosen .action-checkbox .form-group.has-error input:checked,
 .action-checkbox .form-group.has-error .results table td input[type=text]:checked,
 .results table td .action-checkbox .form-group.has-error input[type=text]:checked, .errorlist ~ input.form-check-input[type=text]:checked, .action-checkbox-column .errorlist ~ input[type=text]:checked,
 .action-checkbox .errorlist ~ input[type=text]:checked, .errorlist ~ select.form-check-input:checked {
@@ -3102,7 +3122,7 @@ textarea.form-control-lg {
 .was-validated .form-check-input:invalid:focus, .was-validated .action-checkbox-column input:invalid:focus, .action-checkbox-column .was-validated input:invalid:focus,
 .was-validated .action-checkbox input:invalid:focus,
 .action-checkbox .was-validated input:invalid:focus, .form-check-input.is-invalid:focus, .action-checkbox-column input.is-invalid:focus,
-.action-checkbox input.is-invalid:focus, .form-group.has-error .form-check-input.form-control:focus, .form-group.has-error .form-check-input.select2:focus, .form-group.has-error .form-check-input.selectize-input:focus, .form-group.has-error .datetime input.form-check-input:focus, .datetime .form-group.has-error input.form-check-input:focus, .form-group.has-error .selector .selector-available input.form-check-input:focus, .selector .selector-available .form-group.has-error input.form-check-input:focus, .form-group.has-error .results table td input.form-check-input[type=text]:focus, .results table td .form-group.has-error input.form-check-input[type=text]:focus, .form-group.has-error .action-checkbox-column input.form-control:focus, .form-group.has-error .action-checkbox-column input.select2:focus, .form-group.has-error .action-checkbox-column input.selectize-input:focus, .form-group.has-error .action-checkbox-column .datetime input:focus, .datetime .form-group.has-error .action-checkbox-column input:focus, .form-group.has-error .action-checkbox-column .selector .selector-available input:focus, .selector .selector-available .form-group.has-error .action-checkbox-column input:focus, .form-group.has-error .action-checkbox-column .results table td input[type=text]:focus, .results table td .form-group.has-error .action-checkbox-column input[type=text]:focus, .action-checkbox-column .form-group.has-error input.form-control:focus, .action-checkbox-column .form-group.has-error input.select2:focus, .action-checkbox-column .form-group.has-error input.selectize-input:focus, .action-checkbox-column .form-group.has-error .datetime input:focus, .datetime .action-checkbox-column .form-group.has-error input:focus, .action-checkbox-column .form-group.has-error .selector .selector-available input:focus, .selector .selector-available .action-checkbox-column .form-group.has-error input:focus, .action-checkbox-column .form-group.has-error .results table td input[type=text]:focus, .results table td .action-checkbox-column .form-group.has-error input[type=text]:focus,
+.action-checkbox input.is-invalid:focus, .form-group.has-error .form-check-input.form-control:focus, .form-group.has-error .form-check-input.select2:focus, .form-group.has-error .form-check-input.selectize-input:focus, .form-group.has-error .datetime input.form-check-input:focus, .datetime .form-group.has-error input.form-check-input:focus, .form-group.has-error .selector .selector-available input.form-check-input:focus, .selector .selector-available .form-group.has-error input.form-check-input:focus, .form-group.has-error .selector .selector-chosen input.form-check-input:focus, .selector .selector-chosen .form-group.has-error input.form-check-input:focus, .form-group.has-error .results table td input.form-check-input[type=text]:focus, .results table td .form-group.has-error input.form-check-input[type=text]:focus, .form-group.has-error .action-checkbox-column input.form-control:focus, .form-group.has-error .action-checkbox-column input.select2:focus, .form-group.has-error .action-checkbox-column input.selectize-input:focus, .form-group.has-error .action-checkbox-column .datetime input:focus, .datetime .form-group.has-error .action-checkbox-column input:focus, .form-group.has-error .action-checkbox-column .selector .selector-available input:focus, .selector .selector-available .form-group.has-error .action-checkbox-column input:focus, .form-group.has-error .action-checkbox-column .selector .selector-chosen input:focus, .selector .selector-chosen .form-group.has-error .action-checkbox-column input:focus, .form-group.has-error .action-checkbox-column .results table td input[type=text]:focus, .results table td .form-group.has-error .action-checkbox-column input[type=text]:focus, .action-checkbox-column .form-group.has-error input.form-control:focus, .action-checkbox-column .form-group.has-error input.select2:focus, .action-checkbox-column .form-group.has-error input.selectize-input:focus, .action-checkbox-column .form-group.has-error .datetime input:focus, .datetime .action-checkbox-column .form-group.has-error input:focus, .action-checkbox-column .form-group.has-error .selector .selector-available input:focus, .selector .selector-available .action-checkbox-column .form-group.has-error input:focus, .action-checkbox-column .form-group.has-error .selector .selector-chosen input:focus, .selector .selector-chosen .action-checkbox-column .form-group.has-error input:focus, .action-checkbox-column .form-group.has-error .results table td input[type=text]:focus, .results table td .action-checkbox-column .form-group.has-error input[type=text]:focus,
 .form-group.has-error .action-checkbox input.form-control:focus,
 .form-group.has-error .action-checkbox input.select2:focus,
 .form-group.has-error .action-checkbox input.selectize-input:focus,
@@ -3110,6 +3130,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error .action-checkbox input:focus,
 .form-group.has-error .action-checkbox .selector .selector-available input:focus,
 .selector .selector-available .form-group.has-error .action-checkbox input:focus,
+.form-group.has-error .action-checkbox .selector .selector-chosen input:focus,
+.selector .selector-chosen .form-group.has-error .action-checkbox input:focus,
 .form-group.has-error .action-checkbox .results table td input[type=text]:focus,
 .results table td .form-group.has-error .action-checkbox input[type=text]:focus,
 .action-checkbox .form-group.has-error input.form-control:focus,
@@ -3119,6 +3141,8 @@ textarea.form-control-lg {
 .datetime .action-checkbox .form-group.has-error input:focus,
 .action-checkbox .form-group.has-error .selector .selector-available input:focus,
 .selector .selector-available .action-checkbox .form-group.has-error input:focus,
+.action-checkbox .form-group.has-error .selector .selector-chosen input:focus,
+.selector .selector-chosen .action-checkbox .form-group.has-error input:focus,
 .action-checkbox .form-group.has-error .results table td input[type=text]:focus,
 .results table td .action-checkbox .form-group.has-error input[type=text]:focus, .errorlist ~ input.form-check-input[type=text]:focus, .action-checkbox-column .errorlist ~ input[type=text]:focus,
 .action-checkbox .errorlist ~ input[type=text]:focus, .errorlist ~ select.form-check-input:focus {
@@ -3127,7 +3151,7 @@ textarea.form-control-lg {
 .was-validated .form-check-input:invalid ~ .form-check-label, .was-validated .action-checkbox-column input:invalid ~ .form-check-label, .action-checkbox-column .was-validated input:invalid ~ .form-check-label,
 .was-validated .action-checkbox input:invalid ~ .form-check-label,
 .action-checkbox .was-validated input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label, .action-checkbox-column input.is-invalid ~ .form-check-label,
-.action-checkbox input.is-invalid ~ .form-check-label, .form-group.has-error .form-check-input.form-control ~ .form-check-label, .form-group.has-error .form-check-input.select2 ~ .form-check-label, .form-group.has-error .form-check-input.selectize-input ~ .form-check-label, .form-group.has-error .datetime input.form-check-input ~ .form-check-label, .datetime .form-group.has-error input.form-check-input ~ .form-check-label, .form-group.has-error .selector .selector-available input.form-check-input ~ .form-check-label, .selector .selector-available .form-group.has-error input.form-check-input ~ .form-check-label, .form-group.has-error .results table td input.form-check-input[type=text] ~ .form-check-label, .results table td .form-group.has-error input.form-check-input[type=text] ~ .form-check-label, .form-group.has-error .action-checkbox-column input.form-control ~ .form-check-label, .form-group.has-error .action-checkbox-column input.select2 ~ .form-check-label, .form-group.has-error .action-checkbox-column input.selectize-input ~ .form-check-label, .form-group.has-error .action-checkbox-column .datetime input ~ .form-check-label, .datetime .form-group.has-error .action-checkbox-column input ~ .form-check-label, .form-group.has-error .action-checkbox-column .selector .selector-available input ~ .form-check-label, .selector .selector-available .form-group.has-error .action-checkbox-column input ~ .form-check-label, .form-group.has-error .action-checkbox-column .results table td input[type=text] ~ .form-check-label, .results table td .form-group.has-error .action-checkbox-column input[type=text] ~ .form-check-label, .action-checkbox-column .form-group.has-error input.form-control ~ .form-check-label, .action-checkbox-column .form-group.has-error input.select2 ~ .form-check-label, .action-checkbox-column .form-group.has-error input.selectize-input ~ .form-check-label, .action-checkbox-column .form-group.has-error .datetime input ~ .form-check-label, .datetime .action-checkbox-column .form-group.has-error input ~ .form-check-label, .action-checkbox-column .form-group.has-error .selector .selector-available input ~ .form-check-label, .selector .selector-available .action-checkbox-column .form-group.has-error input ~ .form-check-label, .action-checkbox-column .form-group.has-error .results table td input[type=text] ~ .form-check-label, .results table td .action-checkbox-column .form-group.has-error input[type=text] ~ .form-check-label,
+.action-checkbox input.is-invalid ~ .form-check-label, .form-group.has-error .form-check-input.form-control ~ .form-check-label, .form-group.has-error .form-check-input.select2 ~ .form-check-label, .form-group.has-error .form-check-input.selectize-input ~ .form-check-label, .form-group.has-error .datetime input.form-check-input ~ .form-check-label, .datetime .form-group.has-error input.form-check-input ~ .form-check-label, .form-group.has-error .selector .selector-available input.form-check-input ~ .form-check-label, .selector .selector-available .form-group.has-error input.form-check-input ~ .form-check-label, .form-group.has-error .selector .selector-chosen input.form-check-input ~ .form-check-label, .selector .selector-chosen .form-group.has-error input.form-check-input ~ .form-check-label, .form-group.has-error .results table td input.form-check-input[type=text] ~ .form-check-label, .results table td .form-group.has-error input.form-check-input[type=text] ~ .form-check-label, .form-group.has-error .action-checkbox-column input.form-control ~ .form-check-label, .form-group.has-error .action-checkbox-column input.select2 ~ .form-check-label, .form-group.has-error .action-checkbox-column input.selectize-input ~ .form-check-label, .form-group.has-error .action-checkbox-column .datetime input ~ .form-check-label, .datetime .form-group.has-error .action-checkbox-column input ~ .form-check-label, .form-group.has-error .action-checkbox-column .selector .selector-available input ~ .form-check-label, .selector .selector-available .form-group.has-error .action-checkbox-column input ~ .form-check-label, .form-group.has-error .action-checkbox-column .selector .selector-chosen input ~ .form-check-label, .selector .selector-chosen .form-group.has-error .action-checkbox-column input ~ .form-check-label, .form-group.has-error .action-checkbox-column .results table td input[type=text] ~ .form-check-label, .results table td .form-group.has-error .action-checkbox-column input[type=text] ~ .form-check-label, .action-checkbox-column .form-group.has-error input.form-control ~ .form-check-label, .action-checkbox-column .form-group.has-error input.select2 ~ .form-check-label, .action-checkbox-column .form-group.has-error input.selectize-input ~ .form-check-label, .action-checkbox-column .form-group.has-error .datetime input ~ .form-check-label, .datetime .action-checkbox-column .form-group.has-error input ~ .form-check-label, .action-checkbox-column .form-group.has-error .selector .selector-available input ~ .form-check-label, .selector .selector-available .action-checkbox-column .form-group.has-error input ~ .form-check-label, .action-checkbox-column .form-group.has-error .selector .selector-chosen input ~ .form-check-label, .selector .selector-chosen .action-checkbox-column .form-group.has-error input ~ .form-check-label, .action-checkbox-column .form-group.has-error .results table td input[type=text] ~ .form-check-label, .results table td .action-checkbox-column .form-group.has-error input[type=text] ~ .form-check-label,
 .form-group.has-error .action-checkbox input.form-control ~ .form-check-label,
 .form-group.has-error .action-checkbox input.select2 ~ .form-check-label,
 .form-group.has-error .action-checkbox input.selectize-input ~ .form-check-label,
@@ -3135,6 +3159,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error .action-checkbox input ~ .form-check-label,
 .form-group.has-error .action-checkbox .selector .selector-available input ~ .form-check-label,
 .selector .selector-available .form-group.has-error .action-checkbox input ~ .form-check-label,
+.form-group.has-error .action-checkbox .selector .selector-chosen input ~ .form-check-label,
+.selector .selector-chosen .form-group.has-error .action-checkbox input ~ .form-check-label,
 .form-group.has-error .action-checkbox .results table td input[type=text] ~ .form-check-label,
 .results table td .form-group.has-error .action-checkbox input[type=text] ~ .form-check-label,
 .action-checkbox .form-group.has-error input.form-control ~ .form-check-label,
@@ -3144,6 +3170,8 @@ textarea.form-control-lg {
 .datetime .action-checkbox .form-group.has-error input ~ .form-check-label,
 .action-checkbox .form-group.has-error .selector .selector-available input ~ .form-check-label,
 .selector .selector-available .action-checkbox .form-group.has-error input ~ .form-check-label,
+.action-checkbox .form-group.has-error .selector .selector-chosen input ~ .form-check-label,
+.selector .selector-chosen .action-checkbox .form-group.has-error input ~ .form-check-label,
 .action-checkbox .form-group.has-error .results table td input[type=text] ~ .form-check-label,
 .results table td .action-checkbox .form-group.has-error input[type=text] ~ .form-check-label, .errorlist ~ input.form-check-input[type=text] ~ .form-check-label, .action-checkbox-column .errorlist ~ input[type=text] ~ .form-check-label,
 .action-checkbox .errorlist ~ input[type=text] ~ .form-check-label, .errorlist ~ select.form-check-input ~ .form-check-label {
@@ -3162,7 +3190,7 @@ textarea.form-control-lg {
   margin-left: 0.5em;
 }
 
-.was-validated .input-group > .form-control:not(:focus):invalid, .was-validated .input-group > .select2:not(:focus):invalid, .was-validated .input-group > .selectize-input:not(:focus):invalid, .was-validated .datetime .input-group > input:not(:focus):invalid, .datetime .was-validated .input-group > input:not(:focus):invalid, .was-validated .selector .selector-available .input-group > input:not(:focus):invalid, .selector .selector-available .was-validated .input-group > input:not(:focus):invalid, .was-validated .results table td .input-group > input[type=text]:not(:focus):invalid, .results table td .was-validated .input-group > input[type=text]:not(:focus):invalid, .input-group > .form-control:not(:focus).is-invalid, .input-group > .select2:not(:focus).is-invalid, .input-group > .selectize-input:not(:focus).is-invalid, .datetime .input-group > input:not(:focus).is-invalid, .selector .selector-available .input-group > input:not(:focus).is-invalid, .results table td .input-group > input[type=text]:not(:focus).is-invalid, .form-group.has-error .input-group > .form-control:not(:focus), .form-group.has-error .input-group > .select2:not(:focus), .form-group.has-error .input-group > .selectize-input:not(:focus), .form-group.has-error .datetime .input-group > input:not(:focus), .datetime .form-group.has-error .input-group > input:not(:focus), .form-group.has-error .selector .selector-available .input-group > input:not(:focus), .selector .selector-available .form-group.has-error .input-group > input:not(:focus), .form-group.has-error .results table td .input-group > input[type=text]:not(:focus), .results table td .form-group.has-error .input-group > input[type=text]:not(:focus), .input-group > .errorlist ~ input.form-control[type=text]:not(:focus), .input-group > .errorlist ~ input[type=text].select2:not(:focus), .input-group > .errorlist ~ input[type=text].selectize-input:not(:focus), .datetime .input-group > .errorlist ~ input[type=text]:not(:focus), .selector .selector-available .input-group > .errorlist ~ input[type=text]:not(:focus), .results table td .input-group > .errorlist ~ input[type=text]:not(:focus), .input-group > .errorlist ~ select.form-control:not(:focus), .input-group > .errorlist ~ select.select2:not(:focus), .input-group > .errorlist ~ select.selectize-input:not(:focus),
+.was-validated .input-group > .form-control:not(:focus):invalid, .was-validated .input-group > .select2:not(:focus):invalid, .was-validated .input-group > .selectize-input:not(:focus):invalid, .was-validated .datetime .input-group > input:not(:focus):invalid, .datetime .was-validated .input-group > input:not(:focus):invalid, .was-validated .selector .selector-available .input-group > input:not(:focus):invalid, .selector .selector-available .was-validated .input-group > input:not(:focus):invalid, .was-validated .selector .selector-chosen .input-group > input:not(:focus):invalid, .selector .selector-chosen .was-validated .input-group > input:not(:focus):invalid, .was-validated .results table td .input-group > input[type=text]:not(:focus):invalid, .results table td .was-validated .input-group > input[type=text]:not(:focus):invalid, .input-group > .form-control:not(:focus).is-invalid, .input-group > .select2:not(:focus).is-invalid, .input-group > .selectize-input:not(:focus).is-invalid, .datetime .input-group > input:not(:focus).is-invalid, .selector .selector-available .input-group > input:not(:focus).is-invalid, .selector .selector-chosen .input-group > input:not(:focus).is-invalid, .results table td .input-group > input[type=text]:not(:focus).is-invalid, .form-group.has-error .input-group > .form-control:not(:focus), .form-group.has-error .input-group > .select2:not(:focus), .form-group.has-error .input-group > .selectize-input:not(:focus), .form-group.has-error .datetime .input-group > input:not(:focus), .datetime .form-group.has-error .input-group > input:not(:focus), .form-group.has-error .selector .selector-available .input-group > input:not(:focus), .selector .selector-available .form-group.has-error .input-group > input:not(:focus), .form-group.has-error .selector .selector-chosen .input-group > input:not(:focus), .selector .selector-chosen .form-group.has-error .input-group > input:not(:focus), .form-group.has-error .results table td .input-group > input[type=text]:not(:focus), .results table td .form-group.has-error .input-group > input[type=text]:not(:focus), .input-group > .errorlist ~ input.form-control[type=text]:not(:focus), .input-group > .errorlist ~ input[type=text].select2:not(:focus), .input-group > .errorlist ~ input[type=text].selectize-input:not(:focus), .datetime .input-group > .errorlist ~ input[type=text]:not(:focus), .selector .selector-available .input-group > .errorlist ~ input[type=text]:not(:focus), .selector .selector-chosen .input-group > .errorlist ~ input[type=text]:not(:focus), .results table td .input-group > .errorlist ~ input[type=text]:not(:focus), .input-group > .errorlist ~ select.form-control:not(:focus), .input-group > .errorlist ~ select.select2:not(:focus), .input-group > .errorlist ~ select.selectize-input:not(:focus),
 .was-validated .input-group > .form-select:not(:focus):invalid,
 .was-validated .selector .input-group > select:not(:focus):invalid,
 .selector .was-validated .input-group > select:not(:focus):invalid,
@@ -3184,6 +3212,8 @@ textarea.form-control-lg {
 .datetime .form-group.has-error .input-group > input.form-floating:not(:focus-within),
 .form-group.has-error .selector .selector-available .input-group > input.form-floating:not(:focus-within),
 .selector .selector-available .form-group.has-error .input-group > input.form-floating:not(:focus-within),
+.form-group.has-error .selector .selector-chosen .input-group > input.form-floating:not(:focus-within),
+.selector .selector-chosen .form-group.has-error .input-group > input.form-floating:not(:focus-within),
 .form-group.has-error .results table td .input-group > input.form-floating[type=text]:not(:focus-within),
 .results table td .form-group.has-error .input-group > input.form-floating[type=text]:not(:focus-within),
 .input-group > .errorlist ~ input.form-floating[type=text]:not(:focus-within),
@@ -5214,7 +5244,7 @@ textarea.form-control-lg {
   top: -1px;
 }
 
-.alert, .selector-available h2, .selector-available .h2, .selector-chosen h2, .selector-chosen .h2 {
+.alert, .selector-chosen .list-footer-display, .selector-available h2, .selector-available .h2, .selector-chosen h2, .selector-chosen .h2 {
   --bs-alert-bg: transparent;
   --bs-alert-padding-x: 1rem;
   --bs-alert-padding-y: 1rem;
@@ -5281,7 +5311,7 @@ textarea.form-control-lg {
   --bs-alert-link-color: var(--bs-info-text-emphasis);
 }
 
-.alert-warning {
+.alert-warning, .selector-chosen .list-footer-display {
   --bs-alert-color: var(--bs-warning-text-emphasis);
   --bs-alert-bg: var(--bs-warning-bg-subtle);
   --bs-alert-border-color: var(--bs-warning-border-subtle);
@@ -9346,7 +9376,7 @@ textarea.form-control-lg {
   border-radius: var(--bs-border-radius) !important;
 }
 
-.rounded-0, .selector .selector-available input {
+.rounded-0, .selector .selector-available input, .selector .selector-chosen input {
   border-radius: 0 !important;
 }
 
@@ -9383,7 +9413,7 @@ textarea.form-control-lg {
   border-top-right-radius: var(--bs-border-radius) !important;
 }
 
-.rounded-top-0, .selector select {
+.rounded-top-0, .selector-chosen .list-footer-display, .selector select {
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
 }
@@ -12838,11 +12868,12 @@ body.login .brand-logo, body.auth .brand-logo, body.logout .brand-logo {
 }
 
 .selector select {
-  height: 17em;
+  height: 16em;
 }
 
 .selector-available, .selector-chosen {
   text-align: center;
+  min-width: 280px;
   margin-bottom: 5px;
   height: 24rem;
   flex-grow: 1;
@@ -12850,7 +12881,7 @@ body.login .brand-logo, body.auth .brand-logo, body.logout .brand-logo {
 }
 
 .selector-chosen select {
-  height: 19.25em;
+  height: 16em;
 }
 
 .selector-available h2, .selector-available .h2, .selector-chosen h2, .selector-chosen .h2 {
@@ -12880,6 +12911,22 @@ body.login .brand-logo, body.auth .brand-logo, body.logout .brand-logo {
   opacity: 0.5;
   overflow: hidden;
   line-height: 1;
+}
+
+.selector .selector-chosen:not(.selector-chosen--with-filtered) .list-footer-display {
+  display: none;
+}
+
+.selector-chosen .list-footer-display {
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
+  margin: 0px;
+  border-top: 0px;
+  cursor: pointer;
+}
+
+.selector-chosen .list-footer-display__clear {
+  color: #6c757d;
 }
 
 .selector ul.selector-chooser {
