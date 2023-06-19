@@ -14,11 +14,12 @@ $whiteAsRGB: rgba($white, 0.999);
 .selector select {
     @extend .form-select;
     @extend .rounded-top-0;
-    height: 17em;
+    height: 16em;
 }
 
 .selector-available, .selector-chosen {
     text-align: center;
+    min-width: 280px;
     margin-bottom: 5px;
     height: 24rem;
     flex-grow: 1;
@@ -26,7 +27,7 @@ $whiteAsRGB: rgba($white, 0.999);
 }
 
 .selector-chosen select {
-    height: 19.25em;
+    height: 16em;
 }
 
 .selector-available h2, .selector-chosen h2 {
@@ -67,9 +68,27 @@ $whiteAsRGB: rgba($white, 0.999);
     line-height: 1;
 }
 
-.selector .selector-available input {
+.selector .selector-available input, .selector .selector-chosen input {
     @extend .form-control;
     @extend .rounded-0;
+}
+
+.selector .selector-chosen:not(.selector-chosen--with-filtered) .list-footer-display {
+    display: none;
+}
+
+.selector-chosen .list-footer-display {
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    margin: 0px;
+    @extend .alert;
+    @extend .alert-warning;
+    @extend .rounded-top-0;
+    border-top: 0px;
+    cursor: pointer;
+}
+.selector-chosen .list-footer-display__clear {
+    color: $secondary;
 }
 
 .selector ul.selector-chooser {
