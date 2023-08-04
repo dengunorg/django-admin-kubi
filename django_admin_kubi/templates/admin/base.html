@@ -7,6 +7,7 @@
 {% block extrastyle %}{% endblock %}
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/app.min.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "admin/fonts/bootstrap-icons/font/bootstrap-icons.min.css" %}" />
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
 {% block extrahead %}{% endblock %}
 {% block responsive %}
@@ -15,7 +16,7 @@
 {% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 <script type="text/javascript" src="{% static "js/color-mode.js" %}"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
 </head>
 {% load i18n %}
 
