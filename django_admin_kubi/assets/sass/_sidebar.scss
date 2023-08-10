@@ -86,13 +86,20 @@ $sidebar-bg-color: #252525;
     position: relative;
   }
 
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .menu::-webkit-scrollbar {
+    display: none;
+  }
+
   .menu {
     position: absolute;
     top: 0px;
     bottom: 0px;
     left: 0px;
-    right: -20px;
+    right: 0px;
     overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 
     li {
       list-style: none;
