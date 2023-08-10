@@ -209,7 +209,7 @@
 
             this.getAllGroupedTranslations = function () {
                 var grouper = new TranslationFieldGrouper({
-                    $fields: this.$table.find('.mt').filter('input:visible, textarea:visible, select:visible')
+                    $fields: this.$table.find('.mt').filter('input, textarea, select').filter(':parents(.empty-form)')
                 });
                 this.initTable();
                 return grouper.groupedTranslations;
@@ -242,7 +242,7 @@
                     // Remove language and brackets from table header,
                     // they are displayed in the tab already.
                     if ($(this).html() && $.inArray(idx, self.translationColumns) === -1) {
-                        $(this).html($(this).html().replace(/ \[.+\]/, ''));
+                        $(this).html($(this).html().replace(/ \[.+\]/, '').replace(/ \(.+\)/, ''));
                     }
                 });
 
@@ -332,7 +332,7 @@
                     var this_td = tabsContainer.closest("td");
                     var this_idx = tabsContainer.closest("tr").find("td").index(this_td);
                     var this_th = tabsContainer.parents("table").find("thead th").eq(this_idx);
-                    var label = this_th.data("label").replace(/ \[.+\]/, '');
+                    var label = this_th.data("label").replace(/ \[.+\]/, '').replace(/ \(.+\)/, '');
                     this_th.html(label);
                     this_th.html(this_th.html() + " ["+$(this).text()+"]");
                     return false;
@@ -473,7 +473,6 @@
             var grouper = new TranslationFieldGrouper({
                 $fields: $('.mt').filter(':input').filter(':parents(.tabular)').add('fieldset.collapsed .mt')
             });
-
             MainSwitch.init(grouper.groupedTranslations, createTabs);
 
             // Group fields in (existing) tabular inlines
