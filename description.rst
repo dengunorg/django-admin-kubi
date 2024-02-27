@@ -19,3 +19,4 @@ Django admin Kubi applies a face lift for the Django admin interface and mechani
 * django-modeltrans support
 * django-import-export support
 * django-two-factor-auth support
+* django-colorfield support
