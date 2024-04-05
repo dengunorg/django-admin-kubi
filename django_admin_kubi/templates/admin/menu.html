@@ -53,7 +53,10 @@
                 <a class="dropdown-item" href="{% url 'admin:password_change' %}"><i class="fa fa-key"></i> {% trans 'Change password' %}</a>
               {% endif %}
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'admin:logout' %}"><i class="fa fa-power-off"></i> {% trans 'Log out' %}</a>
+              <form id="logout-form" method="post" action="{% url 'admin:logout' %}" class="dropdown-item">
+                {% csrf_token %}
+                <button type="submit" class="link-danger"><i class="fa fa-power-off"></i> {% translate "Log out" %}</button>
+              </form>
             {% endblock %}
           </div>
         </div>
