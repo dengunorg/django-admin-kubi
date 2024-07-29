@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='django-admin-kubi',
-    version='1.0.7',
+    version='1.0.8',
     description='A Django admin template replacement focused on flexibility and user experience',
     author='Rafael Fernandes',
     author_email='rafael@dengun.com',
