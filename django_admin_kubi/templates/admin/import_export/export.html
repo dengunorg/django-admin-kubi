@@ -15,19 +15,100 @@
 {% block content %}
 
 <div class="container-fluid">
-        <div class="row justify-content-center">
-        <form action="" method="POST" class="col col-md-6 col-lg-5 mt-5">
+
+    <form action="" method="POST" class="row justify-content-center">
         {% csrf_token %}
 
-            <fieldset class="module aligned">
-            {% for field in form %}
-                <div class="mb-3">
-                {{ field|label_tag }}
+        <div class="col col-md-6 col-lg-4 mt-5 bg-light">
+        {% if form.errors %}
+        {{ form.errors }}
+        {% endif %}
+
+        {# export request has originated from an Admin UI action #}
+        {% if form.initial.export_items %}
+        <p>
+        {% blocktranslate count len=form.initial.export_items|length %}
+            Export {{ len }} selected item.
+            {% plural %}
+            Export {{ len }} selected items.
+        {% endblocktranslate %}
+        </p>
+        {% endif %}
+
+        {# fields list is not required with selectable fields form #}
+        {% if not form.is_selectable_fields_form %}
+        {% include "admin/import_export/resource_fields_list.html" with import_or_export="export" %}
+        {% endif %}
+
+        <fieldset class="aligned">
+        {% for field in form.visible_fields %}
+            {% if field.name != 'format' %}
+            <div
+            {% if field.field.is_selectable_field %}
+            class="mb-1 selectable-field-export-row"
+            resource-index="{{ field.field.resource_index }}"
+            {% else %}
+            class="mb-1 form-row aligned"
+            {% endif %}
+            >
+            {% if field.field.initial_field %}
+            <p style="padding: 0;">{% translate "This exporter will export the following fields: " %}</p>
+            {% endif %}
+
+            {% if not field.field.is_selectable_field %}
+            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {% endif %}
+
+            {% if field.field.widget.attrs.readonly %}
+                {{ field.field.value }}
+                {{ field.as_hidden }}
+            {% else %}
                 {% if field|widget_type == 'select' %}
                     {{ field|add_class:"form-select" }}
+                {% elif field|widget_type == 'checkboxinput' %}
+
+
+                    <div class="form-check">
+                        {{ field|add_class:"form-check-input" }}
+                        <label class="form-check-label" for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+                    </div>
+
                 {% else %}
                     {{ field|add_class:"form-control" }}
                 {% endif %}
+            {% endif %}
+
+            {% if field.field.is_selectable_field %}
+                {% if field|widget_type == 'checkboxinput' %}
+                {% else %}
+                <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {% endif%}
+            {% endif %}
+
+            {% for error in field.field.errors %}
+                <div class="form-error">{{ error }}</div>
+            {% endfor %}
+
+            {% if field.field.help_text %}
+                <div class="help form-text text-muted">
+                {{ field.field.help_text|safe }}
+                </div>
+            {% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+        </fieldset>
+        </div>
+        <div class="col col-md-3 col-lg-3 mt-5 offset-md-1 align-self-end">
+            <fieldset class="module aligned">
+                {% for field in form.visible_fields %}
+                {% if field.name == 'format' %}
+                <div class="mb-3">
+                    {{ field.label_tag }}
+                    {{ field|add_class:"form-select" }}
+
                 {% for error in field.field.errors %}
                     <div class="form-error">{{ error }}</div>
                 {% endfor %}
@@ -38,14 +119,18 @@
                     </div>
                 {% endif %}
                 </div>
+                {% endif %}
             {% endfor %}
             </fieldset>
+
+
+
+
 
             <div class="mt-3">
             <input type="submit" class="btn btn-lg btn-primary w-100" value="{% trans "Submit" %}">
             </div>
-        </form>
-
-    </div>
+        </div>
+    </form>
 </div>
 {% endblock %}
