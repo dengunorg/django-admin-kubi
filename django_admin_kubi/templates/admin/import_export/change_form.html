@@ -1,0 +1,12 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_modify %}
+
+
+{% block object-tools-items %}
+{{block.super}}
+<li>
+<button type="submit" class="btn historylink btn-link" name="_export-item">
+    <i class="fa fa-download"></i> {% translate 'Export' %}
+</button>
+</li>
+{% endblock %}
