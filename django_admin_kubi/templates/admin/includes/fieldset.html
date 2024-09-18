@@ -22,23 +22,23 @@
         {% endif %}
         <div id="fieldset-{{forloop.counter}}-ct" class="fieldset-fields {% if 'collapsable' in fieldset.classes %}collapse{% endif %} {% if 'collapse' not in fieldset.classes %}show{% endif %}">
         {% for line in fieldset %}
-          {% if not line.fields|length_is:'1' %}
+          {% if not line.fields|length == 1 %}
             <div class="row">
           {% endif %}
 
           {% for field in line %}
-            {% if not line.fields|length_is:'1' %}
+            {% if not line.fields|length == 1 %}
               <div class="{{ line.fields|line_class }}">
             {% endif %}
 
             {% include 'admin/includes/field_form_group.html' with field=field disable_labels=disable_labels is_inline=is_inline only %}
 
-            {% if not line.fields|length_is:'1' %}
+            {% if not line.fields|length == 1 %}
               </div>
             {% endif %}
           {% endfor %}
 
-          {% if not line.fields|length_is:'1' %}
+          {% if not line.fields|length == 1 %}
             </div>
           {% endif %}
         {% endfor %}
