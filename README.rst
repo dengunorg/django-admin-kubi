@@ -15,6 +15,7 @@ Django admin Kubi applies a face lift for the Django admin interface and mechani
 * Admin with sidebar menu for easy navigation
 * Admin Search View
 * Admin LogEntry view
+* Admin Initial Setup view
 * django-modeltranslation support
 * django-modeltrans support
 * django-import-export support
@@ -85,6 +86,20 @@ Configuration settings
         'ADMIN_HISTORY': True,  # enables the history action panel
         'ADMIN_SEARCH': True,  # enables a full modal search
     }
+
+
+How to enable the Initial Setup Flow
+====================================
+
+* In your settings.py, you can enable the Initial Setup Flow by utilizing the SetupMiddleware.
+
+.. code:: python
+
+    MIDDLEWARE = [
+        ...
+        'django_admin_kubi.middleware.SetupMiddleware',  # remove this after initial setup.
+    ]
+
 
 How to use the AdminMenu
 ========================

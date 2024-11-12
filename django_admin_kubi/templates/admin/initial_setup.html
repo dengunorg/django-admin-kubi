@@ -1,0 +1,65 @@
+{% extends "admin/base_initial.html" %}
+{% load i18n static %}
+
+{% block bodyclass %}{{ block.super }} setup auth{% endblock %}
+
+{% block initial-content %}
+  <form id="setup-form" action="{{ app_path }}" method="post" class="w-100 m-auto" novalidate>
+    {% csrf_token %}
+
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">{% translate 'Setup Required' %}</h4>
+      <p>{% translate 'This setup flow is shown because there is no superuser configured to access this project.' %}</p>
+    </div>
+
+    {% if form.errors and not form.non_field_errors %}
+      <div class="errornote alert alert-danger alert-dismissible">
+        {% blocktranslate count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <p class="errornote alert alert-danger alert-dismissible">
+          {{ error }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </p>
+      {% endfor %}
+    {% endif %}
+
+    <div class="mb-3 text-start">
+      <input type="email"
+             class="form-control form-control-lg {% if form.email.errors %}is-invalid{% endif %}"
+             id="{{ form.email.html_name }}_id"
+             name="{{ form.email.html_name }}"
+             placeholder="{{ form.email.label }}"
+             value="{% firstof form.email.value "" %}"
+             required>
+      {{ form.email.errors }}
+    </div>
+    <hr class="border border-secondary border-3 opacity-50">
+    <div class="mb-1 text-start">
+      <input type="password"
+             class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+             id="{{ form.password.html_name }}_id"
+             name="{{ form.password.html_name }}"
+             placeholder="{{ form.password.label }}"
+             required>
+      {{ form.password.errors }}
+    </div>
+    <div class="mb-1 text-start">
+      <input type="password"
+             class="form-control {% if form.password_confirm.errors %}is-invalid{% endif %}"
+             id="{{ form.password_confirm.html_name }}_id"
+             name="{{ form.password_confirm.html_name }}"
+             placeholder="{{ form.password_confirm.label }}"
+             required>
+      {{ form.password_confirm.errors }}
+    </div>
+
+    <input type="hidden" name="this_is_the_setup_form" value="1" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    <button class="w-100 btn btn-lg btn-success mt-3" type="submit">{% translate 'Create & Login' %}</button>
+  </form>
+
+{% endblock %}
