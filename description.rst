@@ -15,6 +15,7 @@ Django admin Kubi applies a face lift for the Django admin interface and mechani
 * Admin with sidebar menu for easy navigation
 * Admin Search View
 * Admin LogEntry view
+* Admin Initial Setup view
 * django-modeltranslation support
 * django-modeltrans support
 * django-import-export support
