@@ -418,7 +418,7 @@
                     $.each(tabs, function (idx, tab) {
                         tab.find(".tabs-handler li a").eq(parseInt(val.lang, 10)).click();
                     });
-
+                    window.dispatchEvent(new Event('resize'));
                     $(window).trigger("language:change", val);
                 });
 

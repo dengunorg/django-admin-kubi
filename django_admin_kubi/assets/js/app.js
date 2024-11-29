@@ -36,6 +36,12 @@ var app = {
     const toastList = [...toastTriggerList].map(toastTriggerEl => (
       new bootstrap.Toast(toastTriggerEl).show()
     ))
+
+    document.querySelectorAll('.fieldset-fields.collapse').forEach(collapsible => {
+        collapsible.addEventListener('shown.bs.collapse', event => {
+            window.dispatchEvent(new Event('resize'));
+        });
+    });
   },
   scrollTop: function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
